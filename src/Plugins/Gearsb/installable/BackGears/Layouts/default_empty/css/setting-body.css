@@ -1,0 +1,12 @@
+
+.panelSettingData { background-color: #3d3d3d; }
+.panelSettingData .panel-heading { background-color: #1c1c1c; }
+.panelSettingData label { color:#fff; }
+.panelSettingData h4 a { color:#fff; }
+.panelSettingData h4 a:hover, .panelSettingData h4 a:focus { text-decoration:none; }
+.panelSettingData h4 a i { transition: all 0.3s; -moz-transition: all 0.3s; -webkit-transition: all 0.3s; -o-transition: all 0.3s; margin-right: 10px; }
+.panelSettingData h4 a[aria-expanded="true"] i { -ms-transform: rotate(90deg); -webkit-transform: rotate(90deg); transform: rotate(90deg); }
+
+.settingBtn { background-color: #292929; color:#fff; }
+.settingBtn:hover, .settingBtn:focus { color:#fff; }
+.form-control { background-color: #888383; border:none; color:#fff }

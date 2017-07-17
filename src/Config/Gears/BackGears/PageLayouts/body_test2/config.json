@@ -1,0 +1,27 @@
+{
+  "name": "Config layout",
+  "author": "Sahak",
+  "type": "admin_template",
+  "version": 1,
+  "descrition": "Body test",
+  "layout": "tpl",
+  "css": [
+    "style.css",
+    "font-awesome\/css\/font-awesome.min.css"
+  ],
+  "js": [
+    "panelrearrangable.js"
+  ],
+  "settings": {
+    "file": "settings",
+    "css": [
+      "style.css"
+    ],
+    "js": []
+  },
+  "slug": "body_test2_5824b7bb22622",
+  "created_at": 1476346979,
+  "folder": "body_test2",
+  "options": {
+  }
+}

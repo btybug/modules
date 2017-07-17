@@ -1,0 +1,22 @@
+{
+  "name": "Back Build Menu",
+  "items": [
+    {
+      "title": "Pages",
+      "url": "/admin/modules/{slug}/buildb/pages",
+      "icon": ""
+    },{
+      "title": "Menus",
+      "url": "/admin/modules/{slug}/buildb/menus",
+      "icon": ""
+    },{
+      "title": "Classify",
+      "url": "/admin/modules/{slug}/buildb/classify",
+      "icon": ""
+    },{
+      "title": "Tags",
+      "url": "/admin/modules/{slug}/buildb/tags",
+      "icon": ""
+    }
+  ]
+}

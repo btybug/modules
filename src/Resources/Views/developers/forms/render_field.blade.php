@@ -1,0 +1,1 @@
+{!! Form::text("field[5][default_value]",isset($field) && $field->json_data['default_value'] != '' ? $field->json_data['default_value'] : null,['class'=>'form-control field-input', 'placeholder' => 'Field Default Value']) !!}

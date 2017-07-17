@@ -1,0 +1,17 @@
+{
+  "name": "Shopping Cart",
+  "slug": "b847f66d495620c5a70665008da3d620",
+  "namespace": "ShoppingCart",
+  "type": "module",
+  "version": "V 1",
+  "description": "ShoppingCart module description",
+  "enabled": true,
+  "author": "Edo",
+  "author_site": "http:\/\/sharebugs.com\/",
+  "route": "Http\/routes.php",
+  "autoload": "Autoload",
+  "CP_CODE": "Please Add your name\/code below in corepages section, like {{name}}",
+  "CP_HINT IN CONTROLLER": "use same hint in your code as variable, e.g. private $code= '{{name}}'",
+  "CP_HINT FOR TEMPLATE": "same code will be use in your template json file for this speciac page and template type",
+  "have_setting": "0"
+}

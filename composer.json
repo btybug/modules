@@ -1,0 +1,16 @@
+{
+    "name": "sahakavatar/modules",
+    "description": "Modules package",
+    "authors": [
+        {
+            "name": "Eduard",
+            "email": "edo.terakyan@gmail.com"
+        }
+    ],
+    "require": {},
+	"autoload": {
+        "psr-4": {
+            "sahakavatar\\modules\\": "src/"
+        }
+    }
+}

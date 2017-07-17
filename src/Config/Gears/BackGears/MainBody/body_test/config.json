@@ -1,0 +1,28 @@
+{
+  "name": "Body Test",
+  "author": "Sahak",
+  "type": "main_body",
+  "version": 1,
+  "descrition": "Body test",
+  "layout": "tpl",
+  "css": [
+    "style.css",
+    "font-awesome\/css\/font-awesome.min.css"
+  ],
+  "js": [
+    "panelrearrangable.js"
+  ],
+  "settings": {
+    "file": "settings",
+    "css": [
+      "style.css"
+    ],
+    "js": []
+  },
+  "slug": "body_test_5824b7bb22600",
+  "created_at": 1476346979,
+  "folder": "body_test",
+  "options": {
+    "menus": "Select Menu"
+  }
+}

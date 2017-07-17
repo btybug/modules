@@ -1,0 +1,22 @@
+{
+  "name": "Front Build Menu",
+  "items": [
+    {
+      "title": "Pages",
+      "url": "/admin/modules/{slug}/build/pages",
+      "icon": ""
+    },{
+      "title": "Menus",
+      "url": "/admin/modules/{slug}/build/menus",
+      "icon": ""
+    },{
+      "title": "Classify",
+      "url": "/admin/modules/{slug}/build/classify",
+      "icon": ""
+    },{
+      "title": "Tags",
+      "url": "/admin/modules/{slug}/build/tags",
+      "icon": ""
+    }
+  ]
+}

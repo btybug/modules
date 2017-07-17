@@ -1,0 +1,484 @@
+.menuBuilder {
+    background-color: #404040;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.menuBuilder a:focus {
+    text-decoration: none;
+}
+
+/*===== Menu Header =====*/
+#menuBuilderHeader {
+    background-color: #1c1c1c;
+    padding: 15px 0 0;
+    display: block;
+    font-size: 18px;
+    line-height: 24px;
+    color: #ccc;
+    -webkit-box-shadow: 0 1px 8px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0 1px 8px rgba(0,0,0,0.75);
+    box-shadow: 0 1px 8px rgba(0,0,0,0.75);
+}
+
+.iconMenuBuilder {
+    background: url(../img/menu-builder-icon.png) no-repeat 0 0;
+    width: 33px;
+    height: 19px;
+    display: inline-block;
+}
+
+.menuTopHeader {
+    border-bottom: solid 1px #2e2e2e;
+    padding-bottom: 10px;
+}
+
+#menuBuilderHeader {
+    background-color: #1c1c1c;
+}
+
+#menuBuilderLogo {
+    font-size: 26px;
+    color: #fff;
+    display: block;
+    line-height: 40px;
+}
+
+#menuBuilderLogo span {
+    color: #aea026;
+}
+
+#menuBuilderLogo:hover {
+    text-decoration: none;
+}
+
+.userDataCol {
+    text-align: center;
+}
+
+.userData {
+    font-size: 18px;
+    color: #fff;
+    line-height: 38px;
+    vertical-align: middle;
+}
+
+.userData img {
+    margin-right: 20px;
+    display: inline-block;
+}
+
+figcaption {
+    display: inline-block;
+}
+
+.menuIcons {
+    text-align: right;
+}
+
+.menuIcons a {
+    font-size: 18px;
+    width: 35px;
+    height: 35px;
+    display: inline-block;
+    background-color: #404040;
+    border-radius: 3px;
+    color: #fff;
+    line-height: 35px;
+    text-align: center;
+}
+
+.menuIcons a.closeIcon {
+    background-color: #9c2e2e;
+    margin-left: 9px;
+}
+
+.stepNav {
+    margin-bottom: 0;
+}
+
+.stepNav li {
+    font-size: 20px;
+    color: #ccc;
+    padding: 10px 28px 10px 15px;
+    line-height: 32px;
+    display: block;
+    float: left;
+}
+
+.stepNav li a {
+    color: #ccc;
+    position: relative;
+    padding: 10px 28px 10px 15px;
+}
+
+.stepNav li a:before {
+    content: '';
+    display: inline-block;
+    border-bottom: solid 3px #aea026;
+    height: 3px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+}
+
+.stepNav li a:hover:before,.stepNav li a:focus:before,.stepNav li.active a:before {
+    display: block;
+}
+
+.stepNav li a:hover,.stepNav li a:focus,.stepNav li.active a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.themeChooseText {
+    display: block;
+    padding-top: 15px;
+    text-align: center;
+}
+
+.nextPrevIcons a {
+    background-color: #404040;
+    color: #fff;
+    border-radius: 100%;
+    font-size: 30px;
+    display: inline-block;
+    line-height: 32px;
+    text-align: center;
+    width: 32px;
+    height: 32px;
+    margin: 11px 4px 0;
+}
+
+.nextPrevIcons a:hover,.nextPrevIcons a.active {
+    background-color: #aea026;
+}
+
+/*===== Middel =====*/
+.menuText {
+    color: #fff;
+    font-size: 18px;
+    margin: 0 15px;
+}
+
+.menu-type {
+    background-color: #292929;
+    font-size: 18px;
+    color: #fff;
+    border-radius: 4px;
+    padding: 0 12px;
+    display: inline-block;
+    margin: 15px 0;
+    cursor: pointer;
+}
+
+.menu-type select {
+    background-color: #292929;
+    border: 0;
+    font-size: 16px;
+    padding: 6px 10px;
+    outline: none;
+    cursor: pointer;
+}
+
+.menu-type .btn-group {
+    margin: 0;
+}
+
+.createNew span {
+    display: block;
+    color: #fff;
+    font-size: 24px;
+}
+
+.createNewCircle {
+    background-color: #313131;
+    border-radius: 100%;
+    width: 171px;
+    height: 171px;
+    display: block;
+    line-height: 170px;
+    margin: 40px auto 25px;
+}
+
+.icon {
+    background: url(../img/menu-icons.png) no-repeat 0 0;
+    display: inline-block;
+    vertical-align: middle;
+    overflow: hidden;
+}
+
+.iconCreateNew {
+    background-position: 0 0;
+    width: 102px;
+    height: 89px;
+}
+
+.iconPen {
+    background-position: -103px 0;
+    width: 32px;
+    height: 32px;
+}
+
+.iconEye {
+    background-position: -136px 0;
+    width: 43px;
+    height: 25px;
+}
+
+.iconDownload {
+    background-position: -180px 0;
+    width: 31px;
+    height: 29px;
+}
+
+.icon-1 {
+    background-position: -103px -33px;
+    width: 33px;
+    height: 27px;
+}
+
+.icon-2 {
+    background-position: -137px -33px;
+    width: 24px;
+    height: 33px;
+}
+
+.icon-3 {
+    background-position: -162px -33px;
+    width: 30px;
+    height: 26px;
+}
+
+.menuList {
+    font-size: 20px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    float: left;
+}
+
+.menuList > li {
+    background-color: #292929;
+    width: 24%;
+    display: inline-block;
+    text-align: center;
+    margin: 0 .5% 15px;
+    height: 301px;
+    vertical-align: top;
+    overflow: hidden;
+    position: relative;
+}
+
+.menuList > li img {
+    width: 100%;
+}
+
+.menuList > li > a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.menuList li a figcaption {
+    background-color: #292929;
+    padding: 15px;
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.menuList li ul {
+    display: none;
+}
+
+.menuList li:hover ul {
+    display: block;
+}
+
+.editIcons {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    margin-top: -27.5px;
+}
+
+.editIcons li {
+    display: inline-block;
+    margin: 0 3px;
+}
+
+.editIcons li a {
+    width: 55px;
+    height: 55px;
+    display: inline-block;
+    border-radius: 100%;
+    line-height: 55px;
+    -webkit-box-shadow: 0 0 21px rgba(0,0,0,0.39);
+    -moz-box-shadow: 0 0 21px rgba(0,0,0,0.39);
+    box-shadow: 0 0 21px rgba(0,0,0,0.39);
+}
+
+.editIcons li a.blueCircle {
+    background-color: rgba(63,107,122,0.8);
+}
+
+.editIcons li a.greenCircle {
+    background-color: rgba(70,122,63,0.8);
+}
+
+.editIcons li a.redCircle {
+    background-color: rgba(156,46,46,0.8);
+}
+
+.btn-select {
+    color: #FFF;
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 0;
+    height: 32px;
+}
+
+.btn-select:hover,.btn-select:focus {
+    color: #FFF;
+    outline: none;
+    margin-bottom: 0;
+}
+
+.listData {
+    width: 60%;
+    margin: 0 auto;
+    padding: 3px 3px 60px;
+    background-color: #a3a3a3;
+    font-size: 20px;
+    line-height: 51px;
+}
+
+.listData li a span {
+    background-color: #16273d;
+    width: 54px;
+    height: 51px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 12px;
+    text-align: center;
+}
+
+.listData li {
+    margin-bottom: 4px;
+}
+
+.listData li a {
+    background-color: #1d3759;
+    color: #fff;
+    display: block;
+    vertical-align: middle;
+    padding: 6px 14px 6px 6px;
+}
+
+.listData li a:hover {
+    text-decoration: none;
+}
+
+body, #page-wrapper {
+    background: #404040;
+    border:0;
+}
+
+.navbar-default{
+    border:0;
+}
+
+.preview-component {
+    float: left;
+    width: 100%;
+    position: relative;
+    background: #fff;
+}
+
+.close-preview {
+    position: absolute;
+    right: 12px;
+    font-size: 35px;
+    color: #313131;
+}
+
+#upload-component{
+    display:none;
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px) {
+    .menuList > li {
+        height: 240px;
+    }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+    .menuList > li {
+        width: 32.333%;
+    }
+
+    .stepNav li,.stepNav li a {
+        font-size: 16px;
+        padding: 10px;
+    }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 767px) {
+    #menuBuilderLogo {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .userDataCol {
+        text-align: left;
+    }
+
+    .userData img {
+        margin-right: 10px;
+    }
+
+    .menuBottomHeader {
+        margin: 0 0 10px;
+    }
+
+    .stepNav {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .stepNav li {
+        float: none;
+        display: inline-block;
+    }
+
+    .stepNav li a {
+        padding: 10px 15px;
+    }
+
+    .menuList > li {
+        width: 48%;
+        margin: 0 1% 15px;
+        height: 220px;
+    }
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px) {
+    .menuList > li {
+        width: 100%;
+        margin: 0 0 15px;
+        height: inherit;
+    }
+}

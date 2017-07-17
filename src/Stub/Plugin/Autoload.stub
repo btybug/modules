@@ -1,0 +1,29 @@
+<?php
+/**
+ * Copyright (c) 2016.
+ * *
+ *  * Created by PhpStorm.
+ *  * User: Edo
+ *  * Date: 10/3/2016
+ *  * Time: 10:44 PM
+ *
+ */
+
+namespace App\ExtraModules\{{namespace}};
+
+use App\Models\Corepage;
+use App\Models\Urlmanager;
+use Illuminate\Database\Schema\Blueprint;
+
+class Autoload
+{
+// this function will coled only install time
+    public function up(){
+
+
+    }
+    // this function will coled only unistall time
+    public function down(){
+
+    }
+}

@@ -1,0 +1,38 @@
+{
+  "name": "Config Menu",
+  "items": [
+    {
+      "title": "General view",
+      "url": "#",
+      "icon": ""
+    },{
+      "title": "Generals",
+      "url": "#",
+      "icon": ""
+    },{
+      "title": "Assets",
+      "url": "/admin/modules/config/{slug}/assets",
+      "icon": ""
+    },{
+      "title": "Build",
+      "url": "/admin/modules/config/{slug}/build",
+      "icon": ""
+    },{
+      "title": "Permission",
+      "url": "/admin/modules/config/{slug}/permission",
+      "icon": ""
+    },{
+      "title": "Code",
+      "url": "/admin/modules/config/{slug}/codes",
+      "icon": ""
+    },{
+      "title": "Tables & Forms",
+      "url": "/admin/modules/config/{slug}/tables",
+      "icon": ""
+    },{
+      "title": "View Files",
+      "url": "#",
+      "icon": ""
+    }
+  ]
+}

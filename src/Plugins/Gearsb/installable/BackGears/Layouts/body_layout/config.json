@@ -1,0 +1,27 @@
+{
+  "name": "NEW 2017",
+  "author": "Edo",
+  "type": "admin_template",
+  "version": 1,
+  "descrition": "Body test New 2017",
+  "layout": "tpl",
+  "css": [
+    "style.css",
+    "font-awesome\/css\/font-awesome.min.css"
+  ],
+  "js": [
+    "panelrearrangable.js"
+  ],
+  "settings": {
+    "file": "settings",
+    "css": [
+      "style.css"
+    ],
+    "js": []
+  },
+  "slug": "new_2017_857412365456",
+  "created_at": 1476346979,
+  "folder": "body_layout",
+  "options": {
+  }
+}

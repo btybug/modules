@@ -1,0 +1,17 @@
+{
+  "title": "main variation",
+  "id": "body_test_5824b7bb22600.5824b7bb64c5c",
+  "settings": {
+    "_token": "0nIB6825HYKzIlNul8kTbPhGYuDJCBVA2q9UJ1Lp",
+    "template_id": "57b4531b247e9",
+    "variation_id": "57b4531b247e9.57b4531b4d28a",
+    "main_menu.BBMenu": "14",
+    "main_menu.animations": "",
+    "main_menu.animations-variation": "",
+    "user_menu.BBMenu": "15",
+    "user_menu.animations": "",
+    "user_menu.animations-variation": "",
+    "variation_name": "main variation",
+    "authentication_type": "guest"
+  }
+}

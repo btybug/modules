@@ -1,0 +1,34 @@
+{
+  "name": "console Menu",
+  "items": [
+    {
+      "title": "General view",
+      "url": "/admin/console/modules/{slug}/general",
+      "icon": ""
+    },{
+      "title": "Gears & Assets",
+      "url": "/admin/console/modules/{slug}/assets",
+      "icon": ""
+    },{
+      "title": "Build",
+      "url": "/admin/console/modules/{slug}/build",
+      "icon": ""
+    },{
+      "title": "Permission",
+      "url": "/admin/console/modules/{slug}/permission",
+      "icon": ""
+    },{
+      "title": "Code",
+      "url": "/admin/console/modules/{slug}/code",
+      "icon": ""
+    },{
+      "title": "Tables & Forms",
+      "url": "/admin/console/modules/{slug}/tables",
+      "icon": ""
+    },{
+      "title": "View Files",
+      "url": "/admin/console/modules/{slug}/views",
+      "icon": ""
+    }
+  ]
+}

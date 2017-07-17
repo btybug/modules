@@ -1,0 +1,22 @@
+{
+  "name": "Front Gear Menu",
+  "items": [
+    {
+      "title": "Layout",
+      "url": "/admin/modules/{param}/gears/layouts",
+      "icon": ""
+    },{
+      "title": "Units",
+      "url": "/admin/modules/{param}/gears/units",
+      "icon": ""
+    },{
+      "title": "H & F",
+      "url": "/admin/modules/{param}/gears/h-f",
+      "icon": ""
+    },{
+      "title": "Main Body",
+      "url": "/admin/modules/{param}/gears/main-body",
+      "icon": ""
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "users":{
+    "id":{"type":"hidden","field":"hidden"},
+    "email":{"type":"text","field":"yes"},
+    "username":{"type":"text","field":"no"},
+    "password":{"type":"password","field":"yes"},
+    "membership_id":{"type":"select","field":"no"},
+    "role_id":{"type":"select","field":"no"},
+    "status":{"type":"select","field":"no","source":"enum"},
+    "token":{"field":"never"},
+    "remember_token":{"field":"never"},
+    "created_at":{"field":"never"},
+    "updated_at":{"field":"never"}
+  }
+}

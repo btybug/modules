@@ -1,0 +1,42 @@
+{
+  "name": "Menu",
+  "items": [
+    {
+      "title": "Assets",
+      "url": "/admin/modules/config/Users/assets",
+      "icon": ""
+    },{
+      "title": "Info",
+      "url": "/admin/modules/config/Users/info",
+      "icon": ""
+    },{
+      "title": "Tables & forms",
+      "url": "/admin/modules/config/Users/tables",
+      "icon": ""
+    },{
+      "title": "Permission",
+      "url": "/admin/modules/config/Users/permission",
+      "icon": ""
+    },{
+      "title": "Codes",
+      "url": "/admin/modules/config/Users/codes",
+      "icon": ""
+    },{
+      "title": "Front Gears",
+      "url": "/admin/modules/config/Users/gears",
+      "icon": ""
+    },{
+      "title": "Back Gears",
+      "url": "/admin/modules/config/Users/gearsb",
+      "icon": ""
+    },{
+      "title": "Back build",
+      "url": "/admin/modules/config/Users/buildb",
+      "icon": ""
+    },{
+      "title": "Front build",
+      "url": "/admin/modules/config/Users/build",
+      "icon": ""
+    }
+  ]
+}
