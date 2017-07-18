@@ -6,7 +6,7 @@
  * Time: 4:01 PM
  */
 
-namespace App\Modules\Modules\Plugins\Gearsb\Http;
+namespace Sahakavatar\Modules\Plugins\Gearsb\Http;
 use App\Http\Controllers\Controller;
 
 class LayoutController extends Controller

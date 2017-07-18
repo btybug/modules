@@ -1,4 +1,4 @@
-<?php namespace App\Modules\Modules\Models;
+<?php namespace Sahakavatar\Modules\Models;
 
 use App\helpers\helpers;
 use App\Models\ExtraModules\Modules;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Modules\Interfases;
+namespace Sahakavatar\Modules\Interfases;
 
 /**
  * Interface mInterfase

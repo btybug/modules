@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Modules\Http\Controllers;
+namespace Sahakavatar\Modules\Http\Controllers;
 
 
 use App\Http\Controllers\Controller;

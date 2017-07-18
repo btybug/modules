@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Modules\Models;
+namespace Sahakavatar\Modules\Models;
 
 use App\Models\Templates\UiElements;
 use App\Modules\Users\Models\Roles;

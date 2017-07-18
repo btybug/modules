@@ -6,7 +6,7 @@
  * Time: 10:41 AM
  */
 
-namespace App\Modules\Modules\Http\Controllers\Developers;
+namespace Sahakavatar\Modules\Http\Controllers\Developers;
 
 use App\Core\CmsItemReader;
 use App\helpers\ExcelHelper;

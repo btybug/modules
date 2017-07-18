@@ -9,7 +9,7 @@
  *
  */
 
-namespace App\Modules\Modules\Plugins\Gears\Models;
+namespace Sahakavatar\Modules\Plugins\Gears\Models;
 
 use File,Validator;
 

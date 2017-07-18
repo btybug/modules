@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Modules\Plugins\Gearsb\Providers;
+namespace Sahakavatar\Modules\Plugins\Gearsb\Providers;
 
 use App\Models\Templates\Widgets;
-use Caffeinated\Modules\Support\ServiceProvider;
+use Illuminate\Support\ServiceProvider;
 
 class PluginServiceProvider extends ServiceProvider
 {

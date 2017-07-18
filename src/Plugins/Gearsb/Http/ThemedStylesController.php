@@ -6,7 +6,7 @@
  * Time: 11:52 AM
  */
 
-namespace App\Modules\Modules\Plugins\Gearsb\Http;
+namespace Sahakavatar\Modules\Plugins\Gearsb\Http;
 
 use App\Http\Controllers\Controller;
 

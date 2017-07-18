@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Modules\Http\Controllers\Developers;
+namespace Sahakavatar\Modules\Http\Controllers\Developers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Fields;

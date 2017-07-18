@@ -1,5 +1,5 @@
 <?php
-namespace App\Modules\Modules\Plugins\Gearsb;
+namespace Sahakavatar\Modules\Plugins\Gearsb;
 /**
  * Created by PhpStorm.
  * User: Edo

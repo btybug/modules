@@ -9,7 +9,7 @@
  *
  */
 
-namespace App\Modules\Modules\Plugins\Gears\Models;
+namespace Sahakavatar\Modules\Plugins\Gears\Models;
 use Illuminate\Http\Request;
 use Symfony\Component\VarDumper\Caster\ExceptionCaster;
 use App\helpers\helpers;

@@ -6,7 +6,7 @@
  * Time: 5:24 AM
  */
 
-namespace App\Modules\Modules\Models;
+namespace Sahakavatar\Modules\Models;
 
 use App\Models\Templates\Units;
 use Carbon\Carbon;

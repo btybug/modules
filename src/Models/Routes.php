@@ -6,7 +6,7 @@
  * Time: 11:01 AM
  */
 
-namespace App\Modules\Modules\Models;
+namespace Sahakavatar\Modules\Models;
 
 use App\Models\ContentLayouts\ContentLayouts;
 use App\Models\ExtraModules\Structures;

@@ -1,5 +1,5 @@
 <?php
-namespace App\Modules\Modules\Models;
+namespace Sahakavatar\Modules\Models;
 
 use Illuminate\Database\QueryException;
 use Illuminate\Database\Schema\Blueprint;

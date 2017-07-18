@@ -2,7 +2,7 @@
 
 namespace App\Modules\Tools\Providers;
 
-use Caffeinated\Modules\Support\ServiceProvider;
+use Illuminate\Support\ServiceProvider;
 
 class ModuleServiceProvider extends ServiceProvider
 {

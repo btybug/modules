@@ -9,7 +9,7 @@
  *
  */
 
-namespace App\Modules\Modules\Models;
+namespace Sahakavatar\Modules\Models;
 
 use App\Models\Templates\Units;
 use App\Modules\Users\User;

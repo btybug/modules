@@ -1,5 +1,5 @@
 <?php
-namespace App\Modules\Modules\Plugins\Gears\Http;
+namespace Sahakavatar\Modules\Plugins\Gears\Http;
 
 use App\Http\Controllers\Controller;
 use App\Models\Templates\Units;

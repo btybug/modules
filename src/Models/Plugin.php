@@ -9,7 +9,7 @@
  *
  */
 
-namespace App\Modules\Modules\Models;
+namespace Sahakavatar\Modules\Models;
 
 use Chumper\Zipper\Zipper;
 use File;
