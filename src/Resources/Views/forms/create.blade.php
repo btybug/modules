@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-    @inject('dbhelper', 'App\helpers\dbhelper')
+    @inject('dbhelper', 'Sahakavatar\Cms\Helpers\helpers')
     @include('resources::assests.magicModal')
     <input type="hidden" id="form_id" value="{!! $form->id or null !!}">
 <div class="builderWrapper">

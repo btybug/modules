@@ -11,7 +11,7 @@
 
 namespace Sahakavatar\Modules\Http\Controllers\Developers;
 
-use App\helpers\dbhelper;
+use Sahakavatar\Cms\Helpers\helpers;
 use App\helpers\ExcelHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Moduledb;

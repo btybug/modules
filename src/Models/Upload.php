@@ -1,6 +1,6 @@
 <?php namespace Sahakavatar\Modules\Models;
 
-use App\helpers\helpers;
+use Sahakavatar\Cms\Helpers\helpers;
 use App\Models\ExtraModules\Modules;
 use App\Models\ExtraModules\Structures;
 use App\Models\MenuData;

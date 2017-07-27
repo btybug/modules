@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-    @inject('dbhelper', 'App\helpers\dbhelper')
+    @inject('dbhelper', 'Sahakavatar\Cms\Helpers\helpers')
     @include('resources::assests.magicModal')
     <div class="site_wrap_23">
         <nav class="navbar navbar-default">

@@ -11,7 +11,7 @@
 
 namespace Sahakavatar\Modules\Http\Controllers\Developers;
 
-use App\helpers\helpers;
+use Sahakavatar\Cms\Helpers\helpers;
 use App\Http\Controllers\Controller;
 use App\Modules\Create\Models\AdminPages;
 use Illuminate\Http\Request;

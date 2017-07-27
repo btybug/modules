@@ -2,7 +2,7 @@
 
 namespace Sahakavatar\Modules\Http\Controllers;
 
-use App\helpers\helpers;
+use Sahakavatar\Cms\Helpers\helpers;
 use App\Http\Controllers\Controller;
 use App\Models\ExtraModules\Modules;
 use App\Models\ExtraModules\Structures;

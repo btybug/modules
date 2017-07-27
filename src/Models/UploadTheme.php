@@ -16,7 +16,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Symfony\Component\VarDumper\Caster\ExceptionCaster;
 use App\Repositories\ModuleRepository as Module;
-use App\helpers\helpers;
+use Sahakavatar\Cms\Helpers\helpers;
 use App\Models\MenuData;
 use Zipper,
     File;

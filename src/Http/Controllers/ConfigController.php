@@ -2,8 +2,8 @@
 
 namespace Sahakavatar\Modules\Http\Controllers;
 
-use App\helpers\dbhelper;
-use App\helpers\helpers;
+use Sahakavatar\Cms\Helpers\helpers;
+use Sahakavatar\Cms\Helpers\helpers;
 use App\Http\Controllers\Controller;
 use App\Models\ContentLayouts\ContentLayouts as AdminTemplates;
 use App\Models\ContentLayouts\ContentLayouts;

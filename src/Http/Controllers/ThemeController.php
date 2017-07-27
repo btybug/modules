@@ -11,8 +11,8 @@
 
 namespace Sahakavatar\Modules\Http\Controllers;
 
-use App\helpers\dbhelper;
-use App\helpers\helpers;
+use Sahakavatar\Cms\Helpers\helpers;
+use Sahakavatar\Cms\Helpers\helpers;
 use App\Http\Controllers\Controller;
 use App\Models\Templates\Templates as Tpl;
 use App\Models\Templates\Templates;
