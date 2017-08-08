@@ -11,7 +11,7 @@ use Zipper;
 
 /**
  * Class Upload
- * @package App\Modules\Modules\Models
+ * @package Sahakavatar\Modules\Models\Models
  */
 class Upload
 {

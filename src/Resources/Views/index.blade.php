@@ -43,8 +43,8 @@
     </div>
 @stop
 @section('CSS')
-    {!! HTML::style('resources/assets/js/bootstrap-switch/css/bootstrap-switch.min.css') !!}
-    {!! HTML::style('resources/assets/css/store.css') !!}
+    {!! HTML::style('js/bootstrap-switch/css/bootstrap-switch.min.css') !!}
+    {!! HTML::style('css/store.css') !!}
     <style>
         .createNewCircle{
             line-height: 207px;
@@ -56,7 +56,7 @@
     </style>
 @stop
 @section('JS')
-    {!! HTML::script('resources/assets/js/dropzone/js/dropzone.js') !!}
+    {!! HTML::script('js/dropzone/js/dropzone.js') !!}
     <script>
 
         Dropzone.options.myAwesomeDropzone = {

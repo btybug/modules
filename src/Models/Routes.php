@@ -8,9 +8,9 @@
 
 namespace Sahakavatar\Modules\Models;
 
-use App\Models\ContentLayouts\ContentLayouts;
+use Sahakavatar\Cms\Models\ContentLayouts\ContentLayouts;
 use App\Models\ExtraModules\Structures;
-use App\Modules\Modules\Models\AdminPages;
+use Sahakavatar\Modules\Models\Models\AdminPages;
 use PhpParser\Node\Stmt\Foreach_;
 
 class Routes

@@ -2,7 +2,7 @@
 if(!is_null($form) and isset($form->widget)){
     echo BBRenderWidget($form->widget,$data);
 } else {
-    $widget = \App\Models\Templates\Widgets::where('default', 1)->where('main_type', 'fields')->first();
+    $widget = \Sahakavatar\Cms\Models\Widgets::where('default', 1)->where('main_type', 'fields')->first();
     $main = null;
     if ($widget) {
         $variations = $widget->variations();

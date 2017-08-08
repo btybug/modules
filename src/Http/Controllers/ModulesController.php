@@ -6,14 +6,14 @@ use Sahakavatar\Cms\Helpers\helpers;
 use App\Http\Controllers\Controller;
 use App\Models\ExtraModules\Modules;
 use App\Models\ExtraModules\Structures;
-use App\Modules\Modules\Models\Upload;
-use App\Modules\Modules\Models\Validation as validateUpl;
+use Sahakavatar\Modules\Models\Models\Upload;
+use Sahakavatar\Modules\Models\Models\Validation as validateUpl;
 use File;
 use Illuminate\Http\Request;
 
 /**
  * Class ModulesController
- * @package App\Modules\Modules\Http\Controllers
+ * @package Sahakavatar\Modules\Models\Http\Controllers
  */
 class ModulesController extends Controller
 {

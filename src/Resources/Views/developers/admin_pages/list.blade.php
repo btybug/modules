@@ -1,4 +1,4 @@
-@extends('layouts.mTabs',['index'=>'developers_structure'])
+@extends('cms::layouts.mTabs',['index'=>'developers_structure'])
 @section('tab')
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 up">
@@ -85,11 +85,11 @@
 {{--@include('tools::common_inc')--}}
 
 @push('css')
-{!! HTML::style('/resources/assets/css/page.css?v=0.13') !!}
-{!! HTML::style('resources/assets/css/admin_pages.css') !!}
+{!! HTML::style('css/page.css?v=0.13') !!}
+{!! HTML::style('css/admin_pages.css') !!}
 @endpush
 @push('javascript')
-{!! HTML::script('resources/assets/js/admin_pages.js') !!}
+{!! HTML::script('js/admin_pages.js') !!}
 <script>
     $(document).ready(function(){
        $("body").on('click','.add-new-adminpage',function(){

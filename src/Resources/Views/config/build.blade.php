@@ -195,23 +195,23 @@
                     @stop
 
                     @section('CSS')
-                    {!! HTML::style('/resources/assets/css/themes-settings.css?v=0.23') !!}
-                    {!! HTML::style('/resources/assets/css/menu.css?v=0.9') !!}
-                    {!! HTML::style('/resources/assets/css/page.css?v=0.13') !!}
-                    {!! HTML::style('resources/assets/css/admin_pages.css') !!}
+                    {!! HTML::style('css/themes-settings.css?v=0.23') !!}
+                    {!! HTML::style('css/menu.css?v=0.9') !!}
+                    {!! HTML::style('css/page.css?v=0.13') !!}
+                    {!! HTML::style('css/admin_pages.css') !!}
                     @stop
 
                             <!--JS-->
                     @section('JS')
 
-                        {!! HTML::script('resources/assets/js/bootbox/js/bootbox.min.js') !!}
-                        {!! HTML::script('resources/assets/js/jquery.nestable/js/jquery.nestable.js') !!}
+                        {!! HTML::script('js/bootbox/js/bootbox.min.js') !!}
+                        {!! HTML::script('js/jquery.nestable/js/jquery.nestable.js') !!}
 
-                        {!! HTML::script('resources/assets/js/jqueryui/js/jquery-ui.min.js') !!}
-                        {!! HTML::script('resources/assets/js/nestedSortable/jquery.mjs.nestedSortable.js') !!}
+                        {!! HTML::script('js/jqueryui/js/jquery-ui.min.js') !!}
+                        {!! HTML::script('js/nestedSortable/jquery.mjs.nestedSortable.js') !!}
 
-                        {!! HTML::script('resources/assets/js/page.js?v=0.62') !!}
-                        {!! HTML::script('resources/assets/js/admin_pages.js') !!}
+                        {!! HTML::script('js/page.js?v=0.62') !!}
+                        {!! HTML::script('js/admin_pages.js') !!}
 
                         <script>
                             $(function() {

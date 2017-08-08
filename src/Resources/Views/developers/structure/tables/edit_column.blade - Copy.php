@@ -280,11 +280,11 @@
 @stop
 
 @section('CSS')
-    {!! HTML::style('resources/assets/css/preview-template.css') !!}
+    {!! HTML::style('css/preview-template.css') !!}
 
 @stop
 @section('JS')
-    {!! HTML::script("resources/assets/js/UiElements/bb_styles.js?v.5") !!}
+    {!! HTML::script("js/UiElements/bb_styles.js?v.5") !!}
      <script type="text/javascript">
        
        $(function() {

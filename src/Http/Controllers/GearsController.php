@@ -4,14 +4,14 @@ namespace Sahakavatar\Modules\Http\Controllers;
 
 
 use App\Http\Controllers\Controller;
-use App\Models\ContentLayouts\ContentLayouts;
-use App\Models\Templates\Units;
-use App\Modules\Modules\Models\AdminPages;
+use Sahakavatar\Cms\Models\ContentLayouts\ContentLayouts;
+use Sahakavatar\Cms\Models\Templates\Units;
+use Sahakavatar\Modules\Models\Models\AdminPages;
 use Illuminate\Http\Request;
 
 /**
  * Class ModulesController
- * @package App\Modules\Modules\Http\Controllers
+ * @package Sahakavatar\Modules\Models\Http\Controllers
  */
 class GearsController extends Controller
 {

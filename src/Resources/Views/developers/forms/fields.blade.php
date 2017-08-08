@@ -42,7 +42,7 @@
     {!! Form::close() !!}
     <a class="btn btn-danger add-new-field"><i class="fa fa-plus"></i>Add Field</a>
     @include('resources::assests.magicModal')
-    @include('_partials.delete_modal')
+    @include('cms::_partials.delete_modal')
 
 @stop
 @section('JS')

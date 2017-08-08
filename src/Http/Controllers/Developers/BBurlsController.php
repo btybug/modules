@@ -8,17 +8,17 @@
 
 namespace Sahakavatar\Modules\Http\Controllers\Developers;
 
-use App\Core\CmsItemReader;
+use Sahakavatar\Cms\Services\CmsItemReader;
 use App\helpers\ExcelHelper;
 use App\helpers\FieldHelper;
 use App\Http\Controllers\Controller;
-use App\Models\ContentLayouts\ContentLayouts;
-use App\Models\Templates\Sections;
-use App\Models\Templates\Units;
-use App\Models\Templates\Widgets;
+use Sahakavatar\Cms\Models\ContentLayouts\ContentLayouts;
+use Sahakavatar\Cms\Models\Sections;
+use Sahakavatar\Cms\Models\Templates\Units;
+use Sahakavatar\Cms\Models\Widgets;
 use App\Modules\Console\Models\FieldValidations;
-use App\Modules\Modules\Models\Fields;
-use App\Modules\Modules\Models\Forms;
+use Sahakavatar\Modules\Models\Models\Fields;
+use Sahakavatar\Modules\Models\Models\Forms;
 use App\Modules\Resources\Models\Files\FilesBB;
 use Illuminate\Http\Request;
 
@@ -32,7 +32,7 @@ class BBurlsController extends Controller
             $widget_id = $unitData[0];
             $variationID = $unitData[1];
 
-            $widget = \App\Models\Templates\Units::find($widget_id);
+            $widget = \Sahakavatar\Cms\Models\Templates\Units::find($widget_id);
             if (!is_null($widget)) {
                 $variation = $widget->findVariation($slug);
 

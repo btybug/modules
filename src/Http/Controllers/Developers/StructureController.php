@@ -15,17 +15,17 @@ use Sahakavatar\Cms\Helpers\helpers;
 use App\helpers\ExcelHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Moduledb;
-use App\Models\Templates\Units;
-use App\Models\Templates\Widgets;
-use App\Modules\Modules\Models\AdminPages;
-use App\Modules\Modules\Models\Fields;
-use App\Modules\Modules\Models\Migrations;
+use Sahakavatar\Cms\Models\Templates\Units;
+use Sahakavatar\Cms\Models\Widgets;
+use Sahakavatar\Modules\Models\Models\AdminPages;
+use Sahakavatar\Modules\Models\Models\Fields;
+use Sahakavatar\Modules\Models\Models\Migrations;
 use Illuminate\Http\Request;
 use Validator;
 
 /**
  * Class ModulesController
- * @package App\Modules\Modules\Http\Controllers
+ * @package Sahakavatar\Modules\Models\Http\Controllers
  */
 class StructureController extends Controller
 {

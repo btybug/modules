@@ -12,13 +12,13 @@
 namespace Sahakavatar\Modules\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Modules\Models\Plugin;
+use Sahakavatar\Modules\Models\Models\Plugin;
 use Illuminate\Http\Request;
 use view;
 
 /**
  * Class ModulesController
- * @package App\Modules\Modules\Http\Controllers
+ * @package Sahakavatar\Modules\Models\Http\Controllers
  */
 class GenerateController extends Controller {
 

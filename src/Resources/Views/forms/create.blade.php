@@ -202,7 +202,7 @@
                 if ($form->widget) {
                     echo BBRenderWidgetOption($form->widget);
                 } else {
-                    $widget = \App\Models\Templates\Widgets::where('default', 1)->where('main_type', 'fields')->first();
+                    $widget = \Sahakavatar\Cms\Models\Widgets::where('default', 1)->where('main_type', 'fields')->first();
                     $main = null;
                     if ($widget) {
                         $variations = $widget->variations();
@@ -475,21 +475,21 @@
   <ul></ul>
 </div>
 <script type="template" data-role="iframehead">
-      {!! HTML::style('/resources/assets/fonts/FontAwesome/font-awesome.css') !!}
-      {!! HTML::style('/resources/assets/css/admin.css?v=0.392') !!}
-      {!! HTML::style('/resources/assets/css/dashboard-css.css?v=0.2') !!}
-      {!! HTML::style('/resources/assets/css/admin-theme.css?v2.91') !!}
+      {!! HTML::style('fonts/FontAwesome/font-awesome.css') !!}
+      {!! HTML::style('css/admin.css?v=0.392') !!}
+      {!! HTML::style('css/dashboard-css.css?v=0.2') !!}
+      {!! HTML::style('css/admin-theme.css?v2.91') !!}
      
 </script>
 <script type="template" data-role="addinbody">
-    {!! HTML::style('/resources/assets/css/core_styles.css') !!}
+    {!! HTML::style('css/core_styles.css') !!}
 </script>
 @section('CSS')
-    {!! HTML::style('resources/assets/js/bootstrap-select/css/bootstrap-select.min.css') !!}
-    {!! HTML::style('resources/assets/js/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css') !!}
-    {!! HTML::style('resources/assets/js/animate/css/animate.css') !!}
-    {!! HTML::style('resources/assets/css/form-builder.css?v=4.97') !!}
-    {{--{!! HTML::style('resources/assets/css/builder-tool.css') !!}--}}
+    {!! HTML::style('js/bootstrap-select/css/bootstrap-select.min.css') !!}
+    {!! HTML::style('js/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css') !!}
+    {!! HTML::style('js/animate/css/animate.css') !!}
+    {!! HTML::style('css/form-builder.css?v=4.97') !!}
+    {{--{!! HTML::style('css/builder-tool.css') !!}--}}
     {!! HTML::style('app/Modules/Modules/Resources/assets/css/table-create.css') !!}
     <style>
         #left_side{
@@ -727,7 +727,7 @@
 @stop
 
 @section('JS')
-    {!! HTML::script("resources/assets/js/UiElements/bb_styles.js?v.5") !!}
+    {!! HTML::script("js/UiElements/bb_styles.js?v.5") !!}
     <script>
 
         $(document).ready(function() {

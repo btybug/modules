@@ -11,7 +11,7 @@
 
 namespace Sahakavatar\Modules\Models;
 
-use App\Models\Templates\Units;
+use Sahakavatar\Cms\Models\Templates\Units;
 use App\Modules\Users\User;
 use Illuminate\Database\Eloquent\Model;
 

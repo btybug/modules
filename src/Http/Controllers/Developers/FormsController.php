@@ -5,9 +5,9 @@ namespace Sahakavatar\Modules\Http\Controllers\Developers;
 use App\Http\Controllers\Controller;
 use App\Models\Fields;
 use App\Models\Moduledb;
-use App\Modules\Modules\Models\AdminPages;
-use App\Modules\Modules\Models\Forms;
-use App\Modules\Modules\Models\Migrations;
+use Sahakavatar\Modules\Models\Models\AdminPages;
+use Sahakavatar\Modules\Models\Models\Forms;
+use Sahakavatar\Modules\Models\Models\Migrations;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Validator;
@@ -15,7 +15,7 @@ use view;
 
 /**
  * Class ModulesController
- * @package App\Modules\Modules\Http\Controllers
+ * @package Sahakavatar\Modules\Models\Http\Controllers
  */
 class FormsController extends Controller
 {

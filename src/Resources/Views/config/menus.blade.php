@@ -85,7 +85,7 @@
     </div>
 @stop
 @push('css')
-{!! HTML::style('resources/assets/css/admin_pages.css') !!}
+{!! HTML::style('css/admin_pages.css') !!}
 <style>
     /* make sidebar nav vertical */
     @media (min-width: 768px) {

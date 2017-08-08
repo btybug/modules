@@ -1,4 +1,4 @@
-@extends('layouts.mTabs',['index'=>'developers_structure'])
+@extends('cms::layouts.mTabs',['index'=>'developers_structure'])
 @section('tab')
     <div class="col-md-12">
         <div class="col-md-8" style="border: 1px solid black;">

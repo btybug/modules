@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <title>update file </title>
 {!! HTML::style('//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css') !!}
-{!! HTML::style("/resources/assets/js/font-awesome/css/font-awesome.min.css") !!}
-{!! HTML::script('/resources/assets/js/jquery-2.1.4.min.js') !!}
-{!! HTML::script('/resources/assets/js/bootstrap.min.js') !!}
-{!! HTML::style("resources/assets/js/animate/css/animate.css") !!}
-{!! HTML::style("resources/assets/css/preview-template.css") !!}
-{!! HTML::style("resources/assets/css/core_styles.css") !!}
+{!! HTML::style("/js/font-awesome/css/font-awesome.min.css") !!}
+{!! HTML::script('js/jquery-2.1.4.min.js') !!}
+{!! HTML::script('js/bootstrap.min.js') !!}
+{!! HTML::style("/js/animate/css/animate.css") !!}
+{!! HTML::style("/css/preview-template.css") !!}
+{!! HTML::style("/css/core_styles.css") !!}
 </head>
 
 <body>
@@ -48,7 +48,7 @@
  
 </div>
  @include('resources::assests.magicModal')
-{!! HTML::script("resources/assets/js/UiElements/bb_styles.js?v.5") !!}
+{!! HTML::script("js/UiElements/bb_styles.js?v.5") !!}
  <script type="text/javascript">
         $(document).ready(function () {
           

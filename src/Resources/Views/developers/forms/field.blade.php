@@ -17,14 +17,14 @@
     <meta content="" name="description"/>
     <meta content="" name="author"/>
 
-    {!! HTML::style("/resources/assets/css/bootstrap.css") !!}
-    {!! HTML::style('resources/assets/js/jqueryui/css/jquery-ui.min.css') !!}
-    {!! HTML::style('resources/assets/css/cms.css') !!}
-    {!! HTML::script("resources/assets/js/jquery-2.1.4.min.js") !!}
-    {!! HTML::script("resources/assets/js/jqueryui/js/jquery-ui.min.js") !!}
-    {!! HTML::script("resources/assets/js/bootstrap.min.js") !!}
-    {!! HTML::script("resources/assets/js/tinymice/tinymce.min.js") !!}
-    {!! HTML::style("resources/assets/js/animate/css/animate.css") !!}
+    {!! HTML::style("/css/bootstrap.css") !!}
+    {!! HTML::style('js/jqueryui/css/jquery-ui.min.css') !!}
+    {!! HTML::style('css/cms.css') !!}
+    {!! HTML::script("js/jquery-2.1.4.min.js") !!}
+    {!! HTML::script("js/jqueryui/js/jquery-ui.min.js") !!}
+    {!! HTML::script("js/bootstrap.min.js") !!}
+    {!! HTML::script("js/tinymice/tinymce.min.js") !!}
+    {!! HTML::style("/js/animate/css/animate.css") !!}
 
 
     {!! BBlinkFonts() !!}
@@ -33,7 +33,7 @@
 </head>
 <body>
     {!! BBRenderWidget($field['field_widget'],$field) !!}
-{!! HTML::style("resources/assets/css/core_styles.css?v=1") !!}
+{!! HTML::style("/css/core_styles.css?v=1") !!}
 </body>
 @yield('JS')
 @stack('javascript')

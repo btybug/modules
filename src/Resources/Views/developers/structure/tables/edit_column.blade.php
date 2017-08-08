@@ -108,7 +108,7 @@
 
 
     @include('resources::assests.magicModal')
-    @include('_partials.delete_modal')
+    @include('cms::_partials.delete_modal')
 
     @include('modules::developers._partials.mysql_error')
     @include('resources::assests.magicModal')
@@ -133,13 +133,13 @@
             top: 30%;
         }
     </style>
-    {!! HTML::style('resources/assets/css/preview-template.css') !!}
-    {!! HTML::style('resources/assets/js/select2/css/select2.min.css') !!}
+    {!! HTML::style('css/preview-template.css') !!}
+    {!! HTML::style('js/select2/css/select2.min.css') !!}
 
 @stop
 @section('JS')
-    {!! HTML::script("resources/assets/js/UiElements/bb_styles.js?v.5") !!}
-    {!! HTML::script("resources/assets/js/select2/js/select2.full.min.js") !!}
+    {!! HTML::script("js/UiElements/bb_styles.js?v.5") !!}
+    {!! HTML::script("js/select2/js/select2.full.min.js") !!}
      <script type="text/javascript">
        
        $(function() {

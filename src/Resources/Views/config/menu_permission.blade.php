@@ -34,5 +34,5 @@
     </div>
 @stop
 @push('css')
-{!! HTML::style('resources/assets/css/admin_pages.css') !!}
+{!! HTML::style('css/admin_pages.css') !!}
 @endpush

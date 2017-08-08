@@ -79,7 +79,7 @@
 @stop
 
 @section('JS')
-    {!! HTML::script('resources/assets/js/code_editor/edit_area_full.js') !!}
+    {!! HTML::script('js/code_editor/edit_area_full.js') !!}
     <script>
         $(".edit-pl").on('click', function () {
             var id = $("#selectPl").val();

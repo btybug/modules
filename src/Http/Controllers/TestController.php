@@ -15,7 +15,7 @@ use App\Http\Controllers\Controller;
 use App\Modules\Settings\Models\Template;
 use Assets;
 use Datatables;
-use App\Modules\Modules\Models\Forms;
+use Sahakavatar\Modules\Models\Models\Forms;
 use Illuminate\Http\Request;
 use Session;
 use View;
@@ -23,7 +23,7 @@ use View;
 
 /**
  * Class ThemeController
- * @package App\Modules\Modules\Http\Controllers
+ * @package Sahakavatar\Modules\Models\Http\Controllers
  */
 class TestController extends Controller
 {

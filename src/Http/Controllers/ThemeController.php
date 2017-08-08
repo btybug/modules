@@ -14,12 +14,12 @@ namespace Sahakavatar\Modules\Http\Controllers;
 use Sahakavatar\Cms\Helpers\helpers;
 use Sahakavatar\Cms\Helpers\helpers;
 use App\Http\Controllers\Controller;
-use App\Models\Templates\Templates as Tpl;
-use App\Models\Templates\Templates;
+use Sahakavatar\Cms\Models\Templates as Tpl;
+use Sahakavatar\Cms\Models\Templates;
 use App\Models\Themes\Themes;
 use App\Modules\Resources\Models\Validation as validateUpl;
 use App\Modules\Create\Models\Corepage;
-use App\Modules\Modules\Models\UploadTheme;
+use Sahakavatar\Modules\Models\Models\UploadTheme;
 use App\Modules\Settings\Models\Template;
 use Assets;
 use Datatables;
@@ -31,7 +31,7 @@ use View;
 
 /**
  * Class ThemeController
- * @package App\Modules\Modules\Http\Controllers
+ * @package Sahakavatar\Modules\Models\Http\Controllers
  */
 class ThemeController extends Controller
 {

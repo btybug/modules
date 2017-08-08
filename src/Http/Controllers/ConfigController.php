@@ -3,24 +3,23 @@
 namespace Sahakavatar\Modules\Http\Controllers;
 
 use Sahakavatar\Cms\Helpers\helpers;
-use Sahakavatar\Cms\Helpers\helpers;
 use App\Http\Controllers\Controller;
-use App\Models\ContentLayouts\ContentLayouts as AdminTemplates;
-use App\Models\ContentLayouts\ContentLayouts;
+use Sahakavatar\Cms\Models\ContentLayouts\ContentLayouts as AdminTemplates;
+use Sahakavatar\Cms\Models\ContentLayouts\ContentLayouts;
 use App\Models\Setting;
-use App\Models\Templates\Units;
-use App\Modules\Modules\Models\AdminPages;
+use Sahakavatar\Cms\Models\Templates\Units;
+use Sahakavatar\Console\Models\AdminPages;
 use App\Modules\Create\Models\Corepage;
-use App\Modules\Modules\Models\Fields;
-use App\Modules\Modules\Models\Forms;
-use App\Modules\Modules\Models\Routes;
+use Sahakavatar\Modules\Models\Fields;
+use Sahakavatar\Modules\Models\Models\Forms;
+use Sahakavatar\Modules\Models\Models\Routes;
 use App\Modules\Users\Models\Roles;
 use Illuminate\Http\Request;
 use File;
 
 /**
  * Class ModulesController
- * @package App\Modules\Modules\Http\Controllers
+ * @package Sahakavatar\Modules\Models\Http\Controllers
  */
 class ConfigController extends Controller
 {

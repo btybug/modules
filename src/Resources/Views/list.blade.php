@@ -164,11 +164,11 @@
     </div>
 @stop
 @section('CSS')
-    {!! HTML::style('resources/assets/js/bootstrap-switch/css/bootstrap-switch.min.css') !!}
+    {!! HTML::style('js/bootstrap-switch/css/bootstrap-switch.min.css') !!}
     {!! HTML::style('app/Modules/Modules/Resources/assets/css/store.css') !!}
 @stop
 @section('JS')
-    {!! HTML::script('resources/assets/js/dropzone/js/dropzone.js') !!}
+    {!! HTML::script('js/dropzone/js/dropzone.js') !!}
     <script>
 
         Dropzone.options.myAwesomeDropzone = {

@@ -12,7 +12,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <img src="{!! url('app\Modules\Modules\Resources\assets\img\form-lyout-popup.png')!!}" alt="image">
+                        <img src="{!! url('Sahakavatar\Modules\Models\Resources\assets\img\form-lyout-popup.png')!!}" alt="image">
                         <h4 class="modal-title" id="myModalLabel">Form Layout</h4>
                     </div>
                     <div class="modal-body">
@@ -144,15 +144,15 @@
 
 
 @section('CSS')
-    {!! HTML::style('resources/assets/js/bootstrap-select/css/bootstrap-select.min.css') !!}
-    {!! HTML::style('resources/assets/js/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css') !!}
-    {!! HTML::style('resources/assets/js/animate/css/animate.css') !!}
-    {!! HTML::style('resources/assets/css/form-builder.css?v=4.97') !!}
-    {!! HTML::style('app\Modules\Modules\Resources\assets\css\modal_style.css') !!}
+    {!! HTML::style('js/bootstrap-select/css/bootstrap-select.min.css') !!}
+    {!! HTML::style('js/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css') !!}
+    {!! HTML::style('js/animate/css/animate.css') !!}
+    {!! HTML::style('css/form-builder.css?v=4.97') !!}
+    {!! HTML::style('Sahakavatar\Modules\Models\Resources\assets\css\modal_style.css') !!}
 @stop
 
 @section('JS')
-    {!! HTML::script("resources/assets/js/UiElements/bb_styles.js?v.5") !!}
+    {!! HTML::script("js/UiElements/bb_styles.js?v.5") !!}
     <script>
         // .modal-backdrop classes
         $( window ).resize(function() {

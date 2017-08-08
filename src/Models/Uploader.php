@@ -8,7 +8,7 @@
 
 namespace Sahakavatar\Modules\Models;
 
-use App\Models\Templates\Units;
+use Sahakavatar\Cms\Models\Templates\Units;
 use Carbon\Carbon;
 use File;
 

@@ -3,7 +3,7 @@
 namespace Sahakavatar\Modules\Models;
 
 use Validator;
-use App\Modules\Modules\Interfases\vInterfase;
+use Sahakavatar\Modules\Models\Interfases\vInterfase;
 use File;
 
 
