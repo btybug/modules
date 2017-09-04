@@ -8,19 +8,15 @@
 
 namespace Sahakavatar\Modules\Http\Controllers\Developers;
 
-use Sahakavatar\Cms\Services\CmsItemReader;
-use App\helpers\ExcelHelper;
-use App\helpers\FieldHelper;
 use App\Http\Controllers\Controller;
-use Sahakavatar\Cms\Models\ContentLayouts\ContentLayouts;
-use Sahakavatar\Cms\Models\Sections;
-use Sahakavatar\Cms\Models\Templates\Units;
-use Sahakavatar\Cms\Models\Widgets;
-use App\Modules\Console\Models\FieldValidations;
-use Sahakavatar\Modules\Models\Models\Fields;
-use Sahakavatar\Modules\Models\Models\Forms;
-use App\Modules\Resources\Models\Files\FilesBB;
+use Sahakavatar\Console\Services\FieldValidationService;
+use Sahakavatar\Resources\Models\Files\FilesBB;
 use Illuminate\Http\Request;
+use Sahakavatar\Cms\Models\ContentLayouts\ContentLayouts;
+use Sahakavatar\Cms\Models\Templates\Units;
+use Sahakavatar\Cms\Services\CmsItemReader;
+use Sahakavatar\Modules\Models\Fields;
+use Sahakavatar\Console\Models\Forms;
 
 class BBurlsController extends Controller
 {
@@ -47,6 +43,11 @@ class BBurlsController extends Controller
             }
 
         }
+    }
+
+    public function unitRender(Request $request)
+    {
+        return \Response::json(['html' => BBRenderUnits($request->id)]);
     }
 
     public function getHeading($id)
@@ -263,7 +264,11 @@ class BBurlsController extends Controller
                 case 'units':
                     $data = Units::findByVariation($value)->toArray();
                     break;
+                //TODO : need remove page_sections
                 case 'page_sections':
+                    $data = ContentLayouts::findByVariation($value)->toArray();
+                    break;
+                case 'layouts':
                     $data = ContentLayouts::findByVariation($value)->toArray();
                     break;
                 default:
@@ -279,11 +284,12 @@ class BBurlsController extends Controller
     {
         $value = $request->get('variation_id');
         if ($value) {
-            $data = Sections::findByVariation($value)->toArray();
+            $data = Units::findByVariation($value);
+        if(!$data)return \Response::json(['error' => true, 'message' => 'Undefined unit!!!']);
         } else {
             return \Response::json(['error' => true, 'message' => 'variation_id is mandatory!!!']);
         }
-        return \Response::json(['error' => false, 'data' => $data]);
+        return \Response::json(['error' => false, 'data' => $data->toArray()]);
     }
 
     public function getBBFunctionOutput(Request $request)

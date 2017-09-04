@@ -158,6 +158,7 @@ Route::group(['prefix' => '/theme', 'middleware' => ['admin:Users']], function (
 });
 Route::group(['prefix' => '/bburl'], function () {
     Route::any('/unit/{slug}', 'Developers\BBurlsController@BBunit');
+    Route::any('/render-unit', 'Developers\BBurlsController@unitRender');
     Route::any('/get-heading/{id}', 'Developers\BBurlsController@getHeading');
     Route::any('/get-heading-keys', 'Developers\BBurlsController@getFileSourcehedindKeys');
     Route::post('/unit-main', 'Developers\BBurlsController@getUnitMain');
