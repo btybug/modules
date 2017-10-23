@@ -16,9 +16,6 @@ use App\Modules\Settings\Models\Template;
 use Assets;
 use Datatables;
 use Sahakavatar\Modules\Models\Models\Forms;
-use Illuminate\Http\Request;
-use Session;
-use View;
 
 
 /**
@@ -30,8 +27,8 @@ class TestController extends Controller
 
     public function getFormTest()
     {
-        $form=Forms::first();
-        return view('modules::tests.form',compact(['form']));
+        $form = Forms::first();
+        return view('modules::tests.form', compact(['form']));
     }
 
 }

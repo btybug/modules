@@ -33,126 +33,133 @@
 
                             <button class="btn btn-sm  pull-right m-b-10" type="button"
                                     data-toggle="modal">
-                                <i class="fa fa-plus"></i> <a href="{!! url('admin/modules/generate') !!}" class="upload_module_text">Create New</a>
+                                <i class="fa fa-plus"></i> <a href="{!! url('admin/modules/generate') !!}"
+                                                              class="upload_module_text">Create New</a>
                             </button>
                         </div>
                     </div>
                     @if($module)
-                    <div class="row module_detail">
-                        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-                            <img src="{!! url('public/img/no_image.jpg')!!}" class="img-responsive"/>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                            <div class="module-title">{!! $module->name or $module->namespace !!}</div>
-                            <div class="module-desc">
-                                {!! $module->description or "No Description" !!}
+                        <div class="row module_detail">
+                            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                                <img src="{!! url('public/img/no_image.jpg')!!}" class="img-responsive"/>
                             </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <div class="module-title">{!! $module->name or $module->namespace !!}</div>
+                                <div class="module-desc">
+                                    {!! $module->description or "No Description" !!}
+                                </div>
 
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 pull-right text-right m-t-20">
-                            @if(isset($module->have_setting) && $module->have_setting == 1)
-                                <a href="{!! url('admin/plugins/setting',$module->slug) !!}"
-                                   class="btn  btn-sm  m-b-5 p-l-20 p-r-20 width-150 text-left settings"><i
-                                            class="fa fa-pencil f-s-14 m-r-10"></i> Settings</a>
-                            @endif
-                            @if($module->enabled)
-                                <a href="#" namespace="{!! $module->namespace !!}" data-action="disable"
-                                   class="btn  btn-sm  m-b-5 p-l-20 p-r-20 width-150 text-left enb-disb deactivate"><i
-                                            class="fa fa-power-off f-s-14 m-r-10"></i> Deactivate</a>
-                            @else
-                                <a href="#" namespace="{!! $module->namespace !!}" data-action="enable" style="background: #7fff00;color: #000000"
-                                   class="btn  btn-sm  m-b-5 p-l-20 p-r-20 width-150 text-left  enb-disb"><i
-                                            class="fa fa-plug f-s-14 m-r-10"></i>Activate</a>
-                            @endif
-                            <a href="#" namespace="{!! $module->namespace !!}"
-                               class="btn  btn-sm  m-b-5 p-l-20 p-r-20 width-150 text-left delete del-module"><i
-                                        class="fa fa-trash-o f-s-14 m-r-10"></i> Delete</a>
-
-
-                        </div>
-                    </div>
-
-                    <div class="row module_detail_link">
-                        <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 m-t-10 m-b-10">
-                            <a href="{!! @$module->author_site!!}"
-                               class="module_detail_author_link">{!! @$module->author_site !!}</a>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 module_author_detail m-t-10 m-b-10">
-                            <div class="pull-left">
-                                <i class="fa fa-bars f-s-15" aria-hidden="true"></i>
-                                Version {!! $module->version !!}
                             </div>
-                            <div class="pull-right">
-                                <i class="fa fa-user f-s-15" aria-hidden="true"></i>
-                                {!! $module->author !!}, 20/07/16
-                                {{--{!! BBgetDateFormat() !!}--}}
+                            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 pull-right text-right m-t-20">
+                                @if(isset($module->have_setting) && $module->have_setting == 1)
+                                    <a href="{!! url('admin/plugins/setting',$module->slug) !!}"
+                                       class="btn  btn-sm  m-b-5 p-l-20 p-r-20 width-150 text-left settings"><i
+                                                class="fa fa-pencil f-s-14 m-r-10"></i> Settings</a>
+                                @endif
+                                @if($module->enabled)
+                                    <a href="#" namespace="{!! $module->namespace !!}" data-action="disable"
+                                       class="btn  btn-sm  m-b-5 p-l-20 p-r-20 width-150 text-left enb-disb deactivate"><i
+                                                class="fa fa-power-off f-s-14 m-r-10"></i> Deactivate</a>
+                                @else
+                                    <a href="#" namespace="{!! $module->namespace !!}" data-action="enable"
+                                       style="background: #7fff00;color: #000000"
+                                       class="btn  btn-sm  m-b-5 p-l-20 p-r-20 width-150 text-left  enb-disb"><i
+                                                class="fa fa-plug f-s-14 m-r-10"></i>Activate</a>
+                                @endif
+                                <a href="#" namespace="{!! $module->namespace !!}"
+                                   class="btn  btn-sm  m-b-5 p-l-20 p-r-20 width-150 text-left delete del-module"><i
+                                            class="fa fa-trash-o f-s-14 m-r-10"></i> Delete</a>
+
+
                             </div>
                         </div>
-                    </div>
+
+                        <div class="row module_detail_link">
+                            <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 m-t-10 m-b-10">
+                                <a href="{!! @$module->author_site!!}"
+                                   class="module_detail_author_link">{!! @$module->author_site !!}</a>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 module_author_detail m-t-10 m-b-10">
+                                <div class="pull-left">
+                                    <i class="fa fa-bars f-s-15" aria-hidden="true"></i>
+                                    Version {!! $module->version !!}
+                                </div>
+                                <div class="pull-right">
+                                    <i class="fa fa-user f-s-15" aria-hidden="true"></i>
+                                    {!! $module->author !!}, 20/07/16
+                                    {{--{!! BBgetDateFormat() !!}--}}
+                                </div>
+                            </div>
+                        </div>
                     @endif
                 </div>
 
             </div>
             @if($module)
                 <div class="row">
-                <div class="m-t-15 col-xs-12">
+                    <div class="m-t-15 col-xs-12">
 
-                    <!-- Nav tabs -->
-                    <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#installed_add_ons"
-                                                                  aria-controls="installed_add_ons" role="tab"
-                                                                  data-toggle="tab">Installed Add-Ons</a></li>
-                        <li role="presentation"><a href="#related_add_ons" aria-controls="related_add_ons" role="tab"
-                                                   data-toggle="tab">Related Add-Ons</a></li>
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#installed_add_ons"
+                                                                      aria-controls="installed_add_ons" role="tab"
+                                                                      data-toggle="tab">Installed Add-Ons</a></li>
+                            <li role="presentation"><a href="#related_add_ons" aria-controls="related_add_ons"
+                                                       role="tab"
+                                                       data-toggle="tab">Related Add-Ons</a></li>
 
-                    </ul>
+                        </ul>
 
-                    <!-- Tab panes -->
-                    <div class="tab-content m-t-15">
-                        <div role="tabpanel" class="tab-pane active" id="installed_add_ons">
-                            @if(!empty($addons))
-                                <div class="col-xs-12">
-                                    @foreach($addons as $addon)
-                                        <div class="col-xs-12 addon-item">
-                                            <div class="col-xs-8">
+                        <!-- Tab panes -->
+                        <div class="tab-content m-t-15">
+                            <div role="tabpanel" class="tab-pane active" id="installed_add_ons">
+                                @if(!empty($addons))
+                                    <div class="col-xs-12">
+                                        @foreach($addons as $addon)
+                                            <div class="col-xs-12 addon-item">
+                                                <div class="col-xs-8">
                                 <span class="addon-name">
                                     {!! $addon->name !!}
                                 </span>
-                                            </div>
-                                            <div class="col-xs-4 pull-right">
-                                                @if( $addon->have_setting==1)
-                                                    <p>
-                                                        <a href="{!! url('admin/plugins/setting',$addon->slug) !!}"
-                                                           class="btn btn-default">&nbsp;<i
-                                                                    class="fa fa-cog"></i>&nbsp;</a>
-                                                    </p>
-                                                @endif
-                                                <p>
-                                                    @if($addon->enabled)
-                                                        <a href="#" namespace="{!! $addon->namespace !!}" data-action="disable"
-                                                           class="btn  btn-sm  m-b-5 p-l-20 p-r-20 width-150 text-left enb-disb deactivate"><i
-                                                                    class="fa fa-power-off f-s-14 m-r-10"></i> Deactivate</a>
-                                                    @else
-                                                        <a href="#" namespace="{!! $addon->namespace !!}" data-action="enable" style="background: #7fff00;color: #000000"
-                                                           class="btn  btn-sm  m-b-5 p-l-20 p-r-20 width-150 text-left  enb-disb"><i
-                                                                    class="fa fa-plug f-s-14 m-r-10"></i>Activate</a>
+                                                </div>
+                                                <div class="col-xs-4 pull-right">
+                                                    @if( $addon->have_setting==1)
+                                                        <p>
+                                                            <a href="{!! url('admin/plugins/setting',$addon->slug) !!}"
+                                                               class="btn btn-default">&nbsp;<i
+                                                                        class="fa fa-cog"></i>&nbsp;</a>
+                                                        </p>
                                                     @endif
-                                                </p>
+                                                    <p>
+                                                        @if($addon->enabled)
+                                                            <a href="#" namespace="{!! $addon->namespace !!}"
+                                                               data-action="disable"
+                                                               class="btn  btn-sm  m-b-5 p-l-20 p-r-20 width-150 text-left enb-disb deactivate"><i
+                                                                        class="fa fa-power-off f-s-14 m-r-10"></i>
+                                                                Deactivate</a>
+                                                        @else
+                                                            <a href="#" namespace="{!! $addon->namespace !!}"
+                                                               data-action="enable"
+                                                               style="background: #7fff00;color: #000000"
+                                                               class="btn  btn-sm  m-b-5 p-l-20 p-r-20 width-150 text-left  enb-disb"><i
+                                                                        class="fa fa-plug f-s-14 m-r-10"></i>Activate</a>
+                                                        @endif
+                                                    </p>
 
                                                     <a href="#" namespace="{!! $addon->namespace !!}"
                                                        class="btn  btn-sm  m-b-5 p-l-20 p-r-20 width-150 text-left delete del-module"><i
                                                                 class="fa fa-trash-o f-s-14 m-r-10"></i> Delete</a>
+                                                </div>
                                             </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            @endif
+                                        @endforeach
+                                    </div>
+                                @endif
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="related_add_ons">...cc</div>
                         </div>
-                        <div role="tabpanel" class="tab-pane" id="related_add_ons">...cc</div>
-                    </div>
 
+                    </div>
                 </div>
-            </div>
             @else
                 <div class="row">
                     Extra Modules are empty
@@ -189,13 +196,13 @@
 
             init: function () {
 
-                this.on("error", function(file, progress) {
+                this.on("error", function (file, progress) {
                     alert('An Error occurred in Plugin, It can\'t be installed !');
                     location.reload();
                 });
 
-                this.on("success", function (file,progress) {
-                    if(progress.error){
+                this.on("success", function (file, progress) {
+                    if (progress.error) {
                         alert(progress.message);
                     }
                     location.reload();
@@ -229,9 +236,9 @@
             });
             $('body').on('click', '.enb-disb', function () {
                 var namespace = $(this).attr('namespace');
-                var action=$(this).attr('data-action');
+                var action = $(this).attr('data-action');
                 $.ajax({
-                    url: '/admin/modules/'+action,
+                    url: '/admin/modules/' + action,
                     data: {
                         namespace: namespace,
                         _token: $('#token').val()

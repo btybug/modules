@@ -11,9 +11,9 @@
 
 namespace Sahakavatar\Modules\Models;
 
-use Sahakavatar\Cms\Models\Templates\Units;
 use App\Modules\Users\User;
 use Illuminate\Database\Eloquent\Model;
+use Sahakavatar\Cms\Models\Templates\Units;
 
 class Fields extends Model
 {
@@ -211,16 +211,18 @@ class Fields extends Model
         return false;
     }
 
-    public function getFieldSelectedUnitName() {
-        if($this->unit) {
+    public function getFieldSelectedUnitName()
+    {
+        if ($this->unit) {
             $unit = Units::findByVariation($this->unit);
             return $unit ? $unit->title : 'no';
         }
         return 'no';
     }
 
-    public function getFieldSelectedHTMLUnitName() {
-        if($this->custom_html) {
+    public function getFieldSelectedHTMLUnitName()
+    {
+        if ($this->custom_html) {
             $unit = Units::findByVariation($this->custom_html);
             return $unit ? $unit->title : 'no';
         }

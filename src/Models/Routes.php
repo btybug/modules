@@ -8,19 +8,13 @@
 
 namespace Sahakavatar\Modules\Models;
 
-use Sahakavatar\Cms\Models\ContentLayouts\ContentLayouts;
 use App\Models\ExtraModules\Structures;
+use Sahakavatar\Cms\Models\ContentLayouts\ContentLayouts;
 use Sahakavatar\Modules\Models\Models\AdminPages;
-use PhpParser\Node\Stmt\Foreach_;
 
 class Routes
 {
     public $array;
-
-    public static function getRoutes()
-    {
-        return \Route::getRoutes();
-    }
 
     public static function getModuleRoutes($method, $sub)
     {
@@ -55,6 +49,48 @@ class Routes
         $_this = new static();
         $_this->array = collect($routes[$method][$sub]);
         return $_this;
+    }
+
+    public static function keysort($array, $url, $count = 0)
+    {
+        foreach ($array as $key => $value) {
+            $count++;
+            if (self::is_child($url, $key)) {
+                $array[$url][$key] = [];
+                unset($array[$key]);
+            }
+        }
+        if (isset($array[$url]) and count($array[$url])) {
+            foreach ($array[$url] as $k => $v) {
+                $array[$url] = self::keysort($array[$url], $k);
+            }
+        }
+        return $array;
+    }
+
+    public static function is_child($parent, $child)
+    {
+        if ($parent == $child) return false;
+        $parent = self::clean_urls($parent);
+        $child = self::clean_urls($child);
+        return (self::array_sort_with_count($child, count($parent)) == $parent);
+    }
+
+    public static function clean_urls($url)
+    {
+        if (isset($url[0]) and $url[0] == '/') {
+            $url = substr($url, 1);
+        }
+        return explode('/', $url);
+    }
+
+    public static function array_sort_with_count(array $array, $count)
+    {
+        $cunk = array_chunk($array, $count);
+        if (count($cunk)) {
+            return $cunk[0];
+        }
+        return false;
     }
 
     public static function optimizePages()
@@ -117,89 +153,9 @@ class Routes
         dd($routeCollection, 'verj');
     }
 
-
-    public static function keysort($array, $url, $count = 0)
+    public static function getRoutes()
     {
-        foreach ($array as $key => $value) {
-            $count++;
-            if (self::is_child($url, $key)) {
-                $array[$url][$key] = [];
-                unset($array[$key]);
-            }
-        }
-        if (isset($array[$url]) and count($array[$url])) {
-            foreach ($array[$url] as $k => $v) {
-                $array[$url] = self::keysort($array[$url], $k);
-            }
-        }
-        return $array;
-    }
-
-    public function html()
-    {
-        $array = $this->array;
-        return $this->keysort_html($array->toArray());
-    }
-
-    protected function keysort_html($array, $count = 0, $url = null)
-    {
-        $html = '';
-        if (!$url) {
-            $html .= '<ul>';
-        }
-        if ($count < count($array)) {
-            $count++;
-            if (!$url) {
-                $keys = array_keys($array);
-                $url = $keys[0];
-            } else {
-                $keys = array_keys($array);
-                $be = array_search($url, $keys);
-                $url = $keys[$be + 1];
-            }
-
-            if (count($array[$url])) {
-                $dropmenu = 'true';
-            } else {
-                $dropmenu = 'false';
-            }
-
-            $html .= '<li data-name="' . $url . '" data-icon="glyphicon glyphicon-arrow-right" data-id="' . uniqid() . '" data-url="' . $url . '" data-child="' . $dropmenu . '" data-jstree=\'{"icon":"glyphicon glyphicon-arrow-right"}\'>';
-            $html .= '<span class="arrowicon"><i class="fa fa-plus" aria-hidden="true"></i></span><span class="jstree-anchor">' . $url . '</span>';
-            if (count($array[$url])) {
-                $html .= $this->keysort_html($array[$url]);
-                $html .= '</ul>';
-            }
-            $html .= '</li>';
-            $html .= $this->keysort_html($array, $count, $url);
-        }
-
-        return $html;
-    }
-
-    public static function is_child($parent, $child)
-    {
-        if ($parent == $child) return false;
-        $parent = self::clean_urls($parent);
-        $child = self::clean_urls($child);
-        return (self::array_sort_with_count($child, count($parent)) == $parent);
-    }
-
-    public static function clean_urls($url)
-    {
-        if (isset($url[0]) and $url[0] == '/') {
-            $url = substr($url, 1);
-        }
-        return explode('/', $url);
-    }
-
-    public static function array_sort_with_count(array $array, $count)
-    {
-        $cunk = array_chunk($array, $count);
-        if (count($cunk)) {
-            return $cunk[0];
-        }
-        return false;
+        return \Route::getRoutes();
     }
 
     public static function registrePages($slug)
@@ -216,7 +172,7 @@ class Routes
             $routes = self::getRoutesStratWith($url, "GET");
             $message = [];
             $activeLayout = ContentLayouts::active()->activeVariation();
-            if(count($routes)){
+            if (count($routes)) {
                 foreach ($routes as $key => $value) {
                     if ($value[1] !== false) {
                         if (!$value[0]) {
@@ -279,6 +235,48 @@ class Routes
     {
         $test = AdminPages::find(4)->children;
         dd($test);
+    }
+
+    public function html()
+    {
+        $array = $this->array;
+        return $this->keysort_html($array->toArray());
+    }
+
+    protected function keysort_html($array, $count = 0, $url = null)
+    {
+        $html = '';
+        if (!$url) {
+            $html .= '<ul>';
+        }
+        if ($count < count($array)) {
+            $count++;
+            if (!$url) {
+                $keys = array_keys($array);
+                $url = $keys[0];
+            } else {
+                $keys = array_keys($array);
+                $be = array_search($url, $keys);
+                $url = $keys[$be + 1];
+            }
+
+            if (count($array[$url])) {
+                $dropmenu = 'true';
+            } else {
+                $dropmenu = 'false';
+            }
+
+            $html .= '<li data-name="' . $url . '" data-icon="glyphicon glyphicon-arrow-right" data-id="' . uniqid() . '" data-url="' . $url . '" data-child="' . $dropmenu . '" data-jstree=\'{"icon":"glyphicon glyphicon-arrow-right"}\'>';
+            $html .= '<span class="arrowicon"><i class="fa fa-plus" aria-hidden="true"></i></span><span class="jstree-anchor">' . $url . '</span>';
+            if (count($array[$url])) {
+                $html .= $this->keysort_html($array[$url]);
+                $html .= '</ul>';
+            }
+            $html .= '</li>';
+            $html .= $this->keysort_html($array, $count, $url);
+        }
+
+        return $html;
     }
 
 }

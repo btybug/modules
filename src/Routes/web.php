@@ -90,7 +90,7 @@ Route::post('/generate', 'GenerateController@postGenerateModule');
 
 
 //DEVELOPERS
-Route::group(['prefix' => 'tables'], function() {
+Route::group(['prefix' => 'tables'], function () {
     Route::get('/', 'Developers\StructureController@getIndex');
     Route::get('/edit/{table}', 'Developers\StructureController@getEditTable');
     Route::get('/add-column/{table}', 'Developers\StructureController@getAddColumn');
@@ -116,7 +116,7 @@ Route::group(['prefix' => 'tables'], function() {
     Route::post('/create', 'Developers\StructureController@postCreate');
     Route::get('/fields/{table}/{column}', 'Developers\FormsController@getFields');
 //    Route::post('/fields/{table}/{column}', 'Developers\FormsController@postFields');
-    Route::group(['prefix' => 'field'], function() {
+    Route::group(['prefix' => 'field'], function () {
         Route::get('/add-new-field/{count}', 'Developers\FormsController@addNewField');
         Route::post('/delete', 'Developers\FormsController@deleteField');
         Route::get('/render-column-fields/{table}/{column}', 'Developers\FormsController@renderColumnFields');
@@ -166,18 +166,21 @@ Route::group(['prefix' => '/bburl'], function () {
     Route::post('/get-form-field-options', 'Developers\BBurlsController@getFormFieldOptions');
     Route::post('/get-field-options-live', 'Developers\BBurlsController@getFieldOptionsLive');
     Route::any('/layout', 'Developers\BBurlsController@BBlayout');
-    Route::post('/get-tables-lists','Developers\BBurlsController@getTableLists');
-    Route::post('/get-table-columns','Developers\BBurlsController@getTableColums');
-    Route::post('/get-column-rules','Developers\BBurlsController@getColumnRules');
-    Route::post('/get-file-data','Developers\BBurlsController@getFileData');
-    Route::post('/get-file-list','Developers\BBurlsController@getFileListing');
-    Route::post('/get-field-units','Developers\BBurlsController@getFieldUnitListing');
-    Route::post('/get-field-unit','Developers\BBurlsController@getFieldUnit');
-    Route::post('/get-page-layout-config-toarray','Developers\BBurlsController@getPageLayoutConfigToArray');
-    Route::post('/get-page-section-config-toarray','Developers\BBurlsController@getPageSectionConfigToArray');
+    Route::post('/get-tables-lists', 'Developers\BBurlsController@getTableLists');
+    Route::post('/get-table-columns', 'Developers\BBurlsController@getTableColums');
+    Route::post('/get-column-rules', 'Developers\BBurlsController@getColumnRules');
+    Route::post('/get-file-data', 'Developers\BBurlsController@getFileData');
+    Route::post('/get-file-list', 'Developers\BBurlsController@getFileListing');
+    Route::post('/get-field-units', 'Developers\BBurlsController@getFieldUnitListing');
+    Route::post('/get-field-unit', 'Developers\BBurlsController@getFieldUnit');
+    Route::post('/get-page-layout-config-toarray', 'Developers\BBurlsController@getPageLayoutConfigToArray');
+    Route::post('/get-bb-button-data', 'Developers\BBurlsController@getBBbuttonData');
+    Route::post('/get-page-section-config-toarray', 'Developers\BBurlsController@getPageSectionConfigToArray');
     Route::post('/get-bb-output', 'Developers\BBurlsController@getBBFunctionOutput');
     Route::post('/get-output-bb', 'Developers\BBurlsController@getBBFunction');
     Route::post('/get-section-render-and-data', 'Developers\BBurlsController@getSectionRenderAndData');
+    Route::post('/post-save-hooks', 'Developers\BBurlsController@postSaveHooks');
+    Route::post('/post-add-unit-to-hook', 'Developers\BBurlsController@postAddUnitToHook');
 });
 
 

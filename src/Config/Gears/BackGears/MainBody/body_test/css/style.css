@@ -1,9 +1,10 @@
-.menu_placeholder{
+.menu_placeholder {
     background: #989dff;
     height: 50px;
 
 }
-.container_placeholder{
+
+.container_placeholder {
     background: rgba(0, 0, 0, 0.1);
     height: 100%;
 }

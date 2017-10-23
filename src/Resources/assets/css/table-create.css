@@ -1,82 +1,98 @@
 .site_wrap_23 button:focus, .site_wrap_23 button:hover, .site_wrap_23 input:hover, .site_wrap_23 input:focus, .site_wrap_23 .navbar-left button:focus, .site_wrap_23 .navbar-right button:focus {
     outline: none;
 }
-.site_wrap_23{
+
+.site_wrap_23 {
     background-color: #2c2c2c;
 }
-.site_wrap_23 button:hover{
+
+.site_wrap_23 button:hover {
     opacity: 0.8;
 }
+
 .site_wrap_23 .navbar-header, .site_wrap_23 .navbar-collapse {
     padding: 12px 12px 7px 12px;
 }
-.site_wrap_23 .navbar.navbar-default, .site_wrap_23 .navbar-default .navbar-brand{
+
+.site_wrap_23 .navbar.navbar-default, .site_wrap_23 .navbar-default .navbar-brand {
     background-color: #2c2c2c;
 }
-.site_wrap_23 .navbar{
+
+.site_wrap_23 .navbar {
     border: none;
-    margin-bottom:0;
+    margin-bottom: 0;
 }
-.site_wrap_23 .navbar-right{
+
+.site_wrap_23 .navbar-right {
     padding: 9px;
 }
 
-.site_wrap_23 .navbar-right button{
+.site_wrap_23 .navbar-right button {
     margin-left: 12px;
-    min-width:100px;
+    min-width: 100px;
     border-color: transparent;;
     font-weight: bold;
-    color:#ffffff;
+    color: #ffffff;
 
 }
+
 .site_wrap_23 .navbar-left button {
-    min-width:100px;
+    min-width: 100px;
     border-color: transparent;
     font-weight: bold;
 }
-.site_wrap_23 .navbar-left .setting_button{
+
+.site_wrap_23 .navbar-left .setting_button {
     background-color: #767474;
-    color:#ffffff;
+    color: #ffffff;
 }
+
 .site_wrap_23 .navbar-left .edit_button {
     background-color: #ffffff;
     color: #5c789c;
 }
-.site_wrap_23 .navbar-right .first_button{
+
+.site_wrap_23 .navbar-right .first_button {
     background-color: #767474;
     font-weight: bold;
-    color:#ffffff;
+    color: #ffffff;
     margin-left: 12px;
-    min-width:100px;
+    min-width: 100px;
     border-color: transparent;;
 }
-.site_wrap_23 .navbar-right .second_button{
+
+.site_wrap_23 .navbar-right .second_button {
     background-color: #ad4d5e;
     font-weight: bold;
-    color:#ffffff;
+    color: #ffffff;
     margin-left: 12px;
-    min-width:100px;
+    min-width: 100px;
     border-color: transparent;;
 }
-.site_wrap_23 .navbar-left button{
+
+.site_wrap_23 .navbar-left button {
     margin-left: 12px;
 }
-.site_wrap_23 .navbar-left button i{
+
+.site_wrap_23 .navbar-left button i {
     margin-right: 5px;
 }
-.site_wrap_23 .form_name{
+
+.site_wrap_23 .form_name {
     width: 300px;
 }
 
-.site_wrap_23 .left_section form{
+.site_wrap_23 .left_section form {
     color: #ffffff;
 }
-.site_wrap_23 .left_section form:focus{
+
+.site_wrap_23 .left_section form:focus {
     outline: none;
 }
-.site_wrap_23 .left_section select{
+
+.site_wrap_23 .left_section select {
     background-color: #5c789c;
-    border-color:transparent;
+    border-color: transparent;
     width: 100%;
     font-weight: bold;
     position: relative;
@@ -86,85 +102,104 @@
     height: 45px;
 }
 
-.site_wrap_23  select:active, .site_wrap_23 select:hover {
+.site_wrap_23 select:active, .site_wrap_23 select:hover {
     outline: none
 }
+
 .site_wrap_23 .left_section select:focus > option:checked, .site_wrap_23 .left_section select:focus > option:hover {
     color: #ffffff;
 }
-.site_wrap_23 .left_section select:focus > option{
+
+.site_wrap_23 .left_section select:focus > option {
     background: #d6d9e0;
     padding: 10px !important;
     color: #000000;
     font-size: 16px;
 }
-.site_wrap_23 .right_section .choose_cols{
+
+.site_wrap_23 .right_section .choose_cols {
     color: #ffffff;
     font-weight: bold;
     font-size: 15px;
 }
-.site_wrap_23 .right_section .radio_bt_div{
+
+.site_wrap_23 .right_section .radio_bt_div {
     padding: 7px 12px 7px 0;
     background-color: #5c789c;
     border-radius: 5px;
     display: inline-block;
     width: 100%;
 }
-.site_wrap_23 .right_section .radio_bt{
+
+.site_wrap_23 .right_section .radio_bt {
     margin: 0 6px 0 21px;
 }
-.site_wrap_23 .right_section{
-    padding-left: 0!important;
-    padding-right: 0!important;
+
+.site_wrap_23 .right_section {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }
-.site_wrap_23 .forwidth{
+
+.site_wrap_23 .forwidth {
     width: 100%;
 }
+
 .site_wrap_23 .left_part {
     background-color: #d6d9e0;
     min-height: 700px;
 }
-.site_wrap_23 .right_part{
+
+.site_wrap_23 .right_part {
     background-color: #e3e6ec;
     min-height: 700px;
     transition: right 0.4s;
     transition: left 0.4s;
 }
-.site_wrap_23 .div_for_cols{
+
+.site_wrap_23 .div_for_cols {
     width: 100%;
     position: absolute;
-    top:63px;
+    top: 63px;
 }
-.site_wrap_23 .for_margin{
+
+.site_wrap_23 .for_margin {
     margin-top: 38px;
 }
-.site_wrap_23 .for_dropdown_and_fields{
+
+.site_wrap_23 .for_dropdown_and_fields {
     width: 80%;
 }
-.site_wrap_23 .fields{
+
+.site_wrap_23 .fields {
     margin-top: 15px;
 }
-.site_wrap_23 .fields li{
+
+.site_wrap_23 .fields li {
     background-color: #ad4d5e;
-    padding:12px;
+    padding: 12px;
     border: 1px solid #ffffff;
     border-radius: 5px;
     list-style-type: none;
 }
-.site_wrap_23 .fields li:hover{
+
+.site_wrap_23 .fields li:hover {
     cursor: pointer;
 }
-.site_wrap_23 .fields li a{
+
+.site_wrap_23 .fields li a {
     color: #ffffff;
     font-weight: bold;
 }
-.site_wrap_23 .fields li a:hover{
+
+.site_wrap_23 .fields li a:hover {
     text-decoration: none;
 }
-.site_wrap_23 .style_options{
+
+.site_wrap_23 .style_options {
     display: inline-block;
     margin-left: 50px;
 }
+
 .site_wrap_23 .style_options_for_left_side button, .site_wrap_23 .style_options_for_right_side button {
     background-color: #d0d1d3;
     border: none;
@@ -172,26 +207,28 @@
     color: #484343;
     font-weight: bold;
 }
-.site_wrap_23 .style_options_for_left_side, .site_wrap_23 .style_options_for_right_side{
+
+.site_wrap_23 .style_options_for_left_side, .site_wrap_23 .style_options_for_right_side {
     display: inline-block;
     margin-left: 50px;
     color: grey;
     font-weight: bold;
 }
+
 ul li {
     overflow: hidden;
 
 }
 
 ul {
-    list-style:none;
+    list-style: none;
 }
 
-#sortable2{
+#sortable2 {
     width: 100%;
 }
 
-#sortable3{
+#sortable3 {
     width: 0;
     display: none;
 }

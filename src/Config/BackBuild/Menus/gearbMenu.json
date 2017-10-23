@@ -5,11 +5,13 @@
       "title": "Layout",
       "url": "/admin/modules/{param}/gearsb/layouts",
       "icon": ""
-    },{
+    },
+    {
       "title": "Units",
       "url": "/admin/modules/{param}/gearsb/units",
       "icon": ""
-    },{
+    },
+    {
       "title": "Main Body",
       "url": "/admin/modules/{param}/gearsb/main-body",
       "icon": ""

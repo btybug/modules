@@ -5,7 +5,8 @@
             <div class="well well-sm">
                 <div class="row">
                     <div class="col-sm-6 col-md-4">
-                        <img src="{!! url('resources/assets/images/module.jpg') !!}" alt="" class="img-rounded img-responsive"/>
+                        <img src="{!! url('resources/assets/images/module.jpg') !!}" alt=""
+                             class="img-rounded img-responsive"/>
                     </div>
                     <div class="col-sm-6 col-md-8">
                         <h4>   {!!$module->name !!} Module </h4>
@@ -13,7 +14,8 @@
                         <p>
                             <i class="glyfa fa fa-hashtag"></i>{!! $module->version !!}
                             <br/>
-                            <i class="glyfa fa fa-globe"></i><a href="{!! @$module->author_site !!}"> {!! @$module->author_site !!}</a>
+                            <i class="glyfa fa fa-globe"></i><a
+                                    href="{!! @$module->author_site !!}"> {!! @$module->author_site !!}</a>
                             <br/>
                             <i class="glyfa fa fa-hourglass-end"></i>{!! BBgetDateFormat($module->created_at) !!}
                             <br/>

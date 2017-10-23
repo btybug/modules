@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('cms::layouts.admin')
 @section('content')
     {!! Form::open(['class'=>'form-horizontal']) !!}
     <fieldset>
@@ -63,14 +63,14 @@
             var i = 1;
             $('#add_colum').on('click', function () {
                 var column = "<tr>" +
-                        '<td> <input type="text" name="column[' + i + '][name]" class="form-control"></input></td>' +
-                        '<td><select name="column[' + i + '][type]" class="form-control">@foreach($tbtypes as $k=>$v) <option value="{!! $k !!}">{!! $v !!}</option> @endforeach</select></td>' +
-                        '<td> <input type="text" name="column[' + i + '][lenght]" class="form-control"></input></td>' +
-                        '<td> <input type="text" name="column[' + i + '][default]" class="form-control"></input></td>' +
-                        '<td><input type="checkbox" name="column[' + i + '][nullable]"/></td>' +
-                        '<td><input type="checkbox" name="column[' + i + '][unique]"/></td>' +
-                        '<td><span class="btn btn-warning delete_row"><i class="fa fa-trash" aria-hidden="true"></i></span></td>' +
-                        "</tr>";
+                    '<td> <input type="text" name="column[' + i + '][name]" class="form-control"></input></td>' +
+                    '<td><select name="column[' + i + '][type]" class="form-control">@foreach($tbtypes as $k=>$v) <option value="{!! $k !!}">{!! $v !!}</option> @endforeach</select></td>' +
+                    '<td> <input type="text" name="column[' + i + '][lenght]" class="form-control"></input></td>' +
+                    '<td> <input type="text" name="column[' + i + '][default]" class="form-control"></input></td>' +
+                    '<td><input type="checkbox" name="column[' + i + '][nullable]"/></td>' +
+                    '<td><input type="checkbox" name="column[' + i + '][unique]"/></td>' +
+                    '<td><span class="btn btn-warning delete_row"><i class="fa fa-trash" aria-hidden="true"></i></span></td>' +
+                    "</tr>";
                 $('#table_engine').append($(column));
                 i++;
             });
@@ -102,7 +102,7 @@
                                 $('#mysql').modal('show');
                             }
                         } else {
-                            document.location.href = '/admin/modules/tables/edit/'+'{!! $table !!}';
+                            document.location.href = '/admin/modules/tables/edit/' + '{!! $table !!}';
                         }
                     }
                 });

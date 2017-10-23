@@ -15,16 +15,16 @@
 
                 <tr>
                     <th>View {!! $menu['title']!!} Module</th>
-                   @foreach($roles as $k=>$role)
-                        <td>{!! Form::checkbox($role) !!}</td>
-                       @endforeach
-                </tr>
-                @foreach($menu['children'] as $menu)
-                    <tr>
-                    <td>{!! $menu['title'] !!}</td>
                     @foreach($roles as $k=>$role)
                         <td>{!! Form::checkbox($role) !!}</td>
                     @endforeach
+                </tr>
+                @foreach($menu['children'] as $menu)
+                    <tr>
+                        <td>{!! $menu['title'] !!}</td>
+                        @foreach($roles as $k=>$role)
+                            <td>{!! Form::checkbox($role) !!}</td>
+                        @endforeach
                     </tr>
                 @endforeach
 
@@ -34,5 +34,5 @@
     </div>
 @stop
 @push('css')
-{!! HTML::style('css/admin_pages.css') !!}
+    {!! HTML::style('css/admin_pages.css') !!}
 @endpush

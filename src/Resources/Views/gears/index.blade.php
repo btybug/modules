@@ -23,7 +23,7 @@
                 {{--main types--}}
                 <li>
                     <a href="?p=layoyts" rel="tab" main-type="layouts" class="tpl-left-items">
-                        <span class="module_icon"></span>  Layouts
+                        <span class="module_icon"></span> Layouts
                     </a>
                 </li>
 
@@ -35,13 +35,12 @@
                 </li>
                 {{--main types--}}
                 <li>
-                    <a href="?p=others"  rel="tab" main-type="main_body" class="tpl-left-items">
-                        <span class="module_icon"></span>  Main Body
+                    <a href="?p=others" rel="tab" main-type="main_body" class="tpl-left-items">
+                        <span class="module_icon"></span> Main Body
                     </a>
                 </li>
             </ul>
         </div>
-
 
 
         <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
@@ -52,7 +51,8 @@
                         <div class="layoutData">
                             <div class="layoutCol">
                                 <h4>Layout 002</h4>
-                                <p>BuddyPress helps you build any type of community website using WordPress, with member profiles, activity streams, user groups, messaging, and more.</p>
+                                <p>BuddyPress helps you build any type of community website using WordPress, with member
+                                    profiles, activity streams, user groups, messaging, and more.</p>
                             </div>
                             <div class="layoutFooter row">
                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 ">
@@ -62,7 +62,7 @@
                                     <span class="iconRefresh"><i class="fa fa-refresh"></i></span> Version 2.2.01
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 rightText">
-                                    <i class="fa fa-user"></i> Author Name,  22/03/2014
+                                    <i class="fa fa-user"></i> Author Name, 22/03/2014
                                 </div>
                             </div>
                             <a href="#" class="iconDel"><i class="fa fa-trash-o"></i></a>
@@ -74,7 +74,8 @@
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 template-search-box m-t-10 m-b-10">
                     <form class="form-horizontal">
                         <div class="form-group m-b-0  ">
-                            <label for="inputEmail3" class="control-label text-left"><i class="fa fa-sort-amount-desc"></i> Sort By</label>
+                            <label for="inputEmail3" class="control-label text-left"><i
+                                        class="fa fa-sort-amount-desc"></i> Sort By</label>
                             <select class="selectpicker" data-style="selectCatMenu" data-width="50%">
                                 <option>Recently Added</option>
                             </select>
@@ -131,7 +132,10 @@
                     </li>
                 </ul>
             </nav>
-            <div class="text-center"><button type="button" class="btn btn-lg btn-primary btnLoadmore"><em class="loadImg"></em> Load more</button></div>
+            <div class="text-center">
+                <button type="button" class="btn btn-lg btn-primary btnLoadmore"><em class="loadImg"></em> Load more
+                </button>
+            </div>
 
         </div>
     </div>
@@ -140,7 +144,8 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">Upload</h4>
                 </div>
                 <div class="modal-body">
@@ -174,8 +179,8 @@
     {!! HTML::script('js/bootstrap-select/js/bootstrap-select.min.js') !!}
     <script>
         Dropzone.options.myAwesomeDropzone = {
-            init: function() {
-                this.on("success", function(file) {
+            init: function () {
+                this.on("success", function (file) {
                     location.reload();
 
                 });
@@ -185,17 +190,17 @@
         $(document).ready(function () {
 
 
-            $('.rightButtons a').click(function(e){
+            $('.rightButtons a').click(function (e) {
                 e.preventDefault();
                 $(this).addClass('active').siblings().removeClass('active');
             });
 
-            $('.btnListView').click(function(e){
+            $('.btnListView').click(function (e) {
                 e.preventDefault();
                 $('#viewType').addClass('listView');
             });
 
-            $('.btnGridView').click(function(e){
+            $('.btnGridView').click(function (e) {
                 e.preventDefault();
                 $('#viewType').removeClass('listView');
             });
@@ -203,15 +208,15 @@
 
             $('.selectpicker').selectpicker();
 
-            var p="{!! $_GET['p'] or null !!}";
-            $('body').on('click','.del-tpl',function(){
+            var p = "{!! $_GET['p'] or null !!}";
+            $('body').on('click', '.del-tpl', function () {
                 var slug = $(this).attr('slug');
                 $.ajax({
                     url: '/admin/resources/widgets/delete',
                     data: {
                         slug: slug
-                    },headers: {
-                        'X-CSRF-TOKEN':$("input[name='_token']").val()
+                    }, headers: {
+                        'X-CSRF-TOKEN': $("input[name='_token']").val()
                     },
                     dataType: 'json',
                     success: function (data) {
@@ -223,42 +228,42 @@
             });
 
 
-            $('.tab-content').on('click','.delete_layout', function () {
+            $('.tab-content').on('click', '.delete_layout', function () {
                 console.log(1);
                 var key = $(this).attr('data-key');
                 $('.delete_modal .modal-footer a')
-                        .attr('href', '#')
-                        .attr('slug', $(this).attr('data-key'))
-                        .addClass('del-tpl');
+                    .attr('href', '#')
+                    .attr('slug', $(this).attr('data-key'))
+                    .addClass('del-tpl');
                 $('.modal-body').html("<p>atre you sure you want to delete Widget <b>" + $(this).attr('data-title') + '<b> ?');
                 $('.delete_modal').modal();
             });
 
             //Change browser url without page reloading with ajax request
 
-            $("a[rel='tab']").click(function(e){
+            $("a[rel='tab']").click(function (e) {
                 e.preventDefault();
                 var main_type = $(this).attr('main-type');
                 var pageurl = $(this).attr('href');
                 $('.tpl-left-items').parent().removeClass('active');
                 var general_type = $(this).attr('type');
 
-                if(general_type){
-                    $('*[main-type="'+general_type+'"]').parent().addClass('active');
-                    $('*[main-type="'+ main_type +'"][type="'+general_type+'"]').parent().addClass('active');
-                }else{
-                    $('*[main-type="'+ main_type +'"]').parent().addClass('active');
+                if (general_type) {
+                    $('*[main-type="' + general_type + '"]').parent().addClass('active');
+                    $('*[main-type="' + main_type + '"][type="' + general_type + '"]').parent().addClass('active');
+                } else {
+                    $('*[main-type="' + main_type + '"]').parent().addClass('active');
                 }
 
                 $.ajax({
                     url: '/admin/modules/gears/get-gears-lists',
                     data: {
-                        ui_type:"{!! $type !!}",
+                        ui_type: "{!! $type !!}",
                         main_type: main_type,
-                        url:pageurl+'?rel=tab',
+                        url: pageurl + '?rel=tab',
                         type: general_type
-                    },headers: {
-                        'X-CSRF-TOKEN':$("input[name='_token']").val()
+                    }, headers: {
+                        'X-CSRF-TOKEN': $("input[name='_token']").val()
                     },
                     dataType: 'json',
                     beforeSend: function () {
@@ -274,14 +279,13 @@
                     },
                     type: 'POST'
                 });
-                if(pageurl!=window.location){
-                    window.history.pushState({path:pageurl},'',pageurl);
+                if (pageurl != window.location) {
+                    window.history.pushState({path: pageurl}, '', pageurl);
                 }
                 return false;
             });
 
-            $("a[main-type="+p+"]").click();
-
+            $("a[main-type=" + p + "]").click();
 
 
         });

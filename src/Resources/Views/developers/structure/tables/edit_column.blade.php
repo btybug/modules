@@ -1,84 +1,84 @@
 @extends('layouts.admin')
 @section('content')
     {!! Form::open(['class'=>'form-horizontal']) !!}
-        <!-- Form Name -->
-        <div class="row">
-            <div class="col-xs-6">
-                <h3>Edit Column</h3>
-            </div>
-            <div class="col-xs-6 text-right">
-                <button type="button" class="btn btn-success" id="submit_form">Update</button>
-            </div>
+    <!-- Form Name -->
+    <div class="row">
+        <div class="col-xs-6">
+            <h3>Edit Column</h3>
         </div>
+        <div class="col-xs-6 text-right">
+            <button type="button" class="btn btn-success" id="submit_form">Update</button>
+        </div>
+    </div>
 
-        <div class="row m-b-10">
-            <label class="col-md-12 control-label" for="engine"></label>
-            <div class="col-md-12">
-                <h4>Column {!! $column !!}</h4>
-                <table class="table table-bordered">
-                    <thead>
-                    <tr class="bg-black text-white">
-                        <th>Column Name</th>
-                        <th>DataType</th>
-                        <th>Lenght/Values</th>
-                        <th>Default</th>
-                        <th>Create form</th>
-                        <th>Key Unique</th>
-                    </tr>
-                    </thead>
-                    <tbody id="table_engine">
-                    <tr>
-                        <td> {!! Form::text('column[0][name]',$column,['class'=>'form-control']) !!}</td>
-                        <td>{!! Form::select('column[0][type]',$tbtypes,$dataType,['class'=>'form-control']) !!}</td>
-                        <td>{!! Form::text('column[0][lenght]',$length,['class'=>'form-control']) !!}</td>
-                        <td>{!! Form::text('column[0][default]',$column_info->COLUMN_DEFAULT,['class'=>'form-control']) !!}</td>
-                        <td>{!! Form::select('column[0][nullable]',[0=>'required',1=>'not required'],($column_info->IS_NULLABLE=="NO")?0:1,['class'=>'form-control']) !!}</td>
-                        <td>{!! Form::checkbox('column[0][unique]',true,($column_info->COLUMN_KEY=="UNI")?true:false ) !!}</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+    <div class="row m-b-10">
+        <label class="col-md-12 control-label" for="engine"></label>
+        <div class="col-md-12">
+            <h4>Column {!! $column !!}</h4>
+            <table class="table table-bordered">
+                <thead>
+                <tr class="bg-black text-white">
+                    <th>Column Name</th>
+                    <th>DataType</th>
+                    <th>Lenght/Values</th>
+                    <th>Default</th>
+                    <th>Create form</th>
+                    <th>Key Unique</th>
+                </tr>
+                </thead>
+                <tbody id="table_engine">
+                <tr>
+                    <td> {!! Form::text('column[0][name]',$column,['class'=>'form-control']) !!}</td>
+                    <td>{!! Form::select('column[0][type]',$tbtypes,$dataType,['class'=>'form-control']) !!}</td>
+                    <td>{!! Form::text('column[0][lenght]',$length,['class'=>'form-control']) !!}</td>
+                    <td>{!! Form::text('column[0][default]',$column_info->COLUMN_DEFAULT,['class'=>'form-control']) !!}</td>
+                    <td>{!! Form::select('column[0][nullable]',[0=>'required',1=>'not required'],($column_info->IS_NULLABLE=="NO")?0:1,['class'=>'form-control']) !!}</td>
+                    <td>{!! Form::checkbox('column[0][unique]',true,($column_info->COLUMN_KEY=="UNI")?true:false ) !!}</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
+    </div>
     {!! Form::close() !!}
 
-<hr/>
+    <hr/>
     {!! Form::open(['url' => url('admin/modules/tables/edit-column', [$table, $column]) ,'class'=>'form-horizontal']) !!}
-        <!-- Form Name -->
-        <div class="row">
-            <div class="col-xs-6">
-                <h3>Manage Fields</h3>
-            </div>
-            <div class="col-xs-6 text-right">
-                <button type="submit" class="btn btn-success" id="submit_form">Update</button>
-            </div>
+    <!-- Form Name -->
+    <div class="row">
+        <div class="col-xs-6">
+            <h3>Manage Fields</h3>
         </div>
+        <div class="col-xs-6 text-right">
+            <button type="submit" class="btn btn-success" id="submit_form">Update</button>
+        </div>
+    </div>
 
-        <div class="row m-b-10">
-            <div class="col-md-12">
-                <table class="table table-bordered">
-                    <thead>
-                    <tr class="bg-black text-white">
-                        <th>Slug</th>
-                        <th>Name</th>
-                        <th>Type</th>
-                        <th>Label</th>
-                        <th>Placeholder</th>
-                        <th>Default Value</th>
-                        <th>Options</th>
-                        <th>Unit</th>
-                        <th>Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody id="field_list">
-                    @if($fields->count())
-                        @foreach($fields as $count => $field)
-                            @include('modules::developers._partials.custom_field')
-                        @endforeach
-                    @endif
-                    </tbody>
-                </table>
-            </div>
+    <div class="row m-b-10">
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <thead>
+                <tr class="bg-black text-white">
+                    <th>Slug</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Label</th>
+                    <th>Placeholder</th>
+                    <th>Default Value</th>
+                    <th>Options</th>
+                    <th>Unit</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody id="field_list">
+                @if($fields->count())
+                    @foreach($fields as $count => $field)
+                        @include('modules::developers._partials.custom_field')
+                    @endforeach
+                @endif
+                </tbody>
+            </table>
         </div>
+    </div>
     {!! Form::close() !!}
     <a class="btn btn-danger add-new-field"><i class="fa fa-plus"></i>Add Field</a>
 
@@ -101,7 +101,7 @@
     </div>
 
     {{--<div class="emailsettingiframe">--}}
-        {{--<iframe src="{!!url('/admin/modules/tables/field/render-column-fields',[$table,$column])!!}" data-fieldifame="field"></iframe>--}}
+    {{--<iframe src="{!!url('/admin/modules/tables/field/render-column-fields',[$table,$column])!!}" data-fieldifame="field"></iframe>--}}
     {{--</div>--}}
 
 
@@ -116,7 +116,7 @@
 
 @section('CSS')
     <style>
-        #save_anime{
+        #save_anime {
             display: none;
             background: rgba(0, 222, 27, 0.06);
             width: 100%;
@@ -126,7 +126,8 @@
             /*border: 1px solid;*/
             font-size: 190px;
         }
-        #save_anime span{
+
+        #save_anime span {
             color: rgba(0, 0, 0, 0.71);
             position: absolute;
             left: 42%;
@@ -140,122 +141,118 @@
 @section('JS')
     {!! HTML::script("js/UiElements/bb_styles.js?v.5") !!}
     {!! HTML::script("js/select2/js/select2.full.min.js") !!}
-     <script type="text/javascript">
-       
-       $(function() {
-
-           $(".option-values").select2({
-               tags: true
-           });
-
-           $('body').on('click', '.add-new-field', function() {
-               $.ajax({
-                   url: '/admin/modules/tables/field/add-new-field/' + $('#field_list tr').length,
-                   type: 'GET',
-                   dataType: 'JSON'
-               }).done(function(data) {
-                   $('#field_list').append(data.html);
-               }).fail(function(data) {
-                   alert('Could not add new field. Please try again.');
-               });
-           });
-
-           $('body').on('change', '.field-input', function() {
-               if($(this).parents('.field-row').find('.field-state').val() == 'current') {
-                   $(this).parents('.field-row').find('.field-state').val('updated');
-               }
-           });
-
-           $('.bb-button-realted-hidden-input').on('change', function() {
-               if($(this).parents('.field-row').find('.field-state').val() == 'current') {
-                   $(this).parents('.field-row').find('.field-state').val('updated');
-               }
-           });
-
-           $('body').on('click', '.delete-new-field', function() {
-               $(this).parents('.field-row').remove();
-           });
-        
-            $('#savefielddata').click(function(){
-                  var iframeselector = $('[ data-fieldifame="field"]').contents().find("#field_data_form")
-                  var actioninput = $('[ data-fieldifame="field"]').contents().find("#save_action")
-                  var getiframedata = iframeselector.serialize();
-                  var actionurl = actioninput.val();
-               $('#save_anime').show();
-                    
-                   $.ajax({
-                          type: 'POST',
-                          url: actionurl,
-                          headers: '{!! csrf_token() !!}',
-                          datatype: 'json',
-                          cache: false,
-                          data: getiframedata,
-                          success: function (data) {
-                              if (data.error) {
-                                  alert(data.error)
-                              }else{
-                                  $('#save_anime').animate({
-                                      left: '40%',
-                                      top: '40%',
-                                      opacity: '0',
-                                      height: '0px',
-                                      width: '0px',
-                                      "font-size":'20px'
-                                  },600).promise().done(function (e) {
-                                      e.css({
-                                          left: '0%',
-                                          top: '0%',
-                                          opacity: '1',
-                                          height: '100%',
-                                          width: '100%',
-                                          display:'none',
-                                          "font-size":'190px',
-                                          'border-radius':'0%',
-
-                                      })
-                                  })
-
-                              }
-                          }
-                      });
-              
-              
-            })
-            
-            $('#saveSearchFieldData').click(function(){
-                  var iframeselector = $('[data-fieldifame="searchfiled"]').contents().find("#search_field_data_form")
-                  var actioninput = $('[data-fieldifame="searchfiled"]').contents().find("#save_action")
-                  var getiframedata = iframeselector.serialize();
-                  var actionurl = actioninput.val();
-
-                   
-                   $.ajax({
-                          type: 'POST',
-                          url: actionurl,
-                          headers: '{!! csrf_token() !!}',
-                          datatype: 'json',
-                          cache: false,
-                          data: getiframedata,
-                          success: function (data) {
-                              if (data.error) {
-                                  alert(data.error)
-                              }else{
-
-                              }
-                          }
-                      });
-              
-              
-            })
-     })
-  </script>
     <script type="text/javascript">
-      
- 
-      
-      
-      
-      
+
+        $(function () {
+
+            $(".option-values").select2({
+                tags: true
+            });
+
+            $('body').on('click', '.add-new-field', function () {
+                $.ajax({
+                    url: '/admin/modules/tables/field/add-new-field/' + $('#field_list tr').length,
+                    type: 'GET',
+                    dataType: 'JSON'
+                }).done(function (data) {
+                    $('#field_list').append(data.html);
+                }).fail(function (data) {
+                    alert('Could not add new field. Please try again.');
+                });
+            });
+
+            $('body').on('change', '.field-input', function () {
+                if ($(this).parents('.field-row').find('.field-state').val() == 'current') {
+                    $(this).parents('.field-row').find('.field-state').val('updated');
+                }
+            });
+
+            $('.bb-button-realted-hidden-input').on('change', function () {
+                if ($(this).parents('.field-row').find('.field-state').val() == 'current') {
+                    $(this).parents('.field-row').find('.field-state').val('updated');
+                }
+            });
+
+            $('body').on('click', '.delete-new-field', function () {
+                $(this).parents('.field-row').remove();
+            });
+
+            $('#savefielddata').click(function () {
+                var iframeselector = $('[ data-fieldifame="field"]').contents().find("#field_data_form")
+                var actioninput = $('[ data-fieldifame="field"]').contents().find("#save_action")
+                var getiframedata = iframeselector.serialize();
+                var actionurl = actioninput.val();
+                $('#save_anime').show();
+
+                $.ajax({
+                    type: 'POST',
+                    url: actionurl,
+                    headers: '{!! csrf_token() !!}',
+                    datatype: 'json',
+                    cache: false,
+                    data: getiframedata,
+                    success: function (data) {
+                        if (data.error) {
+                            alert(data.error)
+                        } else {
+                            $('#save_anime').animate({
+                                left: '40%',
+                                top: '40%',
+                                opacity: '0',
+                                height: '0px',
+                                width: '0px',
+                                "font-size": '20px'
+                            }, 600).promise().done(function (e) {
+                                e.css({
+                                    left: '0%',
+                                    top: '0%',
+                                    opacity: '1',
+                                    height: '100%',
+                                    width: '100%',
+                                    display: 'none',
+                                    "font-size": '190px',
+                                    'border-radius': '0%',
+
+                                })
+                            })
+
+                        }
+                    }
+                });
+
+
+            })
+
+            $('#saveSearchFieldData').click(function () {
+                var iframeselector = $('[data-fieldifame="searchfiled"]').contents().find("#search_field_data_form")
+                var actioninput = $('[data-fieldifame="searchfiled"]').contents().find("#save_action")
+                var getiframedata = iframeselector.serialize();
+                var actionurl = actioninput.val();
+
+
+                $.ajax({
+                    type: 'POST',
+                    url: actionurl,
+                    headers: '{!! csrf_token() !!}',
+                    datatype: 'json',
+                    cache: false,
+                    data: getiframedata,
+                    success: function (data) {
+                        if (data.error) {
+                            alert(data.error)
+                        } else {
+
+                        }
+                    }
+                });
+
+
+            })
+        })
+    </script>
+    <script type="text/javascript">
+
+
         $(document).ready(function () {
             getMain();
 
@@ -312,6 +309,7 @@
             $('#user_select').on('change', '.input_type_prev', function () {
                 $('#inpur_result').html(inp_json[$(this).val()]);
             });
+
             function source(type) {
                 switch (type) {
                     case 'user_input':
@@ -527,14 +525,15 @@
 
             }
 
-            $('input[name=input_area]').on('change',function () {
-                var type=$(this).val();
+            $('input[name=input_area]').on('change', function () {
+                var type = $(this).val();
                 $.ajax({
                     type: "post",
                     datatype: "json",
                     cache: false,
                     url: '/admin/modules/bburl/unit-main-default',
-                    data: {'type':type
+                    data: {
+                        'type': type
                     },
                     headers: {
                         'X-CSRF-TOKEN': $("input[name='_token']").val()

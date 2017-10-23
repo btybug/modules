@@ -12,14 +12,11 @@
 namespace Sahakavatar\Modules\Models;
 
 use App\Models\ExtraModules\Modules;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
-use Symfony\Component\VarDumper\Caster\ExceptionCaster;
-use App\Repositories\ModuleRepository as Module;
-use Sahakavatar\Cms\Helpers\helpers;
 use App\Models\MenuData;
-use Zipper,
-    File;
+use File;
+use Illuminate\Http\Request;
+use Sahakavatar\Cms\Helpers\helpers;
+use Zipper;
 
 
 class UploadTheme
@@ -87,20 +84,20 @@ class UploadTheme
     {
         if (File::exists($this->uf . $folder . '/' . 'config.json')) {
             $file = $this->uf . $folder . '/' . 'config.json';
-            $response =  $this->validateModule($file, $folder);
-            if($response['error'])
+            $response = $this->validateModule($file, $folder);
+            if ($response['error'])
                 return $response;
 
-            File::copyDirectory($this->uf . $folder, config('paths.themes').'/'. $response['data']['namespace']);
+            File::copyDirectory($this->uf . $folder, config('paths.themes') . '/' . $response['data']['namespace']);
             return $response;
         } else {
             if (File::exists($this->uf . $folder . '/' . $name . '/' . 'config.json')) {
                 $file = $this->uf . $folder . '/' . $name . '/' . 'config.json';
-                $response =  $this->validateModule($file, $folder);
-                if($response['error'])
+                $response = $this->validateModule($file, $folder);
+                if ($response['error'])
                     return $response;
 
-                File::copyDirectory($this->uf . $folder . '/' . $name , config('paths.themes').'/'. $response['data']['namespace']);
+                File::copyDirectory($this->uf . $folder . '/' . $name, config('paths.themes') . '/' . $response['data']['namespace']);
                 return $response;
             }
         }
@@ -123,19 +120,20 @@ class UploadTheme
             $conf['created_at'] = time();
             $json = json_encode($conf, true);
             File::put($file, $json);
-            return ['data' => $conf,'code' => '200', 'error' => false];
+            return ['data' => $conf, 'code' => '200', 'error' => false];
         }
 
         return ['message' => 'Json file is empty !!!', 'code' => '404', 'error' => true];
     }
 
-    public function validateForms($path){
+    public function validateForms($path)
+    {
         $forms = File::files($path . '\forms');
         $form_error = ['error' => false];
-        if(count($forms) > 0){
-            foreach($forms as $form){
+        if (count($forms) > 0) {
+            foreach ($forms as $form) {
                 $form_result = PluginForms::checkDB($form);
-                if($form_result['error']){
+                if ($form_result['error']) {
                     $form_error = $form_result;
                     break;
                 }

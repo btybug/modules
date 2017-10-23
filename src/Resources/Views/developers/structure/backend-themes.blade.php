@@ -1,6 +1,6 @@
 @extends('cms::layouts.mTabs',['index'=>'developers_structure'])
 @section('tab')
-Themes
+    Themes
 @stop
 @section('JS')
 

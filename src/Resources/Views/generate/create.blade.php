@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 @section('content')
     <div class="container">
-        <h3> <strong>Create New Module :</strong> Create Quick Module</h3>
-       {!! Form::open(['class' => 'form-horizontal','files' => true]) !!}
-               <!-- Text input-->
+        <h3><strong>Create New Module :</strong> Create Quick Module</h3>
+    {!! Form::open(['class' => 'form-horizontal','files' => true]) !!}
+    <!-- Text input-->
         <div class="form-group">
             <label class="col-md-4 control-label" for="Module Name">Module Name</label>
             <div class="col-md-4">
@@ -90,7 +90,7 @@
                 {!! Form::submit('Generate',['id' => 'create_module','class' => 'btn btn-success']) !!}
             </div>
         </div>
-       {!! Form::close() !!}
+        {!! Form::close() !!}
     </div>
 @stop
 @section('JS')

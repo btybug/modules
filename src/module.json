@@ -1,12 +1,12 @@
 {
-    "name": "Modules",
-    "slug": "modules",
-    "type":"core",
-    "author":"Abokamal",
-    "title":"Modules",
-    "author_site":"http://dev.bootydev.co.uk/",
-    "version": "1.0",
-    "description": "This is the description for the Modules module.",
-    "created_at": "05-11-2013 12:00",
-    "enabled": true
+  "name": "Modules",
+  "slug": "modules",
+  "type": "core",
+  "author": "Abokamal",
+  "title": "Modules",
+  "author_site": "http://dev.bootydev.co.uk/",
+  "version": "1.0",
+  "description": "This is the description for the Modules module.",
+  "created_at": "05-11-2013 12:00",
+  "enabled": true
 }

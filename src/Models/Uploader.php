@@ -8,9 +8,9 @@
 
 namespace Sahakavatar\Modules\Models;
 
-use Sahakavatar\Cms\Models\Templates\Units;
 use Carbon\Carbon;
 use File;
+use Sahakavatar\Cms\Models\Templates\Units;
 
 class Uploader
 {
@@ -22,7 +22,7 @@ class Uploader
     protected $exstension;
 
 
-    public function upload($file,$unit)
+    public function upload($file, $unit)
     {
         $this->unitVariation = Units::findVariation($unit);
         $this->unit = Units::findByVariation($unit);
@@ -59,8 +59,8 @@ class Uploader
     {
         $this->exstension = $file->file('file')->getClientOriginalExtension(); // getting image extension
         $oname = $file->file('file')->getClientOriginalName(); // getting image extension
-        $fname = uniqid().'.'.$this->exstension;
+        $fname = uniqid() . '.' . $this->exstension;
         $file->file('file')->move($this->method, $fname); // uploading file to given path
-        return ['path'=>$this->method.'/'.$fname,'name'=>$oname];
+        return ['path' => $this->method . '/' . $fname, 'name' => $oname];
     }
 }

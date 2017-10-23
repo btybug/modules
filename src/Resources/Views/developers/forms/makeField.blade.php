@@ -1,6 +1,6 @@
 <?php
-if(!is_null($form) and isset($form->widget)){
-    echo BBRenderWidget($form->widget,$data);
+if (!is_null($form) and isset($form->widget)) {
+    echo BBRenderWidget($form->widget, $data);
 } else {
     $widget = \Sahakavatar\Cms\Models\Widgets::where('default', 1)->where('main_type', 'fields')->first();
     $main = null;
@@ -12,6 +12,6 @@ if(!is_null($form) and isset($form->widget)){
             }
         }
     }
-   echo BBRenderWidget($main, $data);
+    echo BBRenderWidget($main, $data);
 }
 ?>

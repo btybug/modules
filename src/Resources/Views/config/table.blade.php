@@ -12,7 +12,8 @@
                 <tbody>
                 @if(isset($module->tables))
                     @foreach($module->tables as $k=>$table)
-                            <tr  data-href="{!! url('/admin/modules/config/tables/Users',$k) !!}" class="@if($k==$active) info  @endif clickable-row" >
+                        <tr data-href="{!! url('/admin/modules/config/tables/Users',$k) !!}"
+                            class="@if($k==$active) info  @endif clickable-row">
                             <td>
                                 {!! $table!!}
                             </td>
@@ -27,25 +28,25 @@
             </table>
         </div>
         @if($createForm)
-        <div class="col-md-6">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4>Create FORM for {!! $createForm->table !!}</h4>
-                </div>
-                <div class="panel-body">
-                    <table class="table table-bordered">
-                        <thead>
-                        <tr>
-                            <th>Title</th>
-                            <th>Description</th>
-                            <th>Created at</th>
-                            <th>Actions</th>
-                        </tr>
-                        </thead>
-                        <tbody>
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4>Create FORM for {!! $createForm->table !!}</h4>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Created at</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
                             <tr>
                                 <td>
-                                  {{ $createForm->title }}
+                                    {{ $createForm->title }}
                                 </td>
                                 <td>
                                     {{ $createForm->table }}
@@ -54,60 +55,64 @@
                                     {{ BBgetDateFormat($createForm->created_at) }}
                                 </td>
                                 <td>
-                                    <a href="{!! url('/admin/modules/config/create-form',[$slug,$module->tables[$active],'main']) !!}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                                    <a href="{!! url('/admin/modules/config/create-form',[$slug,$module->tables[$active],'main']) !!}"
+                                       class="btn btn-warning"><i class="fa fa-edit"></i></a>
                                 </td>
                             </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <div class="panel panel-default">
-                <div class="panel-heading" style="overflow: hidden;">
-                    <div class="col-md-6">
-                        <h4><span >Edit FORMS   </span></h4>
-                    </div>
-                    <div class="col-md-6">
-                        <a href="{!! url('/admin/modules/config/create-form',[$slug,$module->tables[$active]]) !!}" class="pull-right btn btn-sm btn-warning">create new</a>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                <div class="panel-body">
-                    <table class="table table-bordered">
-                        <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Title</th>
-                            <th>Description</th>
-                            <th>Created at</th>
-                            <th>Actions</th>
-                        </tr>
-                        </thead>
-                        <tbody>
 
-                        </tbody>
-                    </table>
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="overflow: hidden;">
+                        <div class="col-md-6">
+                            <h4><span>Edit FORMS   </span></h4>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="{!! url('/admin/modules/config/create-form',[$slug,$module->tables[$active]]) !!}"
+                               class="pull-right btn btn-sm btn-warning">create new</a>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Created at</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </div>
-            @else
+        @else
             <div class="col-md-6">
                 No form For this table
             </div>
-            @endif
+        @endif
     </div>
 @stop
 @section('CSS')
     <style>
-        .clickable-row{ cursor: pointer}
+        .clickable-row {
+            cursor: pointer
+        }
     </style>
-    @stop
+@stop
 @section('JS')
-<script>
+    <script>
 
-    $(document).ready(function($) {
-        $(".clickable-row").click(function() {
-            window.document.location = $(this).data("href");
+        $(document).ready(function ($) {
+            $(".clickable-row").click(function () {
+                window.document.location = $(this).data("href");
+            });
         });
-    });
-</script>
+    </script>
 @stop

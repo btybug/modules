@@ -4,31 +4,38 @@
     border-color: #3d3e40;
     border-radius: 2px;
 }
-.main_container .btn-primary:focus{
+
+.main_container .btn-primary:focus {
     outline: none;
 }
-.for_button{
+
+.for_button {
     position: relative;
 }
 
 .modal-backdrop.modal-backdrop-fullscreen.in {
-    opacity: 0!important;
+    opacity: 0 !important;
 }
-.modal{
-    position: relative!important;
-    top:-48px;
+
+.modal {
+    position: relative !important;
+    top: -48px;
 }
+
 /* .modal-transparent */
 
 .modal-transparent {
     background: transparent;
 }
+
 .modal-transparent .modal-content {
     background: transparent;
 }
+
 .modal-backdrop.modal-backdrop-transparent {
     background: #ffffff;
 }
+
 .modal-backdrop.modal-backdrop-transparent.in {
     opacity: .9;
     filter: alpha(opacity=90);
@@ -38,57 +45,62 @@
 
 .modal.modal-fullscreen {
     background: transparent;
-    padding-right: 0!important;
-    padding-left: 0!important;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
 }
+
 .modal-fullscreen .modal-content {
     background: transparent;
     border: 0;
     -webkit-box-shadow: none;
     box-shadow: none;
 }
+
 .modal-backdrop.modal-backdrop-fullscreen {
     background: #ffffff;
 }
+
 .modal-backdrop.modal-backdrop-fullscreen.in {
     opacity: .97;
     filter: alpha(opacity=97);
 }
 
-::-webkit-scrollbar
-{
-    width: 6px;  /* for vertical scrollbars */
+::-webkit-scrollbar {
+    width: 6px; /* for vertical scrollbars */
     padding-top: 40px;
 }
 
-::-webkit-scrollbar-track
-{
+::-webkit-scrollbar-track {
     /*background: rgba(0, 0, 0, 0.1);*/
     border-right: 5px solid transparent;
     padding-top: 40px;
 }
-::-webkit-scrollbar-thumb
-{
+
+::-webkit-scrollbar-thumb {
     background: rgba(0, 0, 0, 0.5);
     padding-top: 40px;
 }
+
 /* .modal-fullscreen size: we use Bootstrap media query breakpoints */
-.modal-dialog{
-    width: 100%!important;
+.modal-dialog {
+    width: 100% !important;
     margin: 0 auto;
 }
-.modal-header{
+
+.modal-header {
     background: #222528;
     width: 100%;
     min-height: 54px;
-    padding:0 0 0 58px;
+    padding: 0 0 0 58px;
     border: none;
 }
-.right_side{
+
+.right_side {
     box-shadow: -13px -4px 22px -8px rgba(74, 70, 70, 0.5);
 }
-@media (min-width: 1200px){
-    .left_side, .right_side{
+
+@media (min-width: 1200px) {
+    .left_side, .right_side {
         max-height: calc(100vh - 180px);
         overflow-y: scroll;
         /*min-height:800px;*/
@@ -96,70 +108,81 @@
     }
 }
 
-.modal-header h4{
+.modal-header h4 {
     font-size: 87.542px;
     font-family: "BoutrosArabiyaM";
     color: rgb(245, 245, 245);
     font-weight: bold;
     line-height: 1.2;
-    -moz-transform: matrix( 0.22787993091925,0,0,0.22787993091925,0,0);
-    -webkit-transform: matrix( 0.22787993091925,0,0,0.22787993091925,0,0);
-    -ms-transform: matrix( 0.22787993091925,0,0,0.22787993091925,0,0);
+    -moz-transform: matrix(0.22787993091925, 0, 0, 0.22787993091925, 0, 0);
+    -webkit-transform: matrix(0.22787993091925, 0, 0, 0.22787993091925, 0, 0);
+    -ms-transform: matrix(0.22787993091925, 0, 0, 0.22787993091925, 0, 0);
     position: absolute;
     left: -91.077px;
     top: -25.054px;
     z-index: 48;
 }
-.modal-header img{
+
+.modal-header img {
     position: relative;
     left: 0px;
     top: 11.946px;
 }
+
 button.close {
     background: #ad3e3e;
     height: 58px;
     width: 58px;
     font-size: 56px;
     color: #fff;
-    margin-top: 0!important;
+    margin-top: 0 !important;
 }
+
 button.close:focus {
-   outline: none;
+    outline: none;
 }
-button.close:hover{
+
+button.close:hover {
     opacity: 0.8;
 }
+
 .close {
     font-size: 21px;
-     font-weight: normal;
+    font-weight: normal;
     line-height: 1;
     color: #000;
     text-shadow: 0 1px 0 #fff;
     filter: alpha(opacity=20);
-     opacity: 1;
+    opacity: 1;
 }
+
 .modal-body {
     padding: 0;
 }
-.modal-dialog{
-    -moz-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4)!important;
-    -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4)!important;
+
+.modal-dialog {
+    -moz-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4) !important;
+    -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4) !important;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4) !important;
 }
-.left_side{
+
+.left_side {
     background: #292c2d;
-    padding: 0.264in 0.306in!important;
+    padding: 0.264in 0.306in !important;
 }
-.layouts{
+
+.layouts {
     border-radius: 6px;
     border: 6px solid transparent;
     margin-bottom: 12px;
 }
-.layouts:hover, .active_layout{
+
+.layouts:hover, .active_layout {
     border: 6px solid #913a3a;
 }
-.left_side p, .right_side p{
-    font-size:18px;
+
+.left_side p, .right_side p {
+    font-size: 18px;
     font-family: "BoutrosArabiyaM";
     color: rgb(245, 245, 245);
     font-weight: bold;
@@ -167,15 +190,17 @@ button.close:hover{
     padding-left: 5px;
 }
 
-.top_part{
+.top_part {
     background: #bbbbbb;
     padding: 0.139in;
 }
-.bottom_part{
+
+.bottom_part {
     background: #222528;
     padding: 0.181in 0.167in;
     position: relative;
 }
+
 .bottom_part span {
     font-size: 20px;
     font-family: "Calibri";
@@ -183,7 +208,8 @@ button.close:hover{
     font-weight: bold;
     line-height: 1.2;
 }
-.bottom_part i{
+
+.bottom_part i {
     font-size: 24px;
     position: absolute;
     right: 0.139in;
@@ -191,30 +217,33 @@ button.close:hover{
     top: 19px;
     position: absolute;
 }
-.layout_01 .main_div{
-     border-top:0.139in solid #829bb3;
-     border-right: 0.111in solid #829bb3;
-     border-left: 0.111in solid #829bb3;
-     border-bottom: 0.111in solid #829bb3;
-     border-radius: 2px;
-     background: #147060; /* For browsers that do not support gradients */
-     background: -webkit-linear-gradient(#147060, #2e907f); /* For Safari 5.1 to 6.0 */
-     background: -o-linear-gradient(#147060, #2e907f); /* For Opera 11.1 to 12.0 */
-     background: -moz-linear-gradient(#147060, #2e907f); /* For Firefox 3.6 to 15 */
-     background: linear-gradient(#147060, #2e907f); /* Standard syntax */
- }
-.layout_01 .main_div div:first-child,.layout_01 .main_div div:nth-child(2){
+
+.layout_01 .main_div {
+    border-top: 0.139in solid #829bb3;
+    border-right: 0.111in solid #829bb3;
+    border-left: 0.111in solid #829bb3;
+    border-bottom: 0.111in solid #829bb3;
+    border-radius: 2px;
+    background: #147060; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#147060, #2e907f); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#147060, #2e907f); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#147060, #2e907f); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#147060, #2e907f); /* Standard syntax */
+}
+
+.layout_01 .main_div div:first-child, .layout_01 .main_div div:nth-child(2) {
     border-bottom: 0.083in solid #829bb3;
     height: 0.490in;
 }
-.layout_01 .main_div div:nth-child(3){
-        height: 0.431in;
+
+.layout_01 .main_div div:nth-child(3) {
+    height: 0.431in;
 }
 
-.left_side .layout_02 .top_part .main_div .left{
+.left_side .layout_02 .top_part .main_div .left {
     width: 95%;
     margin: 0 auto;
-    border-top:0.097in solid #829bb3;
+    border-top: 0.097in solid #829bb3;
     border-right: 0.083in solid #829bb3;
     border-left: 0.083in solid #829bb3;
     border-bottom: 0.097in solid #829bb3;
@@ -226,10 +255,10 @@ button.close:hover{
     background: linear-gradient(#892039, #a1354f); /* Standard syntax */
 }
 
-.left_side .layout_02 .top_part .main_div .right{
+.left_side .layout_02 .top_part .main_div .right {
     width: 95%;
     margin: 0 auto;
-    border-top:0.097in solid #3aa39a;
+    border-top: 0.097in solid #3aa39a;
     border-right: 0.083in solid #3aa39a;
     border-left: 0.083in solid #3aa39a;
     border-bottom: 0.097in solid #3aa39a;
@@ -240,25 +269,29 @@ button.close:hover{
     background: -moz-linear-gradient(#adbf57, #c3d279); /* For Firefox 3.6 to 15 */
     background: linear-gradient(#adbf57, #c3d279); /* Standard syntax */
 }
-.left_side .layout_02 .main_div .left div:first-child,.left_side .layout_02 .main_div .left div:nth-child(2){
+
+.left_side .layout_02 .main_div .left div:first-child, .left_side .layout_02 .main_div .left div:nth-child(2) {
     border-bottom: 0.083in solid #829bb3;
     height: 0.490in;
 }
-.left_side .layout_02 .main_div .left div:nth-child(3), .left_side .layout_02 .main_div .right div:nth-child(3){
+
+.left_side .layout_02 .main_div .left div:nth-child(3), .left_side .layout_02 .main_div .right div:nth-child(3) {
     height: 0.431in;
 }
-.left_side .layout_02 .main_div .right div:first-child,.left_side .layout_02 .main_div .right div:nth-child(2){
+
+.left_side .layout_02 .main_div .right div:first-child, .left_side .layout_02 .main_div .right div:nth-child(2) {
     border-bottom: 0.083in solid #3aa39a;
     height: 0.490in;
 }
 
 /*right side*/
-.right_side{
+.right_side {
     background: #343739;
-    padding: 0.264in 0.556in!important;
+    padding: 0.264in 0.556in !important;
 }
-.layout_03 .main_div{
-    border-top:0.139in solid #bf76ac;
+
+.layout_03 .main_div {
+    border-top: 0.139in solid #bf76ac;
     border-right: 0.111in solid #bf76ac;
     border-left: 0.111in solid #bf76ac;
     border-bottom: 0.111in solid #bf76ac;
@@ -269,35 +302,40 @@ button.close:hover{
     background: -moz-linear-gradient(#4e0084, #6c16a7); /* For Firefox 3.6 to 15 */
     background: linear-gradient(#4e0084, #6c16a7); /* Standard syntax */
 }
-.layout_03 .main_div div:first-child,.layout_03 .main_div div:nth-child(2){
+
+.layout_03 .main_div div:first-child, .layout_03 .main_div div:nth-child(2) {
     border-bottom: 0.083in solid #bf76ac;
     height: 0.490in;
 }
-.layout_03 .main_div div:nth-child(3){
-    height: 0.431in;
-}
-.layout_03 .main_div{
-    border-top:0.139in solid #bf76ac;
-    border-right: 0.111in solid #bf76ac;
-    border-left: 0.111in solid #bf76ac;
-    border-bottom: 0.111in solid #bf76ac;
-    border-radius: 2px;
-    background: #4e0084; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(#4e0084, #6c16a7); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(#4e0084, #6c16a7); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(#4e0084, #6c16a7); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(#4e0084, #6c16a7); /* Standard syntax */
-}
-.layout_03 .main_div div:first-child,.layout_03 .main_div div:nth-child(2){
-    border-bottom: 0.083in solid #bf76ac;
-    height: 0.490in;
-}
-.layout_03 .main_div div:nth-child(3){
+
+.layout_03 .main_div div:nth-child(3) {
     height: 0.431in;
 }
 
-.layout_04 .main_div{
-    border-top:0.139in solid #9fb382;
+.layout_03 .main_div {
+    border-top: 0.139in solid #bf76ac;
+    border-right: 0.111in solid #bf76ac;
+    border-left: 0.111in solid #bf76ac;
+    border-bottom: 0.111in solid #bf76ac;
+    border-radius: 2px;
+    background: #4e0084; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#4e0084, #6c16a7); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#4e0084, #6c16a7); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#4e0084, #6c16a7); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#4e0084, #6c16a7); /* Standard syntax */
+}
+
+.layout_03 .main_div div:first-child, .layout_03 .main_div div:nth-child(2) {
+    border-bottom: 0.083in solid #bf76ac;
+    height: 0.490in;
+}
+
+.layout_03 .main_div div:nth-child(3) {
+    height: 0.431in;
+}
+
+.layout_04 .main_div {
+    border-top: 0.139in solid #9fb382;
     border-right: 0.111in solid #9fb382;
     border-left: 0.111in solid #9fb382;
     border-bottom: 0.111in solid #9fb382;
@@ -308,17 +346,18 @@ button.close:hover{
     background: -moz-linear-gradient(#705814, #90772e); /* For Firefox 3.6 to 15 */
     background: linear-gradient(#705814, #90772e); /* Standard syntax */
 }
-.layout_04 .main_div div:first-child,.layout_04 .main_div div:nth-child(2){
+
+.layout_04 .main_div div:first-child, .layout_04 .main_div div:nth-child(2) {
     border-bottom: 0.083in solid #9fb382;
     height: 0.490in;
 }
-.layout_04 .main_div div:nth-child(3){
+
+.layout_04 .main_div div:nth-child(3) {
     height: 0.431in;
 }
 
-
-.layout_05 .main_div{
-    border-top:0.139in solid #e3c186;
+.layout_05 .main_div {
+    border-top: 0.139in solid #e3c186;
     border-right: 0.111in solid #e3c186;
     border-left: 0.111in solid #e3c186;
     border-bottom: 0.111in solid #e3c186;
@@ -329,11 +368,13 @@ button.close:hover{
     background: -moz-linear-gradient(#c91d22, #e42c30); /* For Firefox 3.6 to 15 */
     background: linear-gradient(#c91d22, #e42c30); /* Standard syntax */
 }
-.layout_05 .main_div div:first-child,.layout_05 .main_div div:nth-child(2){
+
+.layout_05 .main_div div:first-child, .layout_05 .main_div div:nth-child(2) {
     border-bottom: 0.083in solid #e3c186;
     height: 0.490in;
 }
-.layout_05 .main_div div:nth-child(3){
+
+.layout_05 .main_div div:nth-child(3) {
     height: 0.431in;
 }
 
@@ -342,49 +383,56 @@ button.close:hover{
         width: 750px;
     }
 }
+
 @media (min-width: 992px) {
     .modal-fullscreen .modal-dialog {
         width: 970px;
     }
 }
+
 @media (min-width: 1200px) {
     .modal-fullscreen .modal-dialog {
         width: 1170px;
     }
 }
+
 .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
-     padding-right: 0;
-     padding-left: 0;
+    padding-right: 0;
+    padding-left: 0;
 }
+
 @media (max-width: 440px) {
     .modal-header h4 {
         font-size: 87.542px;
         left: -44.077px;
         top: -79.054px;
     }
+
     .modal-header img {
         left: -36px;
     }
 }
+
 @media (max-width: 1200px) {
-    .left_side .layout_02 .top_part .main_div .right{
+    .left_side .layout_02 .top_part .main_div .right {
         margin-top: 15px;
     }
 
-
-    body{
-        overflow: visible!important;
+    body {
+        overflow: visible !important;
     }
 }
-@media (min-width: 1200px) and (max-width: 1630px){
-    .left_side .col-lg-6, .left_side .col-lg-6{
+
+@media (min-width: 1200px) and (max-width: 1630px) {
+    .left_side .col-lg-6, .left_side .col-lg-6 {
         width: 100%;
         margin-top: 15px;
     }
 }
-@media (max-width: 765px){
+
+@media (max-width: 765px) {
 
     .right_side, .left {
-        padding: 0!important;
+        padding: 0 !important;
     }
 }

@@ -5,42 +5,70 @@
       "title": "Assets",
       "url": "/admin/modules/config/here/assets",
       "icon": ""
-    },{
+    },
+    {
       "title": "Info",
       "url": "/admin/modules/config/here/info",
       "icon": ""
-    },{
+    },
+    {
       "title": "Tables & forms",
       "url": "/admin/modules/config/here/tables",
       "icon": ""
-    },{
+    },
+    {
       "title": "Permission",
       "url": "/admin/modules/config/here/permission",
       "icon": ""
-    },{
+    },
+    {
       "title": "Codes",
       "url": "/admin/modules/config/here/codes",
       "icon": ""
-    },{
+    },
+    {
       "title": "Front Gears",
       "url": "/admin/modules/config/here/gears",
       "icon": "",
-      "childs" : ["layouts","units","h-f","main_body"]
-    },{
+      "childs": [
+        "layouts",
+        "units",
+        "h-f",
+        "main_body"
+      ]
+    },
+    {
       "title": "Back Gears",
       "url": "/admin/modules/config/here/gearsb",
       "icon": "",
-      "childs" : ["layouts","units","h-f","main_body"]
-    },{
+      "childs": [
+        "layouts",
+        "units",
+        "h-f",
+        "main_body"
+      ]
+    },
+    {
       "title": "Back build",
       "url": "/admin/modules/config/here/buildb",
       "icon": "",
-      "childs" : ["pages","menus","classify","tags"]
-    },{
+      "childs": [
+        "pages",
+        "menus",
+        "classify",
+        "tags"
+      ]
+    },
+    {
       "title": "Front build",
       "url": "/admin/modules/config/here/build",
       "icon": "",
-      "childs" : ["pages","menus","classify","tags"]
+      "childs": [
+        "pages",
+        "menus",
+        "classify",
+        "tags"
+      ]
     }
   ]
 }

@@ -1,1 +1,12 @@
-{"title":"Layout","self_type":"units","main_type":"others","type":"general","enabled":"true","have_settings":1,"author":"Diana","section":"backend","main_file":"tpl.blade.php","slug":"diana_uint"}
+{
+  "title": "Layout",
+  "self_type": "units",
+  "main_type": "others",
+  "type": "general",
+  "enabled": "true",
+  "have_settings": 1,
+  "author": "Diana",
+  "section": "backend",
+  "main_file": "tpl.blade.php",
+  "slug": "diana_uint"
+}

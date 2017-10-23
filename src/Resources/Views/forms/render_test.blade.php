@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 @section('content')
 
-<div class="main_container">
-    {!! BBRenderForm($id) !!}
-</div>
+    <div class="main_container">
+        {!! BBRenderForm($id) !!}
+    </div>
 
 
 @stop

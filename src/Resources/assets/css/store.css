@@ -19,9 +19,9 @@
     font-size: 18px;
     line-height: 24px;
     color: #ccc;
-    -webkit-box-shadow: 0 1px 8px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0 1px 8px rgba(0,0,0,0.75);
-    box-shadow: 0 1px 8px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.75);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.75);
 }
 
 .iconMenuBuilder {
@@ -127,11 +127,11 @@ figcaption {
     display: none;
 }
 
-.stepNav li a:hover:before,.stepNav li a:focus:before,.stepNav li.active a:before {
+.stepNav li a:hover:before, .stepNav li a:focus:before, .stepNav li.active a:before {
     display: block;
 }
 
-.stepNav li a:hover,.stepNav li a:focus,.stepNav li.active a {
+.stepNav li a:hover, .stepNav li a:focus, .stepNav li.active a {
     color: #fff;
     text-decoration: none;
 }
@@ -155,7 +155,7 @@ figcaption {
     margin: 11px 4px 0;
 }
 
-.nextPrevIcons a:hover,.nextPrevIcons a.active {
+.nextPrevIcons a:hover, .nextPrevIcons a.active {
     background-color: #aea026;
 }
 
@@ -322,21 +322,21 @@ figcaption {
     display: inline-block;
     border-radius: 100%;
     line-height: 55px;
-    -webkit-box-shadow: 0 0 21px rgba(0,0,0,0.39);
-    -moz-box-shadow: 0 0 21px rgba(0,0,0,0.39);
-    box-shadow: 0 0 21px rgba(0,0,0,0.39);
+    -webkit-box-shadow: 0 0 21px rgba(0, 0, 0, 0.39);
+    -moz-box-shadow: 0 0 21px rgba(0, 0, 0, 0.39);
+    box-shadow: 0 0 21px rgba(0, 0, 0, 0.39);
 }
 
 .editIcons li a.blueCircle {
-    background-color: rgba(63,107,122,0.8);
+    background-color: rgba(63, 107, 122, 0.8);
 }
 
 .editIcons li a.greenCircle {
-    background-color: rgba(70,122,63,0.8);
+    background-color: rgba(70, 122, 63, 0.8);
 }
 
 .editIcons li a.redCircle {
-    background-color: rgba(156,46,46,0.8);
+    background-color: rgba(156, 46, 46, 0.8);
 }
 
 .btn-select {
@@ -347,7 +347,7 @@ figcaption {
     height: 32px;
 }
 
-.btn-select:hover,.btn-select:focus {
+.btn-select:hover, .btn-select:focus {
     color: #FFF;
     outline: none;
     margin-bottom: 0;
@@ -390,11 +390,11 @@ figcaption {
 
 body, #page-wrapper {
     background: #404040;
-    border:0;
+    border: 0;
 }
 
-.navbar-default{
-    border:0;
+.navbar-default {
+    border: 0;
 }
 
 .preview-component {
@@ -411,31 +411,31 @@ body, #page-wrapper {
     color: #313131;
 }
 
-#upload-component{
-    display:none;
+#upload-component {
+    display: none;
 }
 
 /* Large Devices, Wide Screens */
-@media only screen and (max-width : 1200px) {
+@media only screen and (max-width: 1200px) {
     .menuList > li {
         height: 240px;
     }
 }
 
 /* Medium Devices, Desktops */
-@media only screen and (max-width : 992px) {
+@media only screen and (max-width: 992px) {
     .menuList > li {
         width: 32.333%;
     }
 
-    .stepNav li,.stepNav li a {
+    .stepNav li, .stepNav li a {
         font-size: 16px;
         padding: 10px;
     }
 }
 
 /* Small Devices, Tablets */
-@media only screen and (max-width : 767px) {
+@media only screen and (max-width: 767px) {
     #menuBuilderLogo {
         text-align: center;
         margin-bottom: 15px;
@@ -475,7 +475,7 @@ body, #page-wrapper {
 }
 
 /* Extra Small Devices, Phones */
-@media only screen and (max-width : 480px) {
+@media only screen and (max-width: 480px) {
     .menuList > li {
         width: 100%;
         margin: 0 0 15px;

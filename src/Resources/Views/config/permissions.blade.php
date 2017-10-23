@@ -70,17 +70,20 @@
                 @foreach($files as $key => $file)
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 panels_wrapper">
                         <div class="panel panel-default panels accordion_panels">
-                            <div class="panel-heading bg-black-darker text-white"  role="tab" id="headingLink{{ $key }}">
-                                <span  class="panel_title">{{ $file->getBasename('.blade.php') }}</span>
+                            <div class="panel-heading bg-black-darker text-white" role="tab" id="headingLink{{ $key }}">
+                                <span class="panel_title">{{ $file->getBasename('.blade.php') }}</span>
                                 <a role="button" class="panelcollapsed collapsed" data-toggle="collapse"
-                                   data-parent="#accordion" href="#collapseLink{{ $key }}" aria-expanded="true" aria-controls="collapseLink{{ $key }}">
+                                   data-parent="#accordion" href="#collapseLink{{ $key }}" aria-expanded="true"
+                                   aria-controls="collapseLink{{ $key }}">
                                     <i class="fa fa-chevron-down" aria-hidden="true"></i>
                                 </a>
                                 <ul class="list-inline panel-actions">
-                                    <li><a href="#" panel-fullscreen="true" role="button" title="Toggle fullscreen"><i class="glyphicon glyphicon-resize-full"></i></a></li>
+                                    <li><a href="#" panel-fullscreen="true" role="button" title="Toggle fullscreen"><i
+                                                    class="glyphicon glyphicon-resize-full"></i></a></li>
                                 </ul>
                             </div>
-                            <div id="collapseLink{{ $key }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingLink">
+                            <div id="collapseLink{{ $key }}" class="panel-collapse collapse" role="tabpanel"
+                                 aria-labelledby="headingLink">
                                 <div class="panel-body panel_body panel_1 show">
 
                                 </div>
@@ -94,5 +97,5 @@
     </div>
 @stop
 @push('css')
-{!! HTML::style('css/admin_pages.css') !!}
+    {!! HTML::style('css/admin_pages.css') !!}
 @endpush

@@ -14,7 +14,6 @@ use Illuminate\Http\Request;
 */
 
 
-
 Route::get('/modules', function (Request $request) {
     // return $request->modules();
 })->middleware('auth:api');

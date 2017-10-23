@@ -11,16 +11,15 @@
 
 namespace Sahakavatar\Modules\Http\Controllers\Developers;
 
-use Sahakavatar\Cms\Helpers\helpers;
 use App\helpers\ExcelHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Moduledb;
+use Illuminate\Http\Request;
 use Sahakavatar\Cms\Models\Templates\Units;
 use Sahakavatar\Cms\Models\Widgets;
 use Sahakavatar\Modules\Models\Models\AdminPages;
 use Sahakavatar\Modules\Models\Models\Fields;
-use Sahakavatar\Modules\Models\Models\Migrations;
-use Illuminate\Http\Request;
+use Sahakavatar\Modules\Models\Migrations;
 use Validator;
 
 /**
@@ -37,22 +36,21 @@ class StructureController extends Controller
     /**
      * StructureController constructor.
      */
-    public function __construct ()
+    public function __construct()
     {
-        parent::__construct();
         $this->data = [
             'pageTitle' => 'Database',
-            'pageNote'  => 'Manage Database Tables',
+            'pageNote' => 'Manage Database Tables',
 
         ];
 
-        $this->dbhelper = new dbhelper;
+//        $this->dbhelper = new dbhelper;
     }
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getIndex ()
+    public function getIndex()
     {
         $tables = \DB::select('SHOW TABLES');
 
@@ -63,28 +61,28 @@ class StructureController extends Controller
      * @param $table
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getEditTable ($table)
+    public function getEditTable($table)
     {
         $colums = \DB::select('SHOW COLUMNS FROM ' . $table);
         $config_path = base_path('app/Modules/Modules/table_config.json');
 //        $config = (json_decode(\File::get($config_path), true));
         $core = [];
 //        if (isset($config[$table])) {
-            foreach ($colums as $k => $colum) {
+        foreach ($colums as $k => $colum) {
 
 //                if ($colum->Null == "NO") {
 //                    $colums[$k]->Null = 'required';
 //                } else {
 //                    $colums[$k]->Null = 'not required';
 //                };
-                unset($colums[$k]->Null);
-                if (isset($config[$table][$colum->Field])) {
-                    $core[$colum->Field] = 1;
-                    $colums[$k]->field = $config[$table][$colum->Field]['field'];
-                } else {
-                    $colums[$k]->field = 'no';
-                }
+            unset($colums[$k]->Null);
+            if (isset($config[$table][$colum->Field])) {
+                $core[$colum->Field] = 1;
+                $colums[$k]->field = $config[$table][$colum->Field]['field'];
+            } else {
+                $colums[$k]->field = 'no';
             }
+        }
 //        }
 
         return view("modules::developers.structure.tables.columns", compact(['colums', 'table', 'core']));
@@ -93,7 +91,7 @@ class StructureController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getCreate ()
+    public function getCreate()
     {
         $this->data['default'] = ['NULL', 'USER_DEFINED', 'CURRENT_TIMESTAMP'];
         $this->data['tbtypes'] = Migrations::types();
@@ -106,11 +104,11 @@ class StructureController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postCreate (Request $request)
+    public function postCreate(Request $request)
     {
         $data = $request->all();
         $v = Validator::make($data, [
-            'name'        => 'required|alpha_num',
+            'name' => 'required|alpha_num',
             'engine_type' => 'required'
         ]);
         if ($v->fails()) return \Response::json(['error' => true, 'arrm' => true, 'message' => $v->errors()]);
@@ -123,7 +121,7 @@ class StructureController extends Controller
      * @param $column
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getIframe ($table, $column)
+    public function getIframe($table, $column)
     {
         $field = Fields::where('table_name', $table)->where('column_name', $column)->first();
         $variations = Widgets::where('default', 1)->where('main_type', 'fields')->first()->variations();
@@ -153,7 +151,7 @@ class StructureController extends Controller
      * @param $column
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getSearchIframe ($table, $column)
+    public function getSearchIframe($table, $column)
     {
         $field = Fields::where('table_name', $table)->where('column_name', $column)->where('search', true)->first();
         $editable = null;
@@ -170,7 +168,7 @@ class StructureController extends Controller
                 $def_unit_id = $unit_variation->id;
             }
         }
-        if (! $json_data) {
+        if (!$json_data) {
             $json_data['unit_input_type'] = $unit->input_type;
             $variations = Widgets::where('default', 1)->where('main_type', 'fields')->first()->variations();
             if ($variations) {
@@ -195,7 +193,7 @@ class StructureController extends Controller
      * @param $column
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getEditTableColumn ($table, $column)
+    public function getEditTableColumn($table, $column)
     {
         $types = \App\Models\Fields::getFieldTypes();
         $fields = \App\Models\Fields::where('table_name', $table)->where('column_name', $column)->get();
@@ -210,14 +208,14 @@ class StructureController extends Controller
         $field = Fields::where('table_name', $table)->where('column_name', $column)->first();
         $tbtypes = Migrations::types();
 
-        return view("modules::developers.structure.tables.edit_column", compact(['column', 'table', 'tbtypes', 'column_info', 'length', 'dataType', 'keys','types', 'fields', 'state']));
+        return view("modules::developers.structure.tables.edit_column", compact(['column', 'table', 'tbtypes', 'column_info', 'length', 'dataType', 'keys', 'types', 'fields', 'state']));
     }
 
     /**
      * @param $table
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getAddColumn ($table)
+    public function getAddColumn($table)
     {
         $this->data['default'] = ['NULL', 'USER_DEFINED', 'CURRENT_TIMESTAMP'];
         $this->data['tbtypes'] = Migrations::types();
@@ -237,7 +235,7 @@ class StructureController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postAddColumn ($table, Request $request)
+    public function postAddColumn($table, Request $request)
     {
         $data = $request->all();
 
@@ -250,7 +248,7 @@ class StructureController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postEditTableColumn ($table, $column, Request $request)
+    public function postEditTableColumn($table, $column, Request $request)
     {
         $data = $request->except('field');
 
@@ -263,7 +261,7 @@ class StructureController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function postEditColumnField ($table, $column, Request $request)
+    public function postEditColumnField($table, $column, Request $request)
     {
         $data = $request->except('_token');
         Fields::updateRecurcive($table, $column, $data);
@@ -274,7 +272,7 @@ class StructureController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getForms ()
+    public function getForms()
     {
         return view("modules::developers.structure.forms");
     }
@@ -282,7 +280,7 @@ class StructureController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getMenus ()
+    public function getMenus()
     {
         return view("modules::developers.structure.menus");
     }
@@ -290,7 +288,7 @@ class StructureController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getPages ()
+    public function getPages()
     {
         $pageGrouped = AdminPages::where('parent_id', '=', '0')->get();
 
@@ -300,7 +298,7 @@ class StructureController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getBackendTheme ()
+    public function getBackendTheme()
     {
         return view("modules::developers.structure.backend-themes");
     }
@@ -311,7 +309,7 @@ class StructureController extends Controller
      * @param Request $request
      * @return string
      */
-    public function postLiveColumnField ($table, $column, Request $request)
+    public function postLiveColumnField($table, $column, Request $request)
     {
         $field = Fields::where('table_name', $table)->where('column_name', $column)->first();
         $data = ($request->all());
@@ -327,7 +325,7 @@ class StructureController extends Controller
                 $def_unit_id = $unit_variation->id;
             }
         }
-        if (! count($data)) {
+        if (!count($data)) {
             $variations = Widgets::where('default', 1)->where('main_type', 'fields')->first()->variations();
 
             if ($variations) {
@@ -345,10 +343,10 @@ class StructureController extends Controller
             $data['some-unit'] = $def_unit_id;
             $data['unit_input_type'] = $unit->input_type;
         }
-        if (! isset($data['widget']) or $data['widget'] == '') {
+        if (!isset($data['widget']) or $data['widget'] == '') {
             $data['unit_input_type'] = $unit->input_type;
             $types = ['file', 'api', 'bb'];
-            if (! isset($data['data_source'])) $data['data_source'] = 'file';
+            if (!isset($data['data_source'])) $data['data_source'] = 'file';
             if (in_array($data['data_source'], $types)) {
                 $variations = Widgets::where('default', 1)->where('main_type', 'fields')->first()->variations();
                 if ($variations) {
@@ -377,7 +375,7 @@ class StructureController extends Controller
      * @param $column
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function postDeleteColumn ($table, $column)
+    public function postDeleteColumn($table, $column)
     {
         Migrations::deleteColumn($table, $column);
 
@@ -388,7 +386,7 @@ class StructureController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postFieldLivePreview (Request $request)
+    public function postFieldLivePreview(Request $request)
     {
         $data = $this->defoulter($request);
         if (isset($data['some-unit'])) $data['unit'] = $data['some-unit'];
@@ -400,7 +398,7 @@ class StructureController extends Controller
      * @param $request
      * @return mixed
      */
-    private function defoulter ($request)
+    private function defoulter($request)
     {
         $data = $request->all();
         $trigger = $request->get('trigger');
@@ -431,7 +429,7 @@ class StructureController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postSearchFieldLivePreview (Request $request)
+    public function postSearchFieldLivePreview(Request $request)
     {
         $data = $this->searchDefoulter($request);
 
@@ -442,7 +440,7 @@ class StructureController extends Controller
      * @param $request
      * @return mixed
      */
-    private function searchDefoulter ($request)
+    private function searchDefoulter($request)
     {
         $data = $request->all();
         $unit_v = $data['some-unit'];
@@ -466,23 +464,23 @@ class StructureController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function saveFieldData ($table, $column, Request $request)
+    public function saveFieldData($table, $column, Request $request)
     {
         $data = $request->except(['_token']);
         $unit_exp = explode('.', $data['some-unit']);
         $unit = Units::find($unit_exp[0]);
         $fields = Fields::where('table_name', $table)->where('column_name', $column)->update([
-            'type'   => $unit->input_type,
+            'type' => $unit->input_type,
             'widget' => $data['widget'],
-            'unit'   => $data['some-unit']]);
-        if (! $fields) {
+            'unit' => $data['some-unit']]);
+        if (!$fields) {
             Fields::create([
-                'table_name'  => $table,
+                'table_name' => $table,
                 'column_name' => $column,
-                'type'        => $unit->input_type,
-                'widget'      => $data['widget'],
-                'field'       => 'no',
-                'unit'        => $data['some-unit']
+                'type' => $unit->input_type,
+                'widget' => $data['widget'],
+                'field' => 'no',
+                'unit' => $data['some-unit']
             ]);
         }
 
@@ -494,7 +492,7 @@ class StructureController extends Controller
      * @param $column
      * @param Request $request
      */
-    public function saveSearchFieldData ($table, $column, Request $request)
+    public function saveSearchFieldData($table, $column, Request $request)
     {
         dd($request->all());
     }
@@ -503,7 +501,7 @@ class StructureController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postTableNames (Request $request)
+    public function postTableNames(Request $request)
     {
         $table_names = $this->dbhelper->getTableNames();
 
@@ -514,7 +512,7 @@ class StructureController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postTableColumns (Request $request)
+    public function postTableColumns(Request $request)
     {
         $table = $request->get('val');
         $cols = $this->dbhelper->getTableColsByName($table);

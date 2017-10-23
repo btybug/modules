@@ -9,14 +9,16 @@
 namespace Sahakavatar\Modules\Http\Controllers\Developers;
 
 use App\Http\Controllers\Controller;
-use Sahakavatar\Console\Services\FieldValidationService;
-use Sahakavatar\Resources\Models\Files\FilesBB;
 use Illuminate\Http\Request;
 use Sahakavatar\Cms\Models\ContentLayouts\ContentLayouts;
 use Sahakavatar\Cms\Models\Templates\Units;
+use Sahakavatar\Cms\Repositories\HookRepository;
 use Sahakavatar\Cms\Services\CmsItemReader;
-use Sahakavatar\Modules\Models\Fields;
+use Sahakavatar\Cms\Services\HookService;
 use Sahakavatar\Console\Models\Forms;
+use Sahakavatar\Manage\Models\FrontendPage;
+use Sahakavatar\Modules\Models\Fields;
+use Sahakavatar\Resources\Models\Files\FilesBB;
 
 class BBurlsController extends Controller
 {
@@ -261,15 +263,17 @@ class BBurlsController extends Controller
         $value = $request->get('variation_id');
         if ($value) {
             switch ($request->get('data_action')) {
-                case 'units':
-                    $data = Units::findByVariation($value)->toArray();
+                case 'unit':
+                    $data = Units::findByVariation($value)->render();
                     break;
                 //TODO : need remove page_sections
                 case 'page_sections':
                     $data = ContentLayouts::findByVariation($value)->toArray();
                     break;
                 case 'layouts':
-                    $data = ContentLayouts::findByVariation($value)->toArray();
+                    $data = ContentLayouts::findByVariation($value);
+                    $html = view('cms::_partials.layout_placeholders')->with('_this', $data)->render();
+                    return \Response::json(['error' => false, 'data' => $html]);
                     break;
                 default:
                     $data = [];
@@ -277,7 +281,32 @@ class BBurlsController extends Controller
         } else {
             return \Response::json(['error' => true, 'message' => 'variation_id is mandatory!!!']);
         }
+
         return \Response::json(['error' => false, 'data' => $data]);
+    }
+
+    public function getBBbuttonData(Request $request)
+    {
+        $value = $request->get('variation_id');
+        $type = $request->get('data_action');
+        switch ($type) {
+            case 'layouts':
+                $obj = ContentLayouts::findByVariation($value);
+                $variation = ContentLayouts::findVariation($value);
+                break;
+            case 'unit':
+                $obj = Units::findByVariation($value);
+                $variation = Units::findVariation($value);
+                break;
+            default:
+                $data = ['error' => true, 'message' => 'variation_id is mandatory!!!'];
+                break;
+        }
+        $data['error'] = false;
+        $data['value'] = $obj->title;
+        $data['content'] = 'Type:' . $type . ' Name:' . $obj->title . ' Author:' . $obj->author . ' Uploaded:' . BBgetDateFormat($obj->created_at) . ' Variation:' . $variation->title . ' Last Modification:' . BBgetDateFormat($variation->updated_at);
+        return \Response::json($data);
+
     }
 
     public function getPageSectionConfigToArray(Request $request)
@@ -285,11 +314,11 @@ class BBurlsController extends Controller
         $value = $request->get('variation_id');
         if ($value) {
             $data = Units::findByVariation($value);
-        if(!$data)return \Response::json(['error' => true, 'message' => 'Undefined unit!!!']);
+            if (!$data) return \Response::json(['error' => true, 'message' => 'Undefined unit!!!']);
         } else {
             return \Response::json(['error' => true, 'message' => 'variation_id is mandatory!!!']);
         }
-        return \Response::json(['error' => false, 'data' => $data->toArray()]);
+        return \Response::json(['error' => false, 'data' => $data->toArray(), 'html' => $data->render()]);
     }
 
     public function getBBFunctionOutput(Request $request)
@@ -319,5 +348,33 @@ class BBurlsController extends Controller
         $slug = $request->get('slug');
 
         return \Response::json(['error' => false, 'section' => BBRenderSections($slug)]);
+    }
+
+    public function postSaveHooks(
+        Request $request,
+        HookService $hookService
+    )
+    {
+        $response = $hookService->save($request->all());
+        if ($response) return \Response::json(['id' => $response->id, "error" => false]);
+
+        return \Response::json(['message' => "Hook not created", "error" => true]);
+    }
+
+    public function postAddUnitToHook(Request $request, HookRepository $hookRepository)
+    {
+        $hookRepository->addUnit($request->id, $request->variation);
+        return \Response::json(['message' => 'Success', "error" => false]);
+    }
+
+    public function postHook(Request $request, HookRepository $hookRepository)
+    {
+        $hook_id = $request->id;
+        $html = $hookRepository->render($hook_id);
+        if ($html) {
+            return \Response::json(['html' => $html, "error" => false]);
+        }
+        return \Response::json(["error" => true]);
+
     }
 }

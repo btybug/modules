@@ -2,20 +2,20 @@
 
 namespace Sahakavatar\Modules\Http\Controllers;
 
-use Sahakavatar\Cms\Helpers\helpers;
 use App\Http\Controllers\Controller;
-use Sahakavatar\Cms\Models\ContentLayouts\ContentLayouts as AdminTemplates;
-use Sahakavatar\Cms\Models\ContentLayouts\ContentLayouts;
 use App\Models\Setting;
+use App\Modules\Create\Models\Corepage;
+use App\Modules\Users\Models\Roles;
+use File;
+use Illuminate\Http\Request;
+use Sahakavatar\Cms\Helpers\helpers;
+use Sahakavatar\Cms\Models\ContentLayouts\ContentLayouts;
+use Sahakavatar\Cms\Models\ContentLayouts\ContentLayouts as AdminTemplates;
 use Sahakavatar\Cms\Models\Templates\Units;
 use Sahakavatar\Console\Models\AdminPages;
-use App\Modules\Create\Models\Corepage;
 use Sahakavatar\Modules\Models\Fields;
 use Sahakavatar\Modules\Models\Models\Forms;
 use Sahakavatar\Modules\Models\Models\Routes;
-use App\Modules\Users\Models\Roles;
-use Illuminate\Http\Request;
-use File;
 
 /**
  * Class ModulesController
@@ -57,8 +57,8 @@ class ConfigController extends Controller
         $modules = json_decode(\File::get(storage_path('app/modules.json')));
         if (!$modules->$slug) return redirect()->back();
         $module = $modules->$slug;
-        $page_menu="configMenu";
-        return view('modules::config.assets', compact(['slug', 'module','page_menu']));
+        $page_menu = "configMenu";
+        return view('modules::config.assets', compact(['slug', 'module', 'page_menu']));
     }
 
     /**
@@ -72,8 +72,8 @@ class ConfigController extends Controller
         $modules = json_decode(\File::get(storage_path('app/modules.json')));
         if (!$modules->$slug) return redirect()->back();
         $module = $modules->$slug;
-        $page_menu="configMenu";
-        return view('modules::config.info', compact(['slug', 'module','page_menu']));
+        $page_menu = "configMenu";
+        return view('modules::config.info', compact(['slug', 'module', 'page_menu']));
     }
 
     /**
@@ -88,8 +88,8 @@ class ConfigController extends Controller
         $createForm = null;
         if (isset($module->tables) and isset($module->tables[$active]))
             $createForm = Forms::where('table_name', $module->tables[$active])->first();
-        $page_menu="configMenu";
-        return view('modules::config.table', compact(['slug', 'module', 'active', 'createForm','page_menu']));
+        $page_menu = "configMenu";
+        return view('modules::config.table', compact(['slug', 'module', 'active', 'createForm', 'page_menu']));
     }
 
     /**
@@ -102,9 +102,9 @@ class ConfigController extends Controller
         if (!$modules->$slug) return redirect()->back();
 
         $module = $modules->$slug;
-        $page_menu="configMenu";
+        $page_menu = "configMenu";
 
-        return view('modules::config.form', compact(['slug', 'module','page_menu']));
+        return view('modules::config.form', compact(['slug', 'module', 'page_menu']));
     }
 
     /**
@@ -119,9 +119,9 @@ class ConfigController extends Controller
         $menu = BBgetAdminMenu($slug);
         $roles = Roles::pluck('id', 'name');
 
-        $files = helpers::rglob('app/Modules/'.$slug.'/Resources/Views');
-        $page_menu="permission";
-        return view('modules::config.permissions', compact(['slug', 'module', 'menu', 'roles','files','page_menu']));
+        $files = helpers::rglob('app/Modules/' . $slug . '/Resources/Views');
+        $page_menu = "permission";
+        return view('modules::config.permissions', compact(['slug', 'module', 'menu', 'roles', 'files', 'page_menu']));
     }
 
     /**
@@ -440,6 +440,111 @@ class ConfigController extends Controller
         }
     }
 
+    public function getBuildBUrls($module)
+    {
+        $html = (Routes::getModuleRoutes('GET', 'admin'));
+        $settings = Setting::where('section', 'admin_urls')->where('settingkey', $module)->first();
+        $roles = Roles::where('slug', '!=', 'superadmin')->pluck('slug');
+        $allow = '';
+        foreach ($roles as $slug) {
+            $allow .= $slug . ',';
+        }
+        return view('modules::config.urls', compact(['html', 'allow', 'module', 'settings']));
+    }
+
+    public function getPagePreview($page_id, Request $request)
+    {
+        $layout = $request->get('pl');
+
+        $page = AdminPages::find($page_id);
+        $url = null;
+        if (!$page) return redirect()->back();
+
+        if (!str_contains($page->url, '{param}')) $url = $page->url;
+
+        $layouts = ContentLayouts::pluck('slug', 'name');
+        // $html = \View::make("ContentLayouts.$layout.$layout")->with(['settings'=>$this->options])->render();
+
+        $lay = AdminTemplates::find($layout);
+
+        if (!$lay) {
+            return view('modules::config.page-preview', ['data' => compact(['page_id', 'layout', 'page', 'url', 'layouts'])]);
+        }
+
+        $view['view'] = "modules::config.page-preview";
+        return AdminTemplates::find($layout)->renderSettings($view, compact(['page_id', 'layout', 'page', 'url', 'layouts']));
+    }
+
+    public function postSavePageSettings($page_id, Request $request)
+    {
+        $data = $request->except('pl');
+        $page = AdminPages::find($page_id);
+
+        $data['allLayouts'] = ContentLayouts::pluck('slug', 'slug');
+        $data['page_id'] = $page_id;
+        $v = \Validator::make($data, [
+            'layout_id' => "in_array:allLayouts",
+            'page_id' => "exists:admin_pages,id"
+        ],
+            [
+                'in_array' => 'Layout does not exists!!!'
+            ]);
+
+        if ($v->fails()) return \Response::json(['error' => true, 'message' => $v->messages()]);
+
+        if ($page) {
+            $page->settings = (!empty($data)) ? json_encode($data, true) : null;
+            $page->layout_id = (isset($data['layout_id'])) ? $data['layout_id'] : null;
+            $page->save();
+
+            return \Response::json(['error' => false, 'message' => 'Page Layout settings Successfully assigned']);
+        }
+
+        return \Response::json(['error' => true, 'message' => 'Page not found  !!!']);
+    }
+
+    public function postUrlsSettings(Request $request)
+    {
+        $data = $request->all();
+        $v = \Validator::make($data, AdminPages::$rules);
+        if ($v->fails()) return \Response::json(['error' => true, 'message' => $v->messages()]);
+        $permurl = BBmakeUrlPermission($data['url'], '/');
+        $ispage = AdminPages::where('url', $permurl)->orWhere('url', '/' . $permurl)->first();
+        if (!$ispage) {
+            $routes = AdminPages::getModuleRoutes($data['slug']);
+            $exploade = explode('/', $data['url']);
+            $end = '/' . end($exploade);
+            $parent = str_replace($end, '', $data['url']);
+            $parent = BBmakeUrlPermission($parent, '/');
+            $parent = AdminPages::where('url', $parent)->orWhere('url', '/' . $parent)->first();
+            if (!$parent and isset($routes[$data['url']])) {
+                if (!BBRegisterAdminPages($data['slug'], $data['pagename'], $permurl, null)) return \Response::json(['error' => true, 'message' => ['wrong data!!!']]);
+
+            } else {
+                if ($parent) {
+                    if (!BBRegisterAdminPages($data['slug'], $data['pagename'], $permurl, null, $parent->id)) {
+                        return \Response::json(['error' => true, 'message' => ['wrong data!!!']]);
+                    }
+
+                } else {
+                    return \Response::json(['error' => true, 'message' => ['Warning!!!' => 'page should have parent ']]);
+                }
+            }
+        } else {
+            $ispage->title = $data['pagename'];
+            $ispage->save();
+        }
+        $settings = Setting::where('section', 'admin_urls')->where('settingkey', $data['slug'])->first();
+        if (!$settings) $settings = new Setting(['section' => 'admin_urls', 'settingkey' => $data['slug']]);
+        if ($data['redirect'] == 'custom') {
+            $settings->val = $data['redirectto'];
+        } else {
+            $settings->val = $data['redirect'];
+        }
+        $settings->save();
+        return \Response::json(['error' => false]);
+    }
+
     /**
      * @param $slug
      * @return bool|mixed
@@ -477,110 +582,5 @@ class ConfigController extends Controller
         }
 
         dd('done!!!');
-    }
-
-    public function getBuildBUrls($module)
-    {
-       $html=(Routes::getModuleRoutes('GET','admin'));
-        $settings = Setting::where('section', 'admin_urls')->where('settingkey', $module)->first();
-        $roles = Roles::where('slug', '!=', 'superadmin')->pluck('slug');
-        $allow = '';
-        foreach ($roles as $slug) {
-            $allow .= $slug . ',';
-        }
-        return view('modules::config.urls', compact(['html', 'allow', 'module', 'settings']));
-    }
-
-    public function getPagePreview($page_id, Request $request)
-    {
-        $layout = $request->get('pl');
-
-        $page = AdminPages::find($page_id);
-        $url = null;
-        if (! $page) return redirect()->back();
-
-        if (!str_contains($page->url, '{param}')) $url = $page->url;
-
-        $layouts = ContentLayouts::pluck('slug', 'name');
-        // $html = \View::make("ContentLayouts.$layout.$layout")->with(['settings'=>$this->options])->render();
-
-        $lay = AdminTemplates::find($layout);
-
-        if(! $lay){
-            return view('modules::config.page-preview',['data' => compact(['page_id', 'layout', 'page', 'url','layouts'])]);
-        }
-
-        $view['view'] = "modules::config.page-preview";
-        return AdminTemplates::find($layout)->renderSettings($view, compact(['page_id', 'layout', 'page', 'url','layouts']));
-    }
-
-    public function postSavePageSettings($page_id, Request $request)
-    {
-        $data = $request->except('pl');
-        $page = AdminPages::find($page_id);
-
-        $data['allLayouts'] = ContentLayouts::pluck('slug','slug');
-        $data['page_id'] = $page_id;
-        $v = \Validator::make($data,[
-            'layout_id' => "in_array:allLayouts",
-            'page_id' => "exists:admin_pages,id"
-        ],
-        [
-            'in_array' => 'Layout does not exists!!!'
-        ]);
-
-        if ($v->fails()) return \Response::json(['error' => true, 'message' => $v->messages()]);
-
-        if ($page) {
-            $page->settings = (!empty($data)) ? json_encode($data, true) : null;
-            $page->layout_id = (isset($data['layout_id']))?$data['layout_id'] : null;
-            $page->save();
-
-            return \Response::json(['error' => false, 'message' => 'Page Layout settings Successfully assigned']);
-        }
-
-        return \Response::json(['error' => true, 'message' => 'Page not found  !!!']);
-    }
-
-    public function postUrlsSettings(Request $request)
-    {
-        $data = $request->all();
-        $v = \Validator::make($data,AdminPages::$rules );
-        if ($v->fails()) return \Response::json(['error' => true, 'message' => $v->messages()]);
-        $permurl = BBmakeUrlPermission($data['url'], '/');
-        $ispage = AdminPages::where('url',$permurl)->orWhere('url','/'.$permurl)->first();
-        if (!$ispage) {
-            $routes = AdminPages::getModuleRoutes($data['slug']);
-            $exploade = explode('/', $data['url']);
-            $end = '/' . end($exploade);
-            $parent = str_replace($end, '', $data['url']);
-            $parent = BBmakeUrlPermission($parent, '/');
-            $parent = AdminPages::where('url', $parent)->orWhere('url','/'.$parent)->first();
-            if (!$parent and isset($routes[$data['url']])) {
-                if(!BBRegisterAdminPages($data['slug'], $data['pagename'], $permurl,null))return \Response::json(['error' => true, 'message' => ['wrong data!!!']]);
-
-            } else {
-                if ($parent) {
-                    if (!BBRegisterAdminPages($data['slug'], $data['pagename'],$permurl,null, $parent->id)) {
-                        return \Response::json(['error' => true, 'message' => ['wrong data!!!']]);
-                    }
-
-                }else{
-                    return \Response::json(['error' => true, 'message' => ['Warning!!!'=>'page should have parent ']]);
-                }
-            }
-        }else{
-            $ispage->title=$data['pagename'];
-            $ispage->save();
-        }
-        $settings = Setting::where('section', 'admin_urls')->where('settingkey', $data['slug'])->first();
-        if (!$settings) $settings = new Setting(['section' => 'admin_urls', 'settingkey' => $data['slug']]);
-        if ($data['redirect'] == 'custom') {
-            $settings->val = $data['redirectto'];
-        } else {
-            $settings->val = $data['redirect'];
-        }
-        $settings->save();
-        return \Response::json(['error' => false]);
     }
 }

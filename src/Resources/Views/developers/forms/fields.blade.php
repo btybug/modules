@@ -29,11 +29,11 @@
                     </tr>
                     </thead>
                     <tbody id="field_list">
-                        @if($fields->count())
-                            @foreach($fields as $count => $field)
-                                @include('modules::developers._partials.custom_field')
-                            @endforeach
-                        @endif
+                    @if($fields->count())
+                        @foreach($fields as $count => $field)
+                            @include('modules::developers._partials.custom_field')
+                        @endforeach
+                    @endif
                     </tbody>
                 </table>
             </div>
@@ -48,35 +48,35 @@
 @section('JS')
     {!! HTML::script("/resources/assets/js/UiElements/bb_styles.js?v.5") !!}
     <script>
-       $(document).ready(function() {
-           $('body').on('click', '.add-new-field', function() {
-               $.ajax({
-                   url: '/admin/modules/tables/field/add-new-field/' + $('#field_list tr').length,
-                   type: 'GET',
-                   dataType: 'JSON'
-               }).done(function(data) {
-                   $('#field_list').append(data.html);
-               }).fail(function(data) {
-                   alert('Could not add new field. Please try again.');
-               });
-           });
+        $(document).ready(function () {
+            $('body').on('click', '.add-new-field', function () {
+                $.ajax({
+                    url: '/admin/modules/tables/field/add-new-field/' + $('#field_list tr').length,
+                    type: 'GET',
+                    dataType: 'JSON'
+                }).done(function (data) {
+                    $('#field_list').append(data.html);
+                }).fail(function (data) {
+                    alert('Could not add new field. Please try again.');
+                });
+            });
 
-           $('body').on('change', '.field-input', function() {
-               if($(this).parents('.field-row').find('.field-state').val() == 'current') {
-                   $(this).parents('.field-row').find('.field-state').val('updated');
-               }
-           });
+            $('body').on('change', '.field-input', function () {
+                if ($(this).parents('.field-row').find('.field-state').val() == 'current') {
+                    $(this).parents('.field-row').find('.field-state').val('updated');
+                }
+            });
 
-           $('.bb-button-realted-hidden-input').on('change', function() {
-               if($(this).parents('.field-row').find('.field-state').val() == 'current') {
-                   $(this).parents('.field-row').find('.field-state').val('updated');
-               }
-           });
+            $('.bb-button-realted-hidden-input').on('change', function () {
+                if ($(this).parents('.field-row').find('.field-state').val() == 'current') {
+                    $(this).parents('.field-row').find('.field-state').val('updated');
+                }
+            });
 
-           $('body').on('click', '.delete-new-field', function() {
-               $(this).parents('.field-row').remove();
-           });
-       });
+            $('body').on('click', '.delete-new-field', function () {
+                $(this).parents('.field-row').remove();
+            });
+        });
 
     </script>
 @stop

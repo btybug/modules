@@ -13,8 +13,8 @@ class ModuleServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadTranslationsFrom(__DIR__.'/../Resources/Lang', 'tools');
-        $this->loadViewsFrom(__DIR__.'/../Resources/Views', 'tools');
+        $this->loadTranslationsFrom(__DIR__ . '/../Resources/Lang', 'tools');
+        $this->loadViewsFrom(__DIR__ . '/../Resources/Views', 'tools');
 
         $tabs = [
             'edit_page' => [
@@ -22,17 +22,17 @@ class ModuleServiceProvider extends ServiceProvider
                     'id' => 'layout',
                     'title' => 'Select Layout',
                     'view' => 'tools::pages.layout',
-                    'icon'=>'fa fa-user'
+                    'icon' => 'fa fa-user'
                 ],
                 [
                     'id' => 'settings',
                     'title' => 'Settings',
                     'view' => 'tools::pages.settings',
-                    'icon'=>'fa fa-commenting'
+                    'icon' => 'fa fa-commenting'
                 ]
             ]
         ];
-        \Eventy::action('toggle.tabs',$tabs);
+        \Eventy::action('toggle.tabs', $tabs);
     }
 
     /**

@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('cms::layouts.admin')
 @section('content')
 
     <div class="container">
@@ -21,14 +21,14 @@
                 <tr>
                     @foreach($colum as $k=>$v)
                         @if($k == 'field')
-                            <th>{!! BBFieldStatus($v) !!}</th>
+                            <th>{!! '1' !!}</th>
                         @elseif($k == 'Null' && $colum->field == 'never')
                             <th>N/A</th>
                         @else
                             <th>{!! $v !!}</th>
                         @endif
                     @endforeach
-                        <th></th>
+                    <th></th>
                     <th>
                         <a href="{!! url('admin/modules/tables/edit-column',[$table,$colum->Field]) !!}"
                            class="btn btn-info"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>

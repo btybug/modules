@@ -5,31 +5,38 @@
       "title": "General view",
       "url": "#",
       "icon": ""
-    },{
+    },
+    {
       "title": "Generals",
       "url": "#",
       "icon": ""
-    },{
+    },
+    {
       "title": "Assets",
       "url": "#",
       "icon": ""
-    },{
+    },
+    {
       "title": "Build",
       "url": "#",
       "icon": ""
-    },{
+    },
+    {
       "title": "Permission",
       "url": "#",
       "icon": ""
-    },{
+    },
+    {
       "title": "Code",
       "url": "#",
       "icon": ""
-    },{
+    },
+    {
       "title": "Tables & Forms",
       "url": "#",
       "icon": ""
-    },{
+    },
+    {
       "title": "View Files",
       "url": "#",
       "icon": ""

@@ -61,6 +61,7 @@
         $('#savefielddata').on('click', function () {
             saveAnin();
         })
+
         function saveAnin() {
             $('.save_anime').show();
 //            $('.save_anime').hide().slide();

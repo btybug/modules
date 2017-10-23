@@ -46,12 +46,14 @@
                             <div class="col-xs-4 pull-right">
                                 @if(isset($addon['have_setting']) && $addon['have_setting']==1)
                                     <p>
-                                        <a href="{!! url('admin/plugins/setting',$addon['slug']) !!}" class="btn btn-default">&nbsp;<i
+                                        <a href="{!! url('admin/plugins/setting',$addon['slug']) !!}"
+                                           class="btn btn-default">&nbsp;<i
                                                     class="fa fa-cog"></i>&nbsp;</a>
                                     </p>
                                 @endif
-                                <p> <a class="btn btn-warning">Deactivate</a> </p>
-                                <p> <a  namespace="{!! $addon['namespace'] !!}" class="btn btn-danger del-module">Delete</a> </p>
+                                <p><a class="btn btn-warning">Deactivate</a></p>
+                                <p><a namespace="{!! $addon['namespace'] !!}"
+                                      class="btn btn-danger del-module">Delete</a></p>
                             </div>
                         </div>
                     @endforeach
@@ -105,15 +107,18 @@
             font-size: 17px;
             min-height: 110px;
         }
-        .m-desc-bottom{
+
+        .m-desc-bottom {
             border: 1px solid black;
             border-radius: 10px;
             min-height: 25px;
         }
-        .addon-item{
+
+        .addon-item {
             border-bottom: 3px solid black;
         }
-        .addon-name{
+
+        .addon-name {
             min-height: 100px;
             line-height: 90px;
             font-size: 20px;
@@ -126,8 +131,8 @@
 @stop
 @section('JS')
     <script>
-        $(document).ready(function(){
-            $('body').on('click','.del-module',function(){
+        $(document).ready(function () {
+            $('body').on('click', '.del-module', function () {
                 var namespace = $(this).attr('namespace');
                 $.ajax({
                     url: '/admin/modules/delete',
@@ -138,9 +143,9 @@
                     dataType: 'json',
                     success: function (data) {
                         console.log(data);
-                        if(! data.error){
+                        if (!data.error) {
                             location.reload();
-                        }else{
+                        } else {
                             $('#message-modal .modal-body').html(data.message);
                             $('#message-modal').modal();
                         }

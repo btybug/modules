@@ -6,7 +6,8 @@
     <td> {!! Form::text("field[$count][placeholder]", isset($field) && $field->json_data['placeholder'] != '' ? $field->json_data['placeholder'] : null,['class'=>'form-control field-input', 'placeholder' => 'Field Placeholder']) !!}</td>
     <td> {!! Form::text("field[$count][default_value]",isset($field) && $field->json_data['default_value'] != '' ? $field->json_data['default_value'] : null,['class'=>'form-control field-input', 'placeholder' => 'Field Default Value']) !!}</td>
     <td>
-        <select name="field[{!! $count !!}][options][]" class="form-control field-input option-values" multiple="multiple">
+        <select name="field[{!! $count !!}][options][]" class="form-control field-input option-values"
+                multiple="multiple">
             @if(isset($field) && isset($field->json_data['options']))
                 @foreach($field->json_data['options'] as $option)
                     <option val="{!! $option !!}" selected>{!! $option !!}</option>
@@ -24,8 +25,10 @@
          ]) !!}
     </td>
     <td>
-        <a data-href="{!! url('/admin/modules/tables/field/delete') !!}" data-key="{!! isset($field) && isset($field->id) ? $field->id : '' !!}" data-type="Field"
-           class="{!! isset($field) && isset($field->id) ? 'delete-button' : 'delete-new-field' !!} btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+        <a data-href="{!! url('/admin/modules/tables/field/delete') !!}"
+           data-key="{!! isset($field) && isset($field->id) ? $field->id : '' !!}" data-type="Field"
+           class="{!! isset($field) && isset($field->id) ? 'delete-button' : 'delete-new-field' !!} btn btn-danger"><i
+                    class="fa fa-trash-o" aria-hidden="true"></i></a>
     </td>
     {!! Form::hidden("field[$count][state]", $state, ['class' => 'field-state']) !!}
     {!! Form::hidden("field[$count][slug]", isset($field) && isset($field->slug) ? $field->slug : '') !!}

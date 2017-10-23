@@ -11,21 +11,19 @@
 
 namespace Sahakavatar\Modules\Http\Controllers;
 
-use Sahakavatar\Cms\Helpers\helpers;
-use Sahakavatar\Cms\Helpers\helpers;
 use App\Http\Controllers\Controller;
-use Sahakavatar\Cms\Models\Templates as Tpl;
-use Sahakavatar\Cms\Models\Templates;
 use App\Models\Themes\Themes;
-use App\Modules\Resources\Models\Validation as validateUpl;
 use App\Modules\Create\Models\Corepage;
-use Sahakavatar\Modules\Models\Models\UploadTheme;
+use App\Modules\Resources\Models\Validation as validateUpl;
 use App\Modules\Settings\Models\Template;
 use Assets;
 use Datatables;
 use File;
 use Illuminate\Http\Request;
-use Session;
+use Sahakavatar\Cms\Helpers\helpers;
+use Sahakavatar\Cms\Helpers\helpers;
+use Sahakavatar\Cms\Models\Templates as Tpl;
+use Sahakavatar\Modules\Models\Models\UploadTheme;
 use View;
 
 
@@ -94,7 +92,7 @@ class ThemeController extends Controller
      * @param UploadTheme $tplUpload
      * @param validateUpl $validateUpl
      */
-    public function __construct (UploadTheme $tplUpload, validateUpl $validateUpl)
+    public function __construct(UploadTheme $tplUpload, validateUpl $validateUpl)
     {
         $this->helpers = new helpers;
         $this->rootpath = templatesPath();
@@ -110,7 +108,7 @@ class ThemeController extends Controller
     /**
      * @return View
      */
-    public function getIndex ()
+    public function getIndex()
     {
         $active = Themes::getActive();
         $themes = Themes::all();
@@ -121,7 +119,7 @@ class ThemeController extends Controller
      * @param $slug
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function activateFrontTheme ($slug)
+    public function activateFrontTheme($slug)
     {
         Themes::setActive($slug);
 
@@ -132,7 +130,7 @@ class ThemeController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function postNewType (Request $request)
+    public function postNewType(Request $request)
     {
         $title = $request->get('title');
         $foldername = str_replace(' ', '', strtolower($title));
@@ -145,18 +143,18 @@ class ThemeController extends Controller
             $result = array_search($foldername, array_column($general[$key]['subs'], 'foldername'));
             if ($result === false) {
                 $this->types[$key]['subs'][] = [
-                    'title'      => $title,
+                    'title' => $title,
                     'foldername' => $foldername,
-                    'type'       => 'custom',
+                    'type' => 'custom',
                 ];
             } else {
                 return redirect()->back()->with('message', 'Please enter new Type Title, "' . $title . '" type aleardy exist type!!!');
             }
         } else {
             $this->types[$key]['subs'][] = [
-                'title'      => $title,
+                'title' => $title,
                 'foldername' => $foldername,
-                'type'       => 'custom',
+                'type' => 'custom',
             ];
         }
 
@@ -173,7 +171,7 @@ class ThemeController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postDeleteType (Request $request)
+    public function postDeleteType(Request $request)
     {
         $foldername = $request->get('folder');
         $type = "body";
@@ -206,7 +204,7 @@ class ThemeController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postTemplatesWithType (Request $request)
+    public function postTemplatesWithType(Request $request)
     {
         $main_type = $request->get('main_type');
         $general_type = $request->get('type', null);
@@ -233,7 +231,7 @@ class ThemeController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postTemplatesInModal (Request $request)
+    public function postTemplatesInModal(Request $request)
     {
         $main_type = $request->get('main_type');
         $general_type = $request->get('type', null);
@@ -253,7 +251,7 @@ class ThemeController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postTemplatesListByType (Request $request)
+    public function postTemplatesListByType(Request $request)
     {
         $main_type = $request->get('main_type');
         $general_type = $request->get('type', null);
@@ -271,11 +269,11 @@ class ThemeController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postTemplatesVariations (Request $request)
+    public function postTemplatesVariations(Request $request)
     {
         $slug = $request->get('slug');
         $template = Tpl::find($slug);
-        if (! $template) return \Response::json(['error' => true]);
+        if (!$template) return \Response::json(['error' => true]);
         $variations = $template->variations();
         $html = View::make('settings::frontend.templates._partrials.variation_select')->with(['variations' => $variations])->render();
 
@@ -286,7 +284,7 @@ class ThemeController extends Controller
      * @param $slug
      * @return mixed
      */
-    public function getTemplateRender ($slug)
+    public function getTemplateRender($slug)
     {
         return Tpl::find($slug)->render();
     }
@@ -295,7 +293,7 @@ class ThemeController extends Controller
      * @param $slug
      * @return mixed
      */
-    public function getTemplateVRender ($slug)
+    public function getTemplateVRender($slug)
     {
         return Tpl::findVariation($slug)->renderVariation();
     }
@@ -303,7 +301,7 @@ class ThemeController extends Controller
     /**
      *
      */
-    public function errorShutdownHandler ()
+    public function errorShutdownHandler()
     {
         $last_error = error_get_last();
         if ($last_error['type'] === E_ERROR) {
@@ -322,7 +320,7 @@ class ThemeController extends Controller
      * @param $file
      * @param $line
      */
-    public function customError ($errno, $errstr, $file, $line)
+    public function customError($errno, $errstr, $file, $line)
     {
         File::deleteDirectory($this->upplugin);
 
@@ -333,15 +331,15 @@ class ThemeController extends Controller
      * @param Request $request
      * @return mixed
      */
-    public function postUpload (Request $request)
+    public function postUpload(Request $request)
     {
         $isValid = $this->validateUpl->isCompress($request->file('file'));
 
-        if (! $isValid) return $this->upload->ResponseError('Uploaded data is InValid!!!', 500);
+        if (!$isValid) return $this->upload->ResponseError('Uploaded data is InValid!!!', 500);
 
         $response = $this->upload->upload($request);
 
-        if (! $response['error']) {
+        if (!$response['error']) {
             $result = $this->upload->validatConfAndMoveToMain($response['folder'], $response['data']);
             File::deleteDirectory($this->up, true);
             $this->upplugin = base_path() . '/app/Themes/' . $result['data']['namespace'];
@@ -349,7 +347,7 @@ class ThemeController extends Controller
             if (isset($result['data']['autoload'])) {
                 $autoloadClass = 'App\Themes\\' . $result['data']['namespace'] . '\\' . $result['data']['autoload'];
 
-                if (! class_exists($autoloadClass)) {
+                if (!class_exists($autoloadClass)) {
                     File::deleteDirectory(base_path() . '\app\Themes\\' . $result['data']['namespace']);
 
                     return ['message' => 'Autoload Class does not exists', 'code' => '500', 'error' => true];
@@ -417,7 +415,7 @@ class ThemeController extends Controller
      * @param $fileName
      * @return array|bool
      */
-    public function checkSyntax ($fileName)
+    public function checkSyntax($fileName)
     {
         // Sort out the formatting of the filename
         $fileName = realpath($fileName);
@@ -440,12 +438,12 @@ class ThemeController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postDelete (Request $request)
+    public function postDelete(Request $request)
     {
         $slug = $request->get('slug');
         $tpl = Themes::find($slug)->delete();
 
-        return \Response::json(['message' => 'Please try again', 'error' => ! $tpl]);
+        return \Response::json(['message' => 'Please try again', 'error' => !$tpl]);
     }
 
 
@@ -453,12 +451,12 @@ class ThemeController extends Controller
      * @param $id
      * @return \Illuminate\Http\RedirectResponse|View
      */
-    public function layoutPreview ($id)
+    public function layoutPreview($id)
     {
         $slug = explode('.', $id);
         $ui = Tpl::find($slug[0]);
         $variation = Tpl::findVariation($id);
-        if (! $variation) return redirect()->back();
+        if (!$variation) return redirect()->back();
         $ifrem = [];
         $htmlSettings = "No Settings!!!";
         $settings = (isset($variation->settings) && $variation->settings) ? $variation->settings : [];
@@ -474,12 +472,12 @@ class ThemeController extends Controller
     /**
      * @param $id
      */
-    public function iframeLayout ($id)
+    public function iframeLayout($id)
     {
         $slug = explode('.', $id);
         $ui = Tpl::find($slug[0]);
         $variation = Tpl::findVariation($id);
-        if (! $variation) echo "warning";
+        if (!$variation) echo "warning";
         $settings = (isset($variation->settings) && $variation->settings) ? $variation->settings : [];
         $htmlBody = $ui->render(['settings' => $settings]);
         echo $htmlBody;
@@ -491,11 +489,11 @@ class ThemeController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse|string
      */
-    public function frontLayoutSettings ($id, Request $request)
+    public function frontLayoutSettings($id, Request $request)
     {
 
         $data = $this->getDataTpl($id);
-        if (! $data) return "warning";
+        if (!$data) return "warning";
         $variation = $data['tpl'];
         $variation->render(['settings' => $request->all()]);
 
@@ -508,12 +506,12 @@ class ThemeController extends Controller
      * @param bool $edit
      * @return \Illuminate\Http\RedirectResponse|View
      */
-    public function TemplatePerviewIframe ($id, $page_id = null, $edit = false)
+    public function TemplatePerviewIframe($id, $page_id = null, $edit = false)
     {
         $slug = explode('.', $id);
         $ui = Tpl::find($slug[0]);
         $variation = Tpl::findVariation($id);
-        if (! $variation) return redirect()->back();
+        if (!$variation) return redirect()->back();
         $settings = (isset($variation->settings) && $variation->settings) ? $variation->settings : [];
         $page = Corepage::find($page_id);
         if ($page) {
@@ -535,12 +533,12 @@ class ThemeController extends Controller
      * @param $id
      * @return \Illuminate\Http\RedirectResponse|View
      */
-    public function TemplatePerviewEditIframe ($id)
+    public function TemplatePerviewEditIframe($id)
     {
         $slug = explode('.', $id);
         $ui = Tpl::find($slug[0]);
         $variation = Tpl::findVariation($id);
-        if (! $variation) return redirect()->back();
+        if (!$variation) return redirect()->back();
         $settings = (isset($variation->settings) && $variation->settings) ? $variation->settings : [];
         $settings_json = json_encode($settings, true);
         $htmlSettings = "No Settings!!!";

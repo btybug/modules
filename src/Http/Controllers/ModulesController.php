@@ -2,14 +2,14 @@
 
 namespace Sahakavatar\Modules\Http\Controllers;
 
-use Sahakavatar\Cms\Helpers\helpers;
 use App\Http\Controllers\Controller;
 use App\Models\ExtraModules\Modules;
 use App\Models\ExtraModules\Structures;
-use Sahakavatar\Modules\Models\Models\Upload;
-use Sahakavatar\Modules\Models\Models\Validation as validateUpl;
 use File;
 use Illuminate\Http\Request;
+use Sahakavatar\Cms\Helpers\helpers;
+use Sahakavatar\Modules\Models\Models\Upload;
+use Sahakavatar\Modules\Models\Models\Validation as validateUpl;
 
 /**
  * Class ModulesController
@@ -53,7 +53,7 @@ class ModulesController extends Controller
      * @param Upload $upload
      * @param validateUpl $v
      */
-    public function __construct (Upload $upload, validateUpl $v)
+    public function __construct(Upload $upload, validateUpl $v)
     {
         $this->upload = $upload;
         $this->validateUpl = $v;
@@ -69,14 +69,14 @@ class ModulesController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getIndex ()
+    public function getIndex()
     {
         $modules = json_decode(File::get(storage_path('app/modules.json')));
         $extras = Structures::getExtraModules();
         if (count($modules)) {
             $module = $modules->Users;
         }
-        if (! $module) return redirect()->back();
+        if (!$module) return redirect()->back();
         $addons = BBGetModuleAddons($module->slug);
 
         return view('modules::list', compact(['modules', 'module', 'addons', 'extras']));
@@ -86,7 +86,7 @@ class ModulesController extends Controller
      * @param $slug
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
-    public function getView ($basename = null)
+    public function getView($basename = null)
     {
         $extra = Structures::find($basename);
         $extras = Structures::getExtraModules();
@@ -97,12 +97,12 @@ class ModulesController extends Controller
             $module = $modules->$basename;
         } else {
             $module = null;
-            if (count($modules) and ! $extra) {
+            if (count($modules) and !$extra) {
                 $module = $modules->Users;
             }
         }
         if ($extra) $module = $extra;
-        if (! $module) return redirect()->back();
+        if (!$module) return redirect()->back();
         $addons = BBGetModulePlugins($module->slug);
 
         return view('modules::list', compact(['modules', 'module', 'addons', 'extras']));
@@ -111,7 +111,7 @@ class ModulesController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getExtra ($slug = null)
+    public function getExtra($slug = null)
     {
 
         $modules = BBGetExtraModules();
@@ -137,7 +137,7 @@ class ModulesController extends Controller
     /**
      *
      */
-    public function errorShutdownHandler ()
+    public function errorShutdownHandler()
     {
         $last_error = error_get_last();
         if ($last_error['type'] === E_ERROR) {
@@ -156,7 +156,7 @@ class ModulesController extends Controller
      * @param $file
      * @param $line
      */
-    public function customError ($errno, $errstr, $file, $line)
+    public function customError($errno, $errstr, $file, $line)
     {
         File::deleteDirectory($this->upplugin);
 
@@ -167,16 +167,16 @@ class ModulesController extends Controller
      * @param Request $request
      * @return array|\Illuminate\Http\JsonResponse|string
      */
-    public function postUpload (Request $request)
+    public function postUpload(Request $request)
     {
 
         $isValid = $this->validateUpl->isCompress($request->file('file'));
 
-        if (! $isValid) return $this->upload->ResponseError('Uploaded data is InValid!!!', 500);
+        if (!$isValid) return $this->upload->ResponseError('Uploaded data is InValid!!!', 500);
 
         $response = $this->upload->upload($request);
 
-        if (! $response['error']) {
+        if (!$response['error']) {
             $result = $this->upload->validatConfAndMoveToMain($response['folder'], $response['data']);
             File::deleteDirectory($this->up, true);
             if ($result['error']) return $result;
@@ -229,7 +229,7 @@ class ModulesController extends Controller
                 }
 
 
-                if (! class_exists($autoloadClass)) {
+                if (!class_exists($autoloadClass)) {
                     File::deleteDirectory($path);
 
                     return ['message' => 'Autoload Class does not exists', 'code' => '500', 'error' => true];
@@ -288,7 +288,7 @@ class ModulesController extends Controller
 //            PluginForms::registration($this->upplugin,$result['data']['slug']);
             Structures::create($result['data']);
             \Artisan::call('plugin:optimaze');
-            if($result['data']['type'] == 'extra'){
+            if ($result['data']['type'] == 'extra') {
                 $this->MakeConfigPages($result['data']['namespace']);
             }
 
@@ -301,28 +301,11 @@ class ModulesController extends Controller
         }
     }
 
-    private function MakeConfigPages ($moduleName,$id = null)
-    {
-        $menu= base_path('app/Modules/Modules/menuPages.json');
-        $menu = json_decode(\File::get($menu),true);
-        $row = BBRegisterAdminPages("Modules",$moduleName,"/admin/modules/config/".$moduleName,null,$id);
-        foreach($menu['items'] as $item){
-            $url = str_replace('here',$moduleName,$item['url']);
-            $parent = BBRegisterAdminPages("Modules",$moduleName." ".$item['title'],$url,null,$row->id);
-            if(isset($item['childs']) && count($item['childs'])){
-                foreach($item['childs'] as $ch){
-                    echo $ch ."--".$item['title']."</br>";
-                    BBRegisterAdminPages("Modules",$moduleName." ".$item['title']."-".$ch,$url."/".$ch,null,$parent->id);
-                }
-            }
-        }
-    }
-
     /**
      * @param $fileName
      * @return array|bool
      */
-    public function checkSyntax ($fileName)
+    public function checkSyntax($fileName)
     {
         // Sort out the formatting of the filename
         $fileName = realpath($fileName);
@@ -341,11 +324,28 @@ class ModulesController extends Controller
         return false;
     }
 
+    private function MakeConfigPages($moduleName, $id = null)
+    {
+        $menu = base_path('app/Modules/Modules/menuPages.json');
+        $menu = json_decode(\File::get($menu), true);
+        $row = BBRegisterAdminPages("Modules", $moduleName, "/admin/modules/config/" . $moduleName, null, $id);
+        foreach ($menu['items'] as $item) {
+            $url = str_replace('here', $moduleName, $item['url']);
+            $parent = BBRegisterAdminPages("Modules", $moduleName . " " . $item['title'], $url, null, $row->id);
+            if (isset($item['childs']) && count($item['childs'])) {
+                foreach ($item['childs'] as $ch) {
+                    echo $ch . "--" . $item['title'] . "</br>";
+                    BBRegisterAdminPages("Modules", $moduleName . " " . $item['title'] . "-" . $ch, $url . "/" . $ch, null, $parent->id);
+                }
+            }
+        }
+    }
+
     /**
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postDelete (Request $request)
+    public function postDelete(Request $request)
     {
         $namespace = $request->get('namespace');
         if (Modules::findByNamespace($namespace)->deleteWithAddons()) {
@@ -361,7 +361,7 @@ class ModulesController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postCoreEnable (Request $request)
+    public function postCoreEnable(Request $request)
     {
         $namespace = $request->get('namespace');
         $module = Structures::find($namespace);
@@ -380,13 +380,13 @@ class ModulesController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postEnable (Request $request)
+    public function postEnable(Request $request)
     {
         $namespace = $request->get('namespace');
         $module = Modules::findByNamespace($namespace);
         if ($module->type == 'addon') {
             $parent = $module->parent();
-            if (! $parent->enabled) {
+            if (!$parent->enabled) {
                 return \Response::json(['message' => 'Please activate ' . $parent->name . ' plugin first', 'error' => true]);
             }
         }
@@ -403,7 +403,7 @@ class ModulesController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postDisable (Request $request)
+    public function postDisable(Request $request)
     {
         $namespace = $request->get('namespace');
         $module = Structures::find($namespace);

@@ -11,13 +11,18 @@
 
 namespace Sahakavatar\Modules\Models;
 
-use Chumper\Zipper\Zipper;
 use File;
 
 class Plugin
 {
 
-    private static $up = 'app/ExtraModules';
+    /**
+     * @var array
+     */
+    public static $settungs = [
+        'settingsclass.stub' => '{{namespace}}Settings.php',
+        'settings.stub' => '{{slug}}settings.blade.php'
+    ];
     /**
      * @var array
      */
@@ -51,13 +56,6 @@ class Plugin
     /**
      * @var array
      */
-    public static $settungs = [
-        'settingsclass.stub' => '{{namespace}}Settings.php',
-        'settings.stub' => '{{slug}}settings.blade.php'
-    ];
-    /**
-     * @var array
-     */
     protected static $paths = [
         'Database' => 'Database',
         'Migrations' => 'Database/Migrations',
@@ -81,6 +79,7 @@ class Plugin
         'settingsclass.stub' => '',
         'settings.stub' => 'Resources/Views/'
     ];
+    private static $up = 'app/ExtraModules';
 
     /**
      * @param $request
@@ -115,7 +114,7 @@ class Plugin
                 File::makeDirectory(base_path() . '/app/Modules/Modules/Stub/Plugin/' . ucfirst($request['name']) . '/' . self::$paths[$key], 0775, true);
                 self::maker($value, $request);
             } else {
-                if(empty($request['class_controller'])) $request['class_controller'] = $request['name'];
+                if (empty($request['class_controller'])) $request['class_controller'] = $request['name'];
 
                 $value = str_replace('{{name}}', ucfirst($request['name']), $value);
                 $value = str_replace('{{controller}}', ucfirst($request['class_controller']), $value);
@@ -171,6 +170,40 @@ class Plugin
     }
 
     /**
+     * @param $zipPath
+     * @param $folder
+     * @return mixed
+     */
+    private static function MakeZip($zipPath, $folder)
+    {
+        $zipper = new \Chumper\Zipper\Zipper;
+        $files = glob($zipPath);
+        $zipper->make($zipPath . '.zip')->folder($folder)->add($files);
+        $zipper->close();
+
+        File::copy($zipPath . '.zip', base_path(self::$up . '/' . $folder . '.zip'));
+//
+        if (is_dir($zipPath)) {
+            File::deleteDirectory($zipPath);
+        }
+
+        if (is_file($zipPath . '.zip')) {
+            File::delete($zipPath . '.zip');
+        }
+
+        return $zipPath;
+    }
+
+    private static function extract($folder)
+    {
+        \Chumper\Zipper\Facades\Zipper::make(base_path(self::$up . '/' . $folder . '.zip'))->extractTo(base_path(self::$up . '/'));
+        if (is_file(base_path(self::$up . '/' . $folder . '.zip'))) {
+            File::delete(base_path(self::$up . '/' . $folder . '.zip'));
+        }
+
+    }
+
+    /**
      * @param $schema
      * @param $data
      * @return bool
@@ -192,39 +225,6 @@ class Plugin
             }
         }
         return true;
-    }
-
-    /**
-     * @param $zipPath
-     * @param $folder
-     * @return mixed
-     */
-    private static function MakeZip($zipPath, $folder)
-    {
-        $zipper = new \Chumper\Zipper\Zipper;
-        $files = glob($zipPath);
-        $zipper->make($zipPath . '.zip')->folder($folder)->add($files);
-        $zipper->close();
-
-        File::copy($zipPath . '.zip', base_path(self::$up. '/' . $folder.'.zip'));
-//
-        if (is_dir($zipPath)) {
-            File::deleteDirectory($zipPath);
-        }
-
-        if (is_file($zipPath . '.zip')) {
-            File::delete($zipPath . '.zip');
-        }
-
-        return $zipPath;
-    }
-
-    private static function extract($folder){
-        \Chumper\Zipper\Facades\Zipper::make(base_path(self::$up. '/' . $folder.'.zip'))->extractTo(base_path(self::$up. '/'));
-        if (is_file(base_path(self::$up. '/' . $folder.'.zip'))) {
-            File::delete(base_path(self::$up. '/' . $folder.'.zip'));
-        }
-
     }
 
 }

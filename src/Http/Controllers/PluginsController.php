@@ -9,15 +9,14 @@
 namespace Sahakavatar\Modules\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\ExtraModules\Structures;
 
 class PluginsController extends Controller
 {
     public function getSettings($slug)
     {
-        $plugin=Structures::find($slug);
-        return view($plugin->namespace.'::'.$plugin->settings);
+        $plugin = Structures::find($slug);
+        return view($plugin->namespace . '::' . $plugin->settings);
 
     }
 }

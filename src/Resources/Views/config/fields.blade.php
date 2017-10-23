@@ -15,20 +15,21 @@
             </tr>
             </thead>
             <tbody>
-@foreach($fields as $field)
-    <tr>
-        <td>{!! $field->id !!}</td>
-        <td>{!! $field->title !!}</td>
-        <td>{!! $field->column_name !!}</td>
-        <td>{!! $field->table_name !!}</td>
-        <td>{!! $field->data_source !!}</td>
-        <td>{!! $field->type !!}</td>
-        <td>
-            <a href="{!! url('admin/modules/tables/edit-column',[$field->table_name,$field->column_name]) !!}" class="btn btn-info"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+            @foreach($fields as $field)
+                <tr>
+                    <td>{!! $field->id !!}</td>
+                    <td>{!! $field->title !!}</td>
+                    <td>{!! $field->column_name !!}</td>
+                    <td>{!! $field->table_name !!}</td>
+                    <td>{!! $field->data_source !!}</td>
+                    <td>{!! $field->type !!}</td>
+                    <td>
+                        <a href="{!! url('admin/modules/tables/edit-column',[$field->table_name,$field->column_name]) !!}"
+                           class="btn btn-info"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
 
-        </td>
-    </tr>
-    @endforeach
+                    </td>
+                </tr>
+            @endforeach
             </tbody>
         </table>
     </div>

@@ -21,7 +21,8 @@
                     </td>
                     <td>
                         @foreach($table as $k=>$v)
-                            <a href="{!! url('admin/modules/tables/edit',$v) !!}" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                            <a href="{!! url('admin/modules/tables/edit',$v) !!}" class="btn btn-warning"><i
+                                        class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                         @endforeach
                     </td>
                 </tr>

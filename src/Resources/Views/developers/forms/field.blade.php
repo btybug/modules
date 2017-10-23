@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!--[if IE 8]>
 <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -32,7 +31,7 @@
     @stack('css')
 </head>
 <body>
-    {!! BBRenderWidget($field['field_widget'],$field) !!}
+{!! BBRenderWidget($field['field_widget'],$field) !!}
 {!! HTML::style("/css/core_styles.css?v=1") !!}
 </body>
 @yield('JS')

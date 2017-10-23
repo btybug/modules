@@ -18,59 +18,59 @@
     </div>
 @stop
 @push('css')
-{!! HTML::style('/public/css/page.css?v=0.13') !!}
+    {!! HTML::style('/public/css/page.css?v=0.13') !!}
 @endpush
 @push('javascript')
-<script>
-    $(document).ready(function(){
-        $("body").on('click','.module-info',function(){
-            var id = $(this).attr('data-module');
-            var item = $(this).find("i");
-            $.ajax({
-                url: '/admin/modules/module-data',
-                data: {
-                    id: id,
-                    _token: $('#token').val()
-                },
-                dataType: 'json',
-                beforeSend: function () {
-                    $('.module-info-panel').html('');
-                    item.removeClass('fa-info-circle');
-                    item.addClass('fa-refresh');
-                    item.addClass('fa-spin');
-                },
-                success: function (data) {
-                    item.removeClass('fa-refresh');
-                    item.removeClass('fa-spin');
-                    item.addClass('fa-info-circle');
-                    if (!data.error) {
-                        $('.module-info-panel').html(data.html);
-                    }
-                },
-                type: 'POST'
+    <script>
+        $(document).ready(function () {
+            $("body").on('click', '.module-info', function () {
+                var id = $(this).attr('data-module');
+                var item = $(this).find("i");
+                $.ajax({
+                    url: '/admin/modules/module-data',
+                    data: {
+                        id: id,
+                        _token: $('#token').val()
+                    },
+                    dataType: 'json',
+                    beforeSend: function () {
+                        $('.module-info-panel').html('');
+                        item.removeClass('fa-info-circle');
+                        item.addClass('fa-refresh');
+                        item.addClass('fa-spin');
+                    },
+                    success: function (data) {
+                        item.removeClass('fa-refresh');
+                        item.removeClass('fa-spin');
+                        item.addClass('fa-info-circle');
+                        if (!data.error) {
+                            $('.module-info-panel').html(data.html);
+                        }
+                    },
+                    type: 'POST'
+                });
             });
-        });
 
-        $("body").on('click','.view-url',function(){
-            var id = $(this).attr('data-id');
-            $.ajax({
-                url: '/admin/modules/pages-data',
-                data: {
-                    id: id,
-                    _token: $('#token').val()
-                },
-                dataType: 'json',
-                beforeSend: function () {
-                    $('.module-info-panel').html('');
-                },
-                success: function (data) {
-                    if (!data.error) {
-                        $('.module-info-panel').html(data.html);
-                    }
-                },
-                type: 'POST'
+            $("body").on('click', '.view-url', function () {
+                var id = $(this).attr('data-id');
+                $.ajax({
+                    url: '/admin/modules/pages-data',
+                    data: {
+                        id: id,
+                        _token: $('#token').val()
+                    },
+                    dataType: 'json',
+                    beforeSend: function () {
+                        $('.module-info-panel').html('');
+                    },
+                    success: function (data) {
+                        if (!data.error) {
+                            $('.module-info-panel').html(data.html);
+                        }
+                    },
+                    type: 'POST'
+                });
             });
         });
-    });
-</script>
+    </script>
 @endpush

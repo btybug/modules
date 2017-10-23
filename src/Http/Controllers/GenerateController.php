@@ -12,23 +12,25 @@
 namespace Sahakavatar\Modules\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Sahakavatar\Modules\Models\Models\Plugin;
 use Illuminate\Http\Request;
-use view;
+use Sahakavatar\Modules\Models\Models\Plugin;
 
 /**
  * Class ModulesController
  * @package Sahakavatar\Modules\Models\Http\Controllers
  */
-class GenerateController extends Controller {
+class GenerateController extends Controller
+{
 
-    public function getIndex(){
+    public function getIndex()
+    {
         return view("modules::generate.create");
     }
 
-    public function postGenerateModule(Request $request){
+    public function postGenerateModule(Request $request)
+    {
 
         $plugin = Plugin::makeModule($request);
-        if($plugin) return redirect()->back();
+        if ($plugin) return redirect()->back();
     }
 }

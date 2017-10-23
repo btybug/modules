@@ -1,4 +1,5 @@
 <?php
+
 namespace Sahakavatar\Modules\Models;
 
 use Illuminate\Database\QueryException;
@@ -70,113 +71,6 @@ class Migrations
             return \Response::json(['error' => true, 'message' => $e->getMessage()]);
         }
         return \Response::json(['error' => false]);
-    }
-
-    public static function addcolumn($table, $data)
-    {
-        $columns = $data['column'];
-        try {
-            \Schema::table($table, function (Blueprint $table) use ($data) {
-                $columns = $data['column'];
-                $types = self::types();
-                foreach ($columns as $column) {
-                    $type = $types[$column['type']];
-                    $name = $column['name'];
-                    $lenght = self::formate($type, $column['lenght']);
-                    if ($type == 'decimal' || $type == 'double') {
-                        $at = $table->$type($name, isset($lenght[0]) ? $lenght[0] : null, isset($lenght[1]) ? $lenght[1] : 0)->after($data['after_column']);
-
-                    } else {
-                        $at = $table->$type($name, $lenght)->after($data['after_column']);
-                    }
-
-                    $attributes = self::unsets($column);
-                    foreach ($attributes as $k => $v) {
-                        if ($k == 'unique') $v = null;
-                        if ($k != 'default' and !empty($v)) {
-                            $at->{$k}($v);
-                        } elseif ($k == 'default' and !empty($v)) {
-                            $at->{$k}($v);
-                        }
-                    }
-                }
-                if (isset($data['timestamps']) and $data['timestamps']) $table->timestamps();
-            });
-        } catch (QueryException $e) {
-            return \Response::json(['error' => true, 'message' => $e->getMessage()]);
-        } catch (\Psy\Exception\FatalErrorException $e) {
-            return \Response::json(['error' => true, 'message' => $e->getMessage()]);
-        }
-        return \Response::json(['error' => false]);
-    }
-
-    public static function editMigrated($table, $column_old, $data)
-    {
-        $columns = $data['column'];
-        try {
-            $table_name = $table;
-            if (!isset($columns[0]['unique'])) {
-                \Schema::table($table, function (Blueprint $table) use ($column_old, $table_name) {
-                    $key = $table_name . '_' . $column_old . '_unique';
-                    $keyExists = \DB::select(\DB::raw("SHOW KEYS FROM ".$table_name." WHERE Key_name='".$key."' "));
-
-                    if($keyExists)
-                        $table->dropUnique($table_name . '_' . $column_old . '_unique')->change();
-                });
-            }
-                if ($columns[0]['name'] != $column_old) {
-                \Schema::table($table, function (Blueprint $table) use ($columns, $column_old) {
-                    $name = $columns[0]['name'];
-                    $table->renameColumn($column_old, $name)->change();
-                });
-            }
-
-            \Schema::table($table, function (Blueprint $table) use ($data, $column_old,$table_name) {
-                $columns = $data['column'];
-                $types = self::types();
-                foreach ($columns as $column) {
-                    $type = $types[$column['type']];
-                    $name = $column['name'];
-                    if ($name != $column_old) {
-                    }
-                    $lenght = self::formate($type, $column['lenght']);
-                    if ($type == 'decimal' || $type == 'double') {
-                        $at = $table->$type($name, isset($lenght[0]) ? $lenght[0] : null, isset($lenght[1]) ? $lenght[1] : 0);
-
-                    } else {
-                        $at = $table->$type($name, $lenght);
-                    }
-
-                    $attributes = self::unsets($column);
-                    if (!isset($attributes['nullable'])) {
-                        $attributes['nullable'] = false;
-                    };
-                    foreach ($attributes as $k => $v) {
-                        if ($k == 'unique') $v = null;
-                        if ($k == 'nullable'){
-                            $at->$k($v);
-                        }
-                        if ($k != 'default' and !empty($v)) {
-                            $at->$k($v);
-                        } elseif ($k == 'default' and !empty($v)) {
-                            $at->$k($v);
-                        }
-
-                    }
-                    $at->change();
-
-                }
-                \App\Models\Fields::where('table_name',$table_name)
-                    ->where('column_name', $column_old)
-                    ->update(['column_name' => $data['column'][0]['name']]);
-                if (isset($data['timestamps']) and $data['timestamps']) $table->timestamps();
-            });
-        } catch (QueryException $e) {
-            return \Response::json(['error' => true, 'message' => $e->getMessage()]);
-        } catch (\Psy\Exception\FatalErrorException $e) {
-            return \Response::json(['error' => true, 'message' => $e->getMessage()]);
-        }
-        return \Response::json(['error' => false, 'redirect' => url("/admin/modules/tables/edit-column/$table", $data['column'][0]['name'])]);
     }
 
     /**
@@ -324,6 +218,126 @@ class Migrations
 
     }
 
+    public static function addcolumn($table, $data)
+    {
+        $columns = $data['column'];
+        try {
+            \Schema::table($table, function (Blueprint $table) use ($data) {
+                $columns = $data['column'];
+                $types = self::types();
+                foreach ($columns as $column) {
+                    $type = $types[$column['type']];
+                    $name = $column['name'];
+                    $lenght = self::formate($type, $column['lenght']);
+                    if ($type == 'decimal' || $type == 'double') {
+                        $at = $table->$type($name, isset($lenght[0]) ? $lenght[0] : null, isset($lenght[1]) ? $lenght[1] : 0)->after($data['after_column']);
+
+                    } else {
+                        $at = $table->$type($name, $lenght)->after($data['after_column']);
+                    }
+
+                    $attributes = self::unsets($column);
+                    foreach ($attributes as $k => $v) {
+                        if ($k == 'unique') $v = null;
+                        if ($k != 'default' and !empty($v)) {
+                            $at->{$k}($v);
+                        } elseif ($k == 'default' and !empty($v)) {
+                            $at->{$k}($v);
+                        }
+                    }
+                }
+                if (isset($data['timestamps']) and $data['timestamps']) $table->timestamps();
+            });
+        } catch (QueryException $e) {
+            return \Response::json(['error' => true, 'message' => $e->getMessage()]);
+        } catch (\Psy\Exception\FatalErrorException $e) {
+            return \Response::json(['error' => true, 'message' => $e->getMessage()]);
+        }
+        return \Response::json(['error' => false]);
+    }
+
+    public static function editMigrated($table, $column_old, $data)
+    {
+        $columns = $data['column'];
+        try {
+            $table_name = $table;
+            if (!isset($columns[0]['unique'])) {
+                \Schema::table($table, function (Blueprint $table) use ($column_old, $table_name) {
+                    $key = $table_name . '_' . $column_old . '_unique';
+                    $keyExists = \DB::select(\DB::raw("SHOW KEYS FROM " . $table_name . " WHERE Key_name='" . $key . "' "));
+
+                    if ($keyExists)
+                        $table->dropUnique($table_name . '_' . $column_old . '_unique')->change();
+                });
+            }
+            if ($columns[0]['name'] != $column_old) {
+                \Schema::table($table, function (Blueprint $table) use ($columns, $column_old) {
+                    $name = $columns[0]['name'];
+                    $table->renameColumn($column_old, $name)->change();
+                });
+            }
+
+            \Schema::table($table, function (Blueprint $table) use ($data, $column_old, $table_name) {
+                $columns = $data['column'];
+                $types = self::types();
+                foreach ($columns as $column) {
+                    $type = $types[$column['type']];
+                    $name = $column['name'];
+                    if ($name != $column_old) {
+                    }
+                    $lenght = self::formate($type, $column['lenght']);
+                    if ($type == 'decimal' || $type == 'double') {
+                        $at = $table->$type($name, isset($lenght[0]) ? $lenght[0] : null, isset($lenght[1]) ? $lenght[1] : 0);
+
+                    } else {
+                        $at = $table->$type($name, $lenght);
+                    }
+
+                    $attributes = self::unsets($column);
+                    if (!isset($attributes['nullable'])) {
+                        $attributes['nullable'] = false;
+                    };
+                    foreach ($attributes as $k => $v) {
+                        if ($k == 'unique') $v = null;
+                        if ($k == 'nullable') {
+                            $at->$k($v);
+                        }
+                        if ($k != 'default' and !empty($v)) {
+                            $at->$k($v);
+                        } elseif ($k == 'default' and !empty($v)) {
+                            $at->$k($v);
+                        }
+
+                    }
+                    $at->change();
+
+                }
+                \App\Models\Fields::where('table_name', $table_name)
+                    ->where('column_name', $column_old)
+                    ->update(['column_name' => $data['column'][0]['name']]);
+                if (isset($data['timestamps']) and $data['timestamps']) $table->timestamps();
+            });
+        } catch (QueryException $e) {
+            return \Response::json(['error' => true, 'message' => $e->getMessage()]);
+        } catch (\Psy\Exception\FatalErrorException $e) {
+            return \Response::json(['error' => true, 'message' => $e->getMessage()]);
+        }
+        return \Response::json(['error' => false, 'redirect' => url("/admin/modules/tables/edit-column/$table", $data['column'][0]['name'])]);
+    }
+
+    public static function getLendth($column_info)
+    {
+        $detects = self::detect($column_info->DATA_TYPE);
+        if ($detects == 'COLUMN_TYPE') return self::enumer($column_info);
+        if ($detects) {
+            $rez = null;
+            foreach ($detects as $detect) {
+                $rez .= $column_info->{$detect} . ',';
+            }
+            return trim($rez, ",");
+        }
+    }
+
     private static function detect($key)
     {
         $array = [
@@ -366,29 +380,20 @@ class Migrations
 
     }
 
-    public static function increments($type, $lendt)
+    public static function enumer($column_info)
     {
-        switch ($lendt > 11) {
-            case true:
-                return array_search('bigIncrements', self::types());
-                break;
-            case false:
-                return array_search('increments', self::types());
-                break;
-        }
+        return (self::before(')', self::after('enum(', $column_info->COLUMN_TYPE)));
     }
 
-    public static function getLendth($column_info)
+    protected static function before($key, $inthat)
     {
-        $detects = self::detect($column_info->DATA_TYPE);
-        if ($detects == 'COLUMN_TYPE') return self::enumer($column_info);
-        if ($detects) {
-            $rez = null;
-            foreach ($detects as $detect) {
-                $rez .= $column_info->{$detect} . ',';
-            }
-            return trim($rez, ",");
-        }
+        return substr($inthat, 0, strpos($inthat, $key));
+    }
+
+    protected static function after($key, $inthat)
+    {
+        if (!is_bool(strpos($inthat, $key)))
+            return substr($inthat, strpos($inthat, $key) + strlen($key));
     }
 
     public static function getDataType($column_info)
@@ -416,6 +421,33 @@ class Migrations
         }
     }
 
+    public static function increments($type, $lendt)
+    {
+        switch ($lendt > 11) {
+            case true:
+                return array_search('bigIncrements', self::types());
+                break;
+            case false:
+                return array_search('increments', self::types());
+                break;
+        }
+    }
+
+    public static function ints($length)
+    {
+        if ($length <= 11) {
+            return array_search('integer', self::types());
+        } else {
+            return array_search('bigInteger', self::types());
+        }
+    }
+
+    public static function deleteColumn($table, $column)
+    {
+        \Schema::table($table, function ($table) use ($column) {
+            $table->dropColumn($column);
+        });
+    }
 
     public function seperator($obj)
     {
@@ -476,36 +508,5 @@ class Migrations
             'timestampTz' => [],
             'uuid' => [],
         ];
-    }
-
-    public static function ints($length)
-    {
-        if ($length <= 11) {
-            return array_search('integer', self::types());
-        } else {
-            return array_search('bigInteger', self::types());
-        }
-    }
-
-    public static function enumer($column_info)
-    {
-        return (self::before(')', self::after('enum(', $column_info->COLUMN_TYPE)));
-    }
-
-    protected static function after($key, $inthat)
-    {
-        if (!is_bool(strpos($inthat, $key)))
-            return substr($inthat, strpos($inthat, $key) + strlen($key));
-    }
-
-    protected static function before($key, $inthat)
-    {
-        return substr($inthat, 0, strpos($inthat, $key));
-    }
-    public static function deleteColumn($table, $column)
-    {
-        \Schema::table($table, function ($table)use($column) {
-            $table->dropColumn($column);
-        });
     }
 }

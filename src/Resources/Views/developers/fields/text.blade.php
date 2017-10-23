@@ -1,5 +1,5 @@
 @if(isset($field) && $field->json_data['label'] != '')
-       <label for="{!! $field->slug !!}">{!! $field->json_data['label'] !!}</label>
+    <label for="{!! $field->slug !!}">{!! $field->json_data['label'] !!}</label>
 @endif
 <input type="text"
        name="{!! $field->name !!}"

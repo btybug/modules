@@ -10,7 +10,7 @@ return [
                 'type' => 'BBMenu',
             ]
         ]
-    ],[
+    ], [
         'title' => 'User Menu',
         'selector' => '#usermenu',
         'name' => 'user_menu',
