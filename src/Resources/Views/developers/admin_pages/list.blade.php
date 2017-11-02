@@ -1,4 +1,4 @@
-@extends('cms::layouts.mTabs',['index'=>'developers_structure'])
+@extends('btybug::layouts.mTabs',['index'=>'developers_structure'])
 @section('tab')
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 up">

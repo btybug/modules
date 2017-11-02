@@ -1,9 +1,9 @@
 <?php
 
-namespace Sahakavatar\Modules\Models;
+namespace Btybug\Modules\Models;
 
 use File;
-use Sahakavatar\Modules\Models\Interfases\vInterfase;
+use Btybug\Modules\Models\Interfases\vInterfase;
 use Validator;
 
 

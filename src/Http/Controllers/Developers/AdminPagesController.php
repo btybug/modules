@@ -9,7 +9,7 @@
  *
  */
 
-namespace Sahakavatar\Modules\Http\Controllers\Developers;
+namespace Btybug\Modules\Http\Controllers\Developers;
 
 use App\Http\Controllers\Controller;
 use App\Modules\Create\Models\AdminPages;

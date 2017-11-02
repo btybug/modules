@@ -9,7 +9,7 @@
  *
  */
 
-namespace Sahakavatar\Modules\Http\Controllers\Developers;
+namespace Btybug\Modules\Http\Controllers\Developers;
 
 use App\helpers\ExcelHelper;
 use App\Http\Controllers\Controller;
@@ -17,14 +17,14 @@ use App\Models\Moduledb;
 use Illuminate\Http\Request;
 use Sahakavatar\Cms\Models\Templates\Units;
 use Sahakavatar\Cms\Models\Widgets;
-use Sahakavatar\Modules\Models\Models\AdminPages;
-use Sahakavatar\Modules\Models\Models\Fields;
-use Sahakavatar\Modules\Models\Migrations;
+use Btybug\Modules\Models\Models\AdminPages;
+use Btybug\Modules\Models\Models\Fields;
+use Btybug\Modules\Models\Migrations;
 use Validator;
 
 /**
  * Class ModulesController
- * @package Sahakavatar\Modules\Models\Http\Controllers
+ * @package Btybug\Modules\Models\Http\Controllers
  */
 class StructureController extends Controller
 {

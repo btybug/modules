@@ -1,17 +1,17 @@
 <?php
 
-namespace Sahakavatar\Modules\Http\Controllers;
+namespace Btybug\Modules\Http\Controllers;
 
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Sahakavatar\Cms\Models\ContentLayouts\ContentLayouts;
 use Sahakavatar\Cms\Models\Templates\Units;
-use Sahakavatar\Modules\Models\Models\AdminPages;
+use Btybug\Modules\Models\Models\AdminPages;
 
 /**
  * Class ModulesController
- * @package Sahakavatar\Modules\Models\Http\Controllers
+ * @package Btybug\Modules\Models\Http\Controllers
  */
 class GearsController extends Controller
 {

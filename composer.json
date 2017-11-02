@@ -1,5 +1,5 @@
 {
-  "name": "sahak.avatar/modules",
+  "name": "btybug/modules",
   "description": "Modules package",
   "authors": [
     {
@@ -11,7 +11,7 @@
   "require": {},
   "autoload": {
     "psr-4": {
-      "Sahakavatar\\Modules\\": "src/"
+      "Btybug\\Modules\\": "src/"
     }
   }
 }

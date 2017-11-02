@@ -9,15 +9,15 @@
  *
  */
 
-namespace Sahakavatar\Modules\Http\Controllers;
+namespace Btybug\Modules\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Sahakavatar\Modules\Models\Models\Plugin;
+use Btybug\Modules\Models\Models\Plugin;
 
 /**
  * Class ModulesController
- * @package Sahakavatar\Modules\Models\Http\Controllers
+ * @package Btybug\Modules\Models\Http\Controllers
  */
 class GenerateController extends Controller
 {

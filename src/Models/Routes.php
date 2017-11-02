@@ -6,11 +6,11 @@
  * Time: 11:01 AM
  */
 
-namespace Sahakavatar\Modules\Models;
+namespace Btybug\Modules\Models;
 
 use App\Models\ExtraModules\Structures;
 use Sahakavatar\Cms\Models\ContentLayouts\ContentLayouts;
-use Sahakavatar\Modules\Models\Models\AdminPages;
+use Btybug\Modules\Models\Models\AdminPages;
 
 class Routes
 {

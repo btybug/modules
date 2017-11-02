@@ -9,7 +9,7 @@
  *
  */
 
-namespace Sahakavatar\Modules\Models;
+namespace Btybug\Modules\Models;
 
 use App\Models\ExtraModules\Modules;
 use App\Models\MenuData;

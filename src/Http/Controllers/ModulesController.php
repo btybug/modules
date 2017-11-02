@@ -1,6 +1,6 @@
 <?php
 
-namespace Sahakavatar\Modules\Http\Controllers;
+namespace Btybug\Modules\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\ExtraModules\Modules;
@@ -8,12 +8,12 @@ use App\Models\ExtraModules\Structures;
 use File;
 use Illuminate\Http\Request;
 use Sahakavatar\Cms\Helpers\helpers;
-use Sahakavatar\Modules\Models\Models\Upload;
-use Sahakavatar\Modules\Models\Models\Validation as validateUpl;
+use Btybug\Modules\Models\Models\Upload;
+use Btybug\Modules\Models\Models\Validation as validateUpl;
 
 /**
  * Class ModulesController
- * @package Sahakavatar\Modules\Models\Http\Controllers
+ * @package Btybug\Modules\Models\Http\Controllers
  */
 class ModulesController extends Controller
 {

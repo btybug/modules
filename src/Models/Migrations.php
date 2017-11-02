@@ -1,6 +1,6 @@
 <?php
 
-namespace Sahakavatar\Modules\Models;
+namespace Btybug\Modules\Models;
 
 use Illuminate\Database\QueryException;
 use Illuminate\Database\Schema\Blueprint;

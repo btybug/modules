@@ -6,7 +6,7 @@
  * Time: 5:24 AM
  */
 
-namespace Sahakavatar\Modules\Models;
+namespace Btybug\Modules\Models;
 
 use Carbon\Carbon;
 use File;

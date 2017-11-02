@@ -42,7 +42,7 @@
                                     <div class="row rows">
                                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 row_inputs">
                                             <i class="fa fa-file-o" aria-hidden="true"></i><span class="labls">Children Pages</span>
-                                            {!! Form::select('child_status',Sahakavatar\Modules\Models\Models\AdminPages::$child_statuses,null,[]) !!}
+                                            {!! Form::select('child_status',Btybug\Modules\Models\Models\AdminPages::$child_statuses,null,[]) !!}
                                         </div>
                                     </div>
                                     <div class="row rows">

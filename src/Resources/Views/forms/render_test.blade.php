@@ -12,7 +12,7 @@
     {!! HTML::style('js/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css') !!}
     {!! HTML::style('js/animate/css/animate.css') !!}
     {!! HTML::style('css/form-builder.css?v=4.97') !!}
-    {!! HTML::style('Sahakavatar\Modules\Models\Resources\assets\css\modal_style.css') !!}
+    {!! HTML::style('Btybug\Modules\Models\Resources\assets\css\modal_style.css') !!}
 @stop
 
 @section('JS')

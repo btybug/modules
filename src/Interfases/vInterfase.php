@@ -1,6 +1,6 @@
 <?php
 
-namespace Sahakavatar\Modules\Interfases;
+namespace Btybug\Modules\Interfases;
 
 /**
  * Interface vInterfase

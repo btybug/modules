@@ -1,4 +1,4 @@
-@extends('cms::layouts.mTabs',['index'=>'developers_structure'])
+@extends('btybug::layouts.mTabs',['index'=>'developers_structure'])
 @section('tab')
     FORMS
 @stop

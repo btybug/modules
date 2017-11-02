@@ -14,7 +14,7 @@
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal"><span
                                         aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                            <img src="{!! url('Sahakavatar\Modules\Models\Resources\assets\img\form-lyout-popup.png')!!}"
+                            <img src="{!! url('Btybug\Modules\Models\Resources\assets\img\form-lyout-popup.png')!!}"
                                  alt="image">
                             <h4 class="modal-title" id="myModalLabel">Form Layout</h4>
                         </div>
@@ -159,7 +159,7 @@
     {!! HTML::style('js/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css') !!}
     {!! HTML::style('js/animate/css/animate.css') !!}
     {!! HTML::style('css/form-builder.css?v=4.97') !!}
-    {!! HTML::style('Sahakavatar\Modules\Models\Resources\assets\css\modal_style.css') !!}
+    {!! HTML::style('Btybug\Modules\Models\Resources\assets\css\modal_style.css') !!}
 @stop
 
 @section('JS')

@@ -9,18 +9,18 @@
  *
  */
 
-namespace Sahakavatar\Modules\Http\Controllers;
+namespace Btybug\Modules\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Modules\Settings\Models\Template;
 use Assets;
 use Datatables;
-use Sahakavatar\Modules\Models\Models\Forms;
+use Btybug\Modules\Models\Models\Forms;
 
 
 /**
  * Class ThemeController
- * @package Sahakavatar\Modules\Models\Http\Controllers
+ * @package Btybug\Modules\Models\Http\Controllers
  */
 class TestController extends Controller
 {

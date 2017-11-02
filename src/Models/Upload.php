@@ -1,4 +1,4 @@
-<?php namespace Sahakavatar\Modules\Models;
+<?php namespace Btybug\Modules\Models;
 
 use App\Models\ExtraModules\Modules;
 use App\Models\ExtraModules\Structures;
@@ -11,7 +11,7 @@ use Zipper;
 
 /**
  * Class Upload
- * @package Sahakavatar\Modules\Models\Models
+ * @package Btybug\Modules\Models\Models
  */
 class Upload
 {

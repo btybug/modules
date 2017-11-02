@@ -6,7 +6,7 @@
  * Time: 1:40 PM
  */
 
-namespace Sahakavatar\Modules\Http\Controllers;
+namespace Btybug\Modules\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\ExtraModules\Structures;

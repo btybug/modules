@@ -9,7 +9,7 @@
  *
  */
 
-namespace Sahakavatar\Modules\Http\Controllers;
+namespace Btybug\Modules\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Themes\Themes;
@@ -23,13 +23,13 @@ use Illuminate\Http\Request;
 use Sahakavatar\Cms\Helpers\helpers;
 use Sahakavatar\Cms\Helpers\helpers;
 use Sahakavatar\Cms\Models\Templates as Tpl;
-use Sahakavatar\Modules\Models\Models\UploadTheme;
+use Btybug\Modules\Models\Models\UploadTheme;
 use View;
 
 
 /**
  * Class ThemeController
- * @package Sahakavatar\Modules\Models\Http\Controllers
+ * @package Btybug\Modules\Models\Http\Controllers
  */
 class ThemeController extends Controller
 {

@@ -9,7 +9,7 @@
  *
  */
 
-namespace Sahakavatar\Modules\Models;
+namespace Btybug\Modules\Models;
 
 use File;
 

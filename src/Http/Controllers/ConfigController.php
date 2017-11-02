@@ -1,6 +1,6 @@
 <?php
 
-namespace Sahakavatar\Modules\Http\Controllers;
+namespace Btybug\Modules\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
@@ -12,14 +12,14 @@ use Sahakavatar\Cms\Helpers\helpers;
 use Sahakavatar\Cms\Models\ContentLayouts\ContentLayouts;
 use Sahakavatar\Cms\Models\ContentLayouts\ContentLayouts as AdminTemplates;
 use Sahakavatar\Cms\Models\Templates\Units;
-use Sahakavatar\Console\Models\AdminPages;
-use Sahakavatar\Modules\Models\Fields;
-use Sahakavatar\Modules\Models\Models\Forms;
-use Sahakavatar\Modules\Models\Models\Routes;
+use Btybug\Console\Models\AdminPages;
+use Btybug\Modules\Models\Fields;
+use Btybug\Modules\Models\Models\Forms;
+use Btybug\Modules\Models\Models\Routes;
 
 /**
  * Class ModulesController
- * @package Sahakavatar\Modules\Models\Http\Controllers
+ * @package Btybug\Modules\Models\Http\Controllers
  */
 class ConfigController extends Controller
 {
